@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semana 9 · Prevalencia Comparativa: No Oncológica vs Oncológica en Cuidados Paliativos</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap');
+
+:root {
+  --teal-900: #0d3b3b;
+  --teal-800: #134e4e;
+  --teal-700: #1a6363;
+  --teal-600: #1f7a7a;
+  --teal-500: #259292;
+  --teal-400: #38b2ac;
+  --teal-300: #5ec4be;
+  --teal-200: #8fd8d2;
+  --teal-100: #c4ece8;
+  --teal-50: #e8f7f5;
+  --amber-500: #d4a853;
+  --amber-400: #e0be78;
+  --amber-300: #eccd8e;
+  --amber-200: #f5e1b8;
+  --rose-500: #c45b6e;
+  --rose-400: #d47585;
+  --rose-300: #e0919e;
+  --rose-200: #f0bcc4;
+  --slate-900: #1a1f2e;
+  --slate-800: #252b3b;
+  --slate-700: #3a4157;
+  --slate-600: #4f5672;
+  --slate-500: #6b7280;
+  --slate-400: #8b92a0;
+  --slate-300: #b0b5c0;
+  --slate-200: #d5d8de;
+  --slate-100: #eaecef;
+  --slate-50: #f5f6f8;
+  --sage-500: #6b8a6b;
+  --purple-500: #7c6fa0;
+  --orange-500: #c97a40;
+  --bg: #0a1a1a;
+  --surface: #0f2828;
+  --surface-2: #143535;
+  --card: #183f3f;
+  --text: #e8f0ee;
+  --text-secondary: #a0b8b4;
+  --text-muted: #6b8a86;
+  --border: #1f5050;
+  --border-light: #2a6060;
+  --noOnco: #38b2ac;
+  --onco: #d4a853;
+  --shadow: 0 4px 24px rgba(0,0,0,0.3);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.4);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-lg: 16px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* === HEADER === */
+.hero {
+  background: linear-gradient(135deg, var(--teal-900) 0%, var(--teal-800) 40%, var(--slate-900) 100%);
+  padding: 48px 24px 36px;
+  text-align: center;
+  border-bottom: 2px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(56,178,172,0.08) 0%, transparent 70%),
+              radial-gradient(ellipse at 70% 50%, rgba(212,168,83,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(56,178,172,0.15);
+  color: var(--teal-300);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  border: 1px solid rgba(56,178,172,0.2);
+  position: relative;
+}
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  color: var(--text);
+  margin-bottom: 12px;
+  position: relative;
+  line-height: 1.3;
+}
+.hero h1 span.noOnco { color: var(--teal-400); }
+.hero h1 span.onco { color: var(--amber-400); }
+.hero-sub {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto 20px;
+  position: relative;
+}
+.hero-meta {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  position: relative;
+}
+.hero-meta span { display: flex; align-items: center; gap: 6px; }
+
+/* === NAV === */
+.nav-bar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-bar::-webkit-scrollbar { display: none; }
+.nav-inner {
+  display: flex;
+  gap: 4px;
+  max-width: 1100px;
+  margin: 0 auto;
+  min-width: max-content;
+}
+.nav-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 14px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: all 0.25s;
+}
+.nav-btn:hover { color: var(--text); background: rgba(255,255,255,0.03); }
+.nav-btn.active {
+  color: var(--teal-300);
+  border-bottom-color: var(--teal-400);
+  background: rgba(56,178,172,0.05);
+}
+
+/* === CONTENT === */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.section {
+  display: none;
+  padding: 32px 0 48px;
+  animation: fadeIn 0.4s ease;
+}
+.section.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity:0; transform: translateY(12px); }
+  to { opacity:1; transform: translateY(0); }
+}
+
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.section-desc {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 28px;
+  max-width: 750px;
+}
+
+/* === CARDS === */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+.card-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* === CANVAS WRAPPERS === */
+.canvas-wrap {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 24px;
+  position: relative;
+}
+.canvas-wrap canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+}
+
+/* === PATHOLOGY SELECTOR === */
+.path-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.path-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.25s;
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+.path-card:hover {
+  border-color: var(--border-light);
+  background: var(--card);
+  transform: translateY(-2px);
+}
+.path-card.selected-noOnco {
+  border-color: var(--teal-400);
+  background: rgba(56,178,172,0.1);
+  box-shadow: 0 0 16px rgba(56,178,172,0.15);
+}
+.path-card.selected-onco {
+  border-color: var(--amber-500);
+  background: rgba(212,168,83,0.1);
+  box-shadow: 0 0 16px rgba(212,168,83,0.15);
+}
+.path-card .path-icon {
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+  display: block;
+}
+.path-card .path-label { display: block; }
+.path-card .path-type {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 4px;
+  display: block;
+}
+.type-noOnco { color: var(--teal-300); }
+.type-onco { color: var(--amber-400); }
+
+/* === TABS inside sections === */
+.tab-row {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tab-row::-webkit-scrollbar { display: none; }
+.tab-btn {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.tab-btn:hover { background: var(--card); color: var(--text); }
+.tab-btn.active {
+  background: var(--teal-700);
+  border-color: var(--teal-500);
+  color: #fff;
+}
+.tab-btn.active-onco {
+  background: rgba(212,168,83,0.2);
+  border-color: var(--amber-500);
+  color: var(--amber-300);
+}
+
+/* === DETAIL PANELS === */
+.detail-panel {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+.detail-panel.active { display: block; }
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.profile-icon { font-size: 2.5rem; }
+.profile-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem;
+}
+.profile-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin-top: 4px;
+}
+.tag-noOnco {
+  background: rgba(56,178,172,0.15);
+  color: var(--teal-300);
+  border: 1px solid rgba(56,178,172,0.25);
+}
+.tag-onco {
+  background: rgba(212,168,83,0.15);
+  color: var(--amber-300);
+  border: 1px solid rgba(212,168,83,0.25);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.info-box {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+}
+.info-box h4 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.info-box p, .info-box ul {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.info-box ul {
+  list-style: none;
+  padding: 0;
+}
+.info-box ul li {
+  padding: 3px 0;
+  padding-left: 16px;
+  position: relative;
+}
+.info-box ul li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--teal-400);
+  font-weight: 700;
+}
+
+/* === HIGHLIGHT BOXES === */
+.highlight-box {
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 16px 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+.highlight-gap {
+  background: rgba(196,91,110,0.1);
+  border: 1px solid rgba(196,91,110,0.25);
+  color: var(--rose-200);
+}
+.highlight-human {
+  background: rgba(107,138,107,0.12);
+  border: 1px solid rgba(107,138,107,0.25);
+  color: #b8d4b8;
+}
+.highlight-evidence {
+  background: rgba(124,111,160,0.1);
+  border: 1px solid rgba(124,111,160,0.25);
+  color: #c4b8e0;
+}
+.highlight-box strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* === GROUP ACTIVITY === */
+.group-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.group-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.group-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.g1 { background: rgba(56,178,172,0.2); color: var(--teal-300); border: 1px solid var(--teal-500); }
+.g2 { background: rgba(212,168,83,0.2); color: var(--amber-300); border: 1px solid var(--amber-500); }
+.g3 { background: rgba(124,111,160,0.2); color: #c4b8e0; border: 1px solid var(--purple-500); }
+.group-names {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+.group-assignment {
+  font-size: 0.88rem;
+  color: var(--text);
+  margin-top: 8px;
+  line-height: 1.6;
+}
+.question-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 12px;
+}
+.question-list li {
+  padding: 8px 0 8px 28px;
+  position: relative;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.question-list li:last-child { border-bottom: none; }
+.question-list li .q-letter {
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--teal-400);
+  font-size: 0.9rem;
+}
+
+/* === FOOTER === */
+.footer {
+  text-align: center;
+  padding: 32px 20px;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  line-height: 1.8;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .path-grid { grid-template-columns: repeat(3, 1fr); }
+  .info-grid { grid-template-columns: 1fr; }
+  .hero { padding: 32px 16px 24px; }
+  .container { padding: 0 12px; }
+  .canvas-wrap { padding: 12px; }
+}
+@media (max-width: 480px) {
+  .path-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Scroll progress */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--teal-400), var(--amber-400));
+  z-index: 200;
+  transition: width 0.1s;
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  background: var(--slate-800);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.78rem;
+  color: var(--text);
+  pointer-events: none;
+  z-index: 50;
+  max-width: 260px;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.tooltip.visible { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-badge">Unidad 3 · Semana 9 · Sesión Presencial</div>
+  <h1>Prevalencia Comparativa:<br><span class="noOnco">No Oncológica</span> vs <span class="onco">Oncológica</span></h1>
+  <p class="hero-sub">Recurso interactivo para la exploración diferencial de patologías en cuidados paliativos. Perspectiva investigativa con anclaje colombiano y latinoamericano.</p>
+  <div class="hero-meta">
+    <span>📅 10 de abril de 2026</span>
+    <span>👨‍🏫 Prof. Jorge Bogoya</span>
+    <span>🏫 Universidad Antonio Nariño</span>
+    <span>🎓 Maestría en Investigación en CP</span>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showSection('panorama')">① Panorama Comparativo</button>
+    <button class="nav-btn" onclick="showSection('perfiles')">② Perfiles Patológicos</button>
+    <button class="nav-btn" onclick="showSection('estadificacion')">③ Estadificación y Momento Paliativo</button>
+    <button class="nav-btn" onclick="showSection('vacios')">④ Vacíos de Investigación</button>
+    <button class="nav-btn" onclick="showSection('actividades')">⑤ Guía de Actividades</button>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main class="container">
+
+<!-- ===== SECTION 1: PANORAMA COMPARATIVO ===== -->
+<div class="section active" id="sec-panorama">
+  <h2 class="section-title">Panorama Comparativo: No Oncológico vs Oncológico</h2>
+  <p class="section-desc">Visualización integrada de la carga de enfermedad, prevalencia sintomática y patrones de trayectoria que distinguen las patologías no oncológicas de las oncológicas en el contexto de cuidados paliativos.</p>
+
+  <div class="canvas-wrap">
+    <canvas id="canvasPanorama" width="1060" height="600"></canvas>
+  </div>
+
+  <div class="highlight-human">
+    <strong>🫀 Perspectiva Centrada en la Persona</strong>
+    Detrás de cada dato de prevalencia hay una persona que sufre. En Colombia, una mujer con EPOC avanzada en un municipio PDET del Caribe probablemente no accede a los mismos recursos paliativos que un paciente oncológico en Bogotá. Esta visualización es una invitación a preguntarse: ¿para quién investigamos y cómo llegamos a quienes más lo necesitan?
+  </div>
+
+  <div class="info-grid">
+    <div class="info-box">
+      <h4>¿Por qué comparar?</h4>
+      <p>La investigación en cuidados paliativos nació en el mundo oncológico. Solo en las últimas dos décadas se ha extendido a patologías no oncológicas. Comparar permite identificar dónde la evidencia es robusta y dónde persisten brechas que afectan directamente a millones de personas.</p>
+    </div>
+    <div class="info-box">
+      <h4>Hallazgo clave de Solano et al. (2006)</h4>
+      <p>Tres síntomas — dolor, disnea y fatiga — superan el 50% de prevalencia en las cinco enfermedades terminales estudiadas (cáncer, SIDA, IC, EPOC, enfermedad renal). Existe un «camino común» hacia el final de la vida, independiente del diagnóstico.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 2: PERFILES PATOLÓGICOS ===== -->
+<div class="section" id="sec-perfiles">
+  <h2 class="section-title">Perfiles Patológicos Detallados</h2>
+  <p class="section-desc">Seleccione una patología para explorar su perfil completo: trayectoria, carga sintomática, herramientas de clasificación, nivel de evidencia y vacíos investigativos en el contexto colombiano.</p>
+
+  <h3 style="font-size:0.8rem; text-transform:uppercase; letter-spacing:1.5px; color:var(--teal-300); margin-bottom:12px;">Patologías No Oncológicas</h3>
+  <div class="path-grid" id="gridNoOnco"></div>
+
+  <h3 style="font-size:0.8rem; text-transform:uppercase; letter-spacing:1.5px; color:var(--amber-400); margin-bottom:12px;">Patologías Oncológicas</h3>
+  <div class="path-grid" id="gridOnco"></div>
+
+  <div id="profileDetail"></div>
+</div>
+
+<!-- ===== SECTION 3: ESTADIFICACIÓN ===== -->
+<div class="section" id="sec-estadificacion">
+  <h2 class="section-title">Estadificación y Momento Paliativo</h2>
+  <p class="section-desc">Herramientas de clasificación funcional y estadificación con identificación del punto de entrada a cuidados paliativos. Pregunta fundamental: ¿cuándo comienza el sufrimiento relacionado con la salud y cuándo debería iniciar la atención paliativa?</p>
+
+  <div class="tab-row" id="stagingTabs"></div>
+  <div class="canvas-wrap">
+    <canvas id="canvasStaging" width="1060" height="520"></canvas>
+  </div>
+
+  <div class="highlight-gap">
+    <strong>⚠️ Brecha de Validación Transcultural</strong>
+    Ninguna de las herramientas de estadificación aquí presentadas (GOLD, NYHA, FAST, Child-Pugh, ALSFRS-R) cuenta con validación transcultural específica para Colombia. Esta realidad representa una oportunidad investigativa de alta prioridad: adaptar y validar estos instrumentos en la población colombiana, incluyendo comunidades indígenas, afrocolombianas y rurales PDET.
+  </div>
+</div>
+
+<!-- ===== SECTION 4: VACÍOS DE INVESTIGACIÓN ===== -->
+<div class="section" id="sec-vacios">
+  <h2 class="section-title">Mapa de Vacíos de Investigación</h2>
+  <p class="section-desc">Visualización de las brechas investigativas identificadas en Colombia y América Latina. Cada vacío representa una oportunidad para generar conocimiento que mejore la atención paliativa de personas con enfermedades avanzadas.</p>
+
+  <div class="canvas-wrap">
+    <canvas id="canvasGaps" width="1060" height="650"></canvas>
+  </div>
+
+  <div class="highlight-evidence">
+    <strong>🔬 Desde Consumidores hacia Generadores de Conocimiento</strong>
+    La Maestría en Investigación en Cuidados Paliativos de la UAN tiene como objetivo que los estudiantes transiten de consumidores de evidencia a generadores de conocimiento. Los vacíos aquí visualizados son semillas de posibles anteproyectos de investigación. La pregunta es: ¿cuál de estos vacíos me interpela desde mi práctica clínica cotidiana?
+  </div>
+</div>
+
+<!-- ===== SECTION 5: ACTIVIDADES ===== -->
+<div class="section" id="sec-actividades">
+  <h2 class="section-title">Guía de Actividades en Clase</h2>
+  <p class="section-desc">Asignaciones por grupo para los Bloques A (no oncológico) y B (oncológico) de la sesión presencial. Cada grupo analiza patologías específicas con la guía de preguntas orientadoras.</p>
+
+  <div style="display:flex; gap:8px; margin-bottom:24px; flex-wrap:wrap;">
+    <button class="tab-btn active" onclick="showActivityBlock('bloqueA', this)">Bloque A · No Oncológico</button>
+    <button class="tab-btn" onclick="showActivityBlock('bloqueB', this)">Bloque B · Oncológico</button>
+    <button class="tab-btn" onclick="showActivityBlock('sintesis', this)">Síntesis · Matriz de Vacíos</button>
+    <button class="tab-btn" onclick="showActivityBlock('pico', this)">PICO / PECO</button>
+  </div>
+
+  <div class="detail-panel active" id="act-bloqueA">
+    <div class="card" style="margin-bottom:20px; background: rgba(56,178,172,0.05); border-color: rgba(56,178,172,0.2);">
+      <p style="font-size:0.88rem; color:var(--text-secondary);">
+        <strong style="color:var(--teal-300);">BLOQUE A — Tema 3.1:</strong> Patologías No Oncológicas más Prevalentes (40 min)<br>
+        Cada grupo analiza las patologías no oncológicas asignadas usando la guía de análisis. Discusión interna (10 min) + preparación de presentación (10 min) + plenaria (15 min).
+      </p>
+    </div>
+
+    <div class="group-card">
+      <div class="group-header">
+        <div class="group-num g1">G1</div>
+        <div>
+          <div style="font-weight:600;">Grupo 1 — EPOC Avanzada / ICC Estadio D</div>
+          <div class="group-names">Yaninis Martínez · Pedro Manrique · Ariel Giraldo</div>
+        </div>
+      </div>
+      <div class="group-assignment">
+        <strong>Foco:</strong> Trayectoria con exacerbaciones — ¿cuándo iniciar CP? Herramientas GOLD, NYHA. Vacíos en Colombia.
+      </div>
+      <ul class="question-list">
+        <li><span class="q-letter">a)</span> ¿Cuál es la carga sintomática documentada? ¿Qué síntomas son más prevalentes según Solano et al. (2006)?</li>
+        <li><span class="q-letter">b)</span> ¿Qué herramientas de identificación de necesidades o pronóstico existen? ¿Alguna validada en Colombia o LATAM?</li>
+        <li><span class="q-letter">c)</span> ¿Qué tipo de estudios predominan? ¿Qué nivel de evidencia según la pirámide 6S?</li>
+        <li><span class="q-letter">d)</span> ¿Qué vacío de investigación concreto identifican para el contexto colombiano? (PDET, indígenas, afrocolombianos, SGSSS)</li>
+      </ul>
+    </div>
+
+    <div class="group-card">
+      <div class="group-header">
+        <div class="group-num g2">G2</div>
+        <div>
+          <div style="font-weight:600;">Grupo 2 — Demencia Avanzada / ERC Estadio 5</div>
+          <div class="group-names">María Carolina Paternina · Mauricio Rodríguez V. · Sergio Imbachi</div>
+        </div>
+      </div>
+      <div class="group-assignment">
+        <strong>Foco:</strong> Trayectoria de declive lento — criterios FAST, síntomas subreconocidos, ausencia de escalas validadas en Colombia.
+      </div>
+      <ul class="question-list">
+        <li><span class="q-letter">a)</span> ¿Cuál es la carga sintomática documentada? ¿Qué síntomas son más prevalentes según Solano et al. (2006)?</li>
+        <li><span class="q-letter">b)</span> ¿Qué herramientas de identificación de necesidades o pronóstico existen? ¿Alguna validada en Colombia o LATAM?</li>
+        <li><span class="q-letter">c)</span> ¿Qué tipo de estudios predominan? ¿Qué nivel de evidencia según la pirámide 6S?</li>
+        <li><span class="q-letter">d)</span> ¿Qué vacío de investigación concreto identifican para el contexto colombiano? (PDET, indígenas, afrocolombianos, SGSSS)</li>
+      </ul>
+    </div>
+
+    <div class="group-card">
+      <div class="group-header">
+        <div class="group-num g3">G3</div>
+        <div>
+          <div style="font-weight:600;">Grupo 3 — ELA/SLA / Cirrosis Hepática Avanzada</div>
+          <div class="group-names">Nohora Montero · Malkys Reales · Allan Josue Maradiaga</div>
+        </div>
+      </div>
+      <div class="group-assignment">
+        <strong>Foco:</strong> Declive acelerado vs. declive lento con crisis — ALSFRS-R, Child-Pugh, necesidades no cubiertas.
+      </div>
+      <ul class="question-list">
+        <li><span class="q-letter">a)</span> ¿Cuál es la carga sintomática documentada? ¿Qué síntomas son más prevalentes según Solano et al. (2006)?</li>
+        <li><span class="q-letter">b)</span> ¿Qué herramientas de identificación de necesidades o pronóstico existen? ¿Alguna validada en Colombia o LATAM?</li>
+        <li><span class="q-letter">c)</span> ¿Qué tipo de estudios predominan? ¿Qué nivel de evidencia según la pirámide 6S?</li>
+        <li><span class="q-letter">d)</span> ¿Qué vacío de investigación concreto identifican para el contexto colombiano? (PDET, indígenas, afrocolombianos, SGSSS)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="detail-panel" id="act-bloqueB">
+    <div class="card" style="margin-bottom:20px; background: rgba(212,168,83,0.05); border-color: rgba(212,168,83,0.2);">
+      <p style="font-size:0.88rem; color:var(--text-secondary);">
+        <strong style="color:var(--amber-400);">BLOQUE B — Tema 3.2:</strong> Patologías Oncológicas más Prevalentes (40 min)<br>
+        Cada grupo analiza los cánceres asignados. Se introduce el concepto de integración temprana de CP (Temel et al. 2010).
+      </p>
+    </div>
+
+    <div class="group-card">
+      <div class="group-header"><div class="group-num g1">G1</div>
+        <div><div style="font-weight:600;">Grupo 1 — Ca. Pulmón / Ca. Colorrectal</div>
+          <div class="group-names">Yaninis Martínez · Pedro Manrique · Ariel Giraldo</div></div></div>
+      <div class="group-assignment"><strong>Foco:</strong> Mayor mortalidad global. Integración temprana de CP. Control de disnea (pulmón) vs. ostomías y función GI (colorrectal). Evidencia en Colombia.</div>
+      <ul class="question-list">
+        <li><span class="q-letter">a)</span> ¿Qué síntomas dominan el cuadro clínico en fase terminal? ¿Cómo se comparan con Solano et al. para cáncer general?</li>
+        <li><span class="q-letter">b)</span> ¿En qué momento debería iniciarse la atención paliativa? ¿Qué evidencia respalda esa recomendación?</li>
+        <li><span class="q-letter">c)</span> ¿Qué barreras específicas enfrentan estos pacientes en Colombia? (Ley 1733, SGSSS, ruralidad, PDET)</li>
+        <li><span class="q-letter">d)</span> ¿Qué tipo de estudio proponen para generar evidencia local sobre una necesidad no cubierta?</li>
+      </ul>
+    </div>
+
+    <div class="group-card">
+      <div class="group-header"><div class="group-num g2">G2</div>
+        <div><div style="font-weight:600;">Grupo 2 — Ca. Mama / Ca. Gástrico</div>
+          <div class="group-names">María Carolina Paternina · Mauricio Rodríguez V. · Sergio Imbachi</div></div></div>
+      <div class="group-assignment"><strong>Foco:</strong> Alta prevalencia femenina (mama). Gástrico como causa frecuente en Colombia. Dolor crónico, náusea, desnutrición. Vacíos de investigación.</div>
+      <ul class="question-list">
+        <li><span class="q-letter">a)</span> ¿Qué síntomas dominan el cuadro clínico en fase terminal? ¿Cómo se comparan con Solano et al. para cáncer general?</li>
+        <li><span class="q-letter">b)</span> ¿En qué momento debería iniciarse la atención paliativa? ¿Qué evidencia respalda esa recomendación?</li>
+        <li><span class="q-letter">c)</span> ¿Qué barreras específicas enfrentan estos pacientes en Colombia? (Ley 1733, SGSSS, ruralidad, PDET)</li>
+        <li><span class="q-letter">d)</span> ¿Qué tipo de estudio proponen para generar evidencia local sobre una necesidad no cubierta?</li>
+      </ul>
+    </div>
+
+    <div class="group-card">
+      <div class="group-header"><div class="group-num g3">G3</div>
+        <div><div style="font-weight:600;">Grupo 3 — Ca. Cérvico-uterino / Ca. Hepatocelular</div>
+          <div class="group-names">Nohora Montero · Malkys Reales · Allan Josue Maradiaga</div></div></div>
+      <div class="group-assignment"><strong>Foco:</strong> Cervical: mortalidad evitable, inequidad, barreras SGSSS. HCC: MELD, trasplante vs. CP. Contextos rurales y PDET.</div>
+      <ul class="question-list">
+        <li><span class="q-letter">a)</span> ¿Qué síntomas dominan el cuadro clínico en fase terminal? ¿Cómo se comparan con Solano et al. para cáncer general?</li>
+        <li><span class="q-letter">b)</span> ¿En qué momento debería iniciarse la atención paliativa? ¿Qué evidencia respalda esa recomendación?</li>
+        <li><span class="q-letter">c)</span> ¿Qué barreras específicas enfrentan estos pacientes en Colombia? (Ley 1733, SGSSS, ruralidad, PDET)</li>
+        <li><span class="q-letter">d)</span> ¿Qué tipo de estudio proponen para generar evidencia local sobre una necesidad no cubierta?</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="detail-panel" id="act-sintesis">
+    <div class="card">
+      <div class="card-title">🗂️ Matriz Colectiva de Vacíos de Investigación (25 min)</div>
+      <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:16px;">
+        Todos los grupos trabajan simultáneamente en un tablero compartido para construir una matriz colectiva. El docente facilita y sintetiza.
+      </p>
+      <div style="overflow-x:auto;">
+        <table style="width:100%; border-collapse:collapse; font-size:0.82rem;">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border-light);">
+              <th style="padding:10px; text-align:left; color:var(--teal-300);">Patología</th>
+              <th style="padding:10px; text-align:left; color:var(--teal-300);">Vacío Identificado</th>
+              <th style="padding:10px; text-align:left; color:var(--teal-300);">Población Prioritaria</th>
+              <th style="padding:10px; text-align:left; color:var(--teal-300);">Diseño Sugerido</th>
+              <th style="padding:10px; text-align:left; color:var(--teal-300);">Base Colombiana</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:10px; color:var(--text-muted);" colspan="5"><em>Completar colectivamente durante la sesión...</em></td></tr>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:10px;" colspan="5">&nbsp;</td></tr>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:10px;" colspan="5">&nbsp;</td></tr>
+            <tr style="border-bottom:1px solid var(--border);"><td style="padding:10px;" colspan="5">&nbsp;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.82rem; color:var(--text-muted); margin-top:12px;">
+        Objetivo: al finalizar, la clase habrá construido colectivamente un mapa de necesidades de investigación que sirva como insumo para los anteproyectos de tesis.
+      </p>
+    </div>
+  </div>
+
+  <div class="detail-panel" id="act-pico">
+    <div class="card">
+      <div class="card-title">🔬 Formulación de Preguntas PICO / PECO</div>
+      <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:16px;">
+        A partir de la matriz de vacíos, cada grupo formula una pregunta de investigación en formato PICO (ensayos) o PECO (estudios observacionales).
+      </p>
+      <div class="info-grid">
+        <div class="info-box">
+          <h4>PICO (Intervención)</h4>
+          <ul>
+            <li><strong style="color:var(--teal-300);">P</strong> — Población específica</li>
+            <li><strong style="color:var(--teal-300);">I</strong> — Intervención propuesta</li>
+            <li><strong style="color:var(--teal-300);">C</strong> — Comparador</li>
+            <li><strong style="color:var(--teal-300);">O</strong> — Outcome (desenlace)</li>
+          </ul>
+        </div>
+        <div class="info-box">
+          <h4>PECO (Observacional)</h4>
+          <ul>
+            <li><strong style="color:var(--amber-400);">P</strong> — Población específica</li>
+            <li><strong style="color:var(--amber-400);">E</strong> — Exposición o factor</li>
+            <li><strong style="color:var(--amber-400);">C</strong> — Comparador</li>
+            <li><strong style="color:var(--amber-400);">O</strong> — Outcome (desenlace)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="highlight-human" style="margin-top:16px;">
+        <strong>💡 Focos Sugeridos</strong>
+        Si el grupo tiene dificultad para identificar un foco propio, se sugieren: prevalencia de síntomas en demencia avanzada en hogares geriátricos de Colombia · efectividad de CP integrados tempranamente en cáncer gástrico estadio IV en ciudades intermedias · barreras de acceso a CP en ELA/SLA en municipios PDET del Caribe · validación transcultural del NECPAL en EPOC avanzada · necesidades de CP en cáncer cérvico-uterino en comunidades indígenas del Amazonas colombiano.
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer class="footer">
+  Maestría en Investigación en Cuidados Paliativos · Universidad Antonio Nariño · 2026<br>
+  Recurso diseñado para la Semana 9 · Sesión Presencial<br>
+  Fuentes: Murray et al. BMJ 2005 · Solano et al. JPMS 2006 · GOLD 2026 · Reisberg FAST · Ley 1733/2014 Colombia
+</footer>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+// ========================================
+// DATA: Pathology Profiles
+// ========================================
+const pathologies = {
+  noOnco: [
+    {
+      id:'epoc', icon:'🫁', name:'EPOC Avanzada', shortName:'EPOC',
+      trajectory:'Declive gradual con exacerbaciones agudas',
+      trajectoryType: 2,
+      timeframe:'2–5 años; muerte frecuentemente «inesperada»',
+      tools:['GOLD (A–E)', 'mMRC', 'CAT', 'BODEx', 'SPICT'],
+      toolDetail:'GOLD 2026 clasifica en grupos A-E según exacerbaciones y síntomas. Sin validación colombiana específica del SPICT.',
+      symptoms:{dolor:'34–77%', disnea:'90–95%', fatiga:'68–80%', depresion:'37–71%', ansiedad:'51–75%', confusion:'18–33%', insomnio:'55–65%', nausea:'—', constipacion:'27–44%', anorexia:'35–67%'},
+      symptomSource:'Solano et al. 2006; Edmonds et al. 2001',
+      keyEvidence:'Estudios observacionales predominan. Pocos ensayos en CP para EPOC. Nivel 4-5 de la pirámide 6S.',
+      colombianGap:'No hay estudios de prevalencia sintomática en EPOC avanzada en Colombia. La exposición a humo de leña en zonas rurales y PDET es un factor etiológico subinvestigado. Sin validación colombiana de herramientas pronósticas.',
+      humanNote:'Doña Carmen, 72 años, cocina con leña en su finca en Boyacá. Sus exacerbaciones la llevan al hospital en Tunja, a dos horas de distancia. Nadie le ha hablado de cuidados paliativos.'
+    },
+    {
+      id:'icc', icon:'❤️', name:'ICC Estadio D', shortName:'ICC',
+      trajectory:'Declive gradual con episodios de descompensación',
+      trajectoryType: 2,
+      timeframe:'2–5 años; pronóstico incierto hasta el final',
+      tools:['NYHA (I–IV)', 'Criterios Framingham', 'BNP/proBNP', 'MAGGIC Score', 'Seattle HF Model'],
+      toolDetail:'NYHA IV: síntomas en reposo. Criterios de la National Hospice Organization para IC terminal incluyen FE<20% y NYHA IV persistente.',
+      symptoms:{dolor:'41–77%', disnea:'60–88%', fatiga:'69–82%', depresion:'9–36%', ansiedad:'49%', confusion:'18–32%', insomnio:'36–48%', nausea:'17–48%', constipacion:'38–42%', anorexia:'21–41%'},
+      symptomSource:'Solano et al. 2006; Nordgren & Sorensen 2003',
+      keyEvidence:'Ensayos farmacológicos abundantes (IECA, BB), pero pocos con outcomes paliativos. La mortalidad a 5 años es 40-50%. Nivel 2-3 para tratamiento; nivel 5 para CP.',
+      colombianGap:'Prevalencia de IC en España 7-8%, pero datos colombianos limitados. La IC es causa frecuente de hospitalización en >65 años. No hay estudios de integración de CP en unidades de IC colombianas.',
+      humanNote:'Don Hernando, 78 años, ha sido hospitalizado cuatro veces en el último año por descompensación cardíaca. Cada vez que regresa a casa pierde un poco más de independencia. Su esposa pregunta: «¿cuánto le queda?» y nadie sabe responder.'
+    },
+    {
+      id:'demencia', icon:'🧠', name:'Demencia Avanzada', shortName:'Demencia',
+      trajectory:'Declive prolongado desde línea de base baja',
+      trajectoryType: 3,
+      timeframe:'6–8 años; muerte por complicaciones intercurrentes',
+      tools:['GDS/FAST de Reisberg', 'CDR', 'MMSE', 'NPI', 'PAINAD'],
+      toolDetail:'FAST 7 (estadio final): pérdida de habla, deambulación, capacidad de sentarse, sonreír. Teoría de la retrogénesis: las habilidades se pierden en orden inverso al desarrollo infantil.',
+      symptoms:{dolor:'Subdiagnosticado — 40-60% estimado', disnea:'Variable', fatiga:'Presente pero difícil de evaluar', depresion:'Frecuente en fases iniciales-medias', ansiedad:'Variable', confusion:'Definitorio', insomnio:'Alteraciones del ciclo sueño-vigilia', nausea:'Variable', constipacion:'Frecuente', anorexia:'Fase terminal: disfagia y rechazo alimentario'},
+      symptomSource:'Mitchell et al. NEJM 2009; van der Steen et al. 2014',
+      keyEvidence:'Mitchell et al. (2009) demostró que demencia avanzada tiene mortalidad a 6 meses del 25% — comparable a cáncer avanzado. Nivel 3-4 de evidencia en CP.',
+      colombianGap:'No hay estudios de prevalencia de síntomas en demencia avanzada en hogares geriátricos colombianos. Ausencia de validación colombiana del PAINAD o herramientas de evaluación de dolor en personas no comunicativas. La cobertura del SGSSS para demencia avanzada es precaria.',
+      humanNote:'Doña Rosalba, 85 años, vive en un hogar geriátrico en Medellín. Ya no reconoce a sus hijos. Tiene dolor, pero no puede decirlo. Sus cuidadores no conocen la escala PAINAD. ¿Quién investiga su sufrimiento?'
+    },
+    {
+      id:'erc', icon:'🫘', name:'ERC Estadio 5', shortName:'ERC',
+      trajectory:'Declive gradual con tratamiento renal sustitutivo',
+      trajectoryType: 2,
+      timeframe:'Variable; decisión de diálisis vs. manejo conservador',
+      tools:['Estadificación KDIGO', 'TFG', 'ESAS-r', 'POS-Renal'],
+      toolDetail:'ERC estadio 5: TFG <15 ml/min. El manejo conservador (sin diálisis) en ancianos frágiles es una opción paliativa válida con evidencia creciente.',
+      symptoms:{dolor:'47–50%', disnea:'11–62%', fatiga:'73–87%', depresion:'5–60%', ansiedad:'Variable', confusion:'—', insomnio:'31–71%', nausea:'30–43%', constipacion:'29–70%', anorexia:'25–64%'},
+      symptomSource:'Solano et al. 2006; Davison 2003; Weisbord et al. 2003',
+      keyEvidence:'Estudios observacionales y revisiones. Debate creciente sobre diálisis vs. manejo conservador en ancianos. Nivel 3-4 de evidencia.',
+      colombianGap:'La carga renal en Colombia es alta pero los programas de CP renal son inexistentes. La decisión de retiro de diálisis no tiene marco claro en el SGSSS. Población PDET con ERC por agroquímicos no tiene cobertura paliativa.',
+      humanNote:'Don José, 74 años, agricultor en el Huila. Su ERC avanzada se asocia con la exposición a agroquímicos durante décadas. Viaja tres veces por semana a hemodiálisis. Nadie le ha preguntado si quiere seguir.'
+    },
+    {
+      id:'ela', icon:'🧬', name:'ELA / SLA', shortName:'ELA',
+      trajectory:'Declive acelerado con progresión predecible',
+      trajectoryType: 1,
+      timeframe:'2–5 años típicamente; 10% sobrevive >10 años',
+      tools:['ALSFRS-R', 'Capacidad vital forzada', 'King\'s Staging', 'Milano-Torino Staging'],
+      toolDetail:'ALSFRS-R: escala funcional de 48 puntos. Pérdida de >2 puntos/mes indica progresión rápida. La CVF <50% marca alto riesgo de insuficiencia respiratoria.',
+      symptoms:{dolor:'50–70%', disnea:'Progresiva — terminal', fatiga:'Prominente', depresion:'10–44%', ansiedad:'Frecuente ante deterioro', confusion:'Preservada hasta fases tardías en ELA clásica', insomnio:'Frecuente por disnea nocturna', nausea:'Variable', constipacion:'Frecuente por inmovilidad', anorexia:'Disfagia progresiva'},
+      symptomSource:'Brettschneider et al. 2012; Chiò et al. 2009',
+      keyEvidence:'Ensayos con riluzole y edaravone. CP integrados desde el diagnóstico recomendados por guías AAN 2009. Nivel 2-3 para tratamiento; nivel 4 para CP.',
+      colombianGap:'No hay registro nacional de ELA en Colombia. Acceso a riluzole limitado por costo. No existe programa de CP especializado en enfermedades neuromusculares. Población rural sin acceso a ventilación no invasiva.',
+      humanNote:'Carlos, 52 años, profesor en Bucaramanga. Diagnosticado con ELA hace un año. Cada semana pierde una capacidad más. Su mayor temor: asfixiarse. No hay equipo de CP neuromuscular en Santander.'
+    },
+    {
+      id:'cirrosis', icon:'🫙', name:'Cirrosis Hepática', shortName:'Cirrosis',
+      trajectory:'Declive lento con crisis agudas impredecibles',
+      trajectoryType: 2,
+      timeframe:'Variable; descompensaciones definen pronóstico',
+      tools:['Child-Pugh (A/B/C)', 'MELD', 'MELD-Na', 'CLIF-C ACLF'],
+      toolDetail:'Child-Pugh C: sobrevida 1 año ~45%. MELD ≥21: mortalidad 3 meses ~20%. La decisión trasplante vs. CP es el dilema clínico central.',
+      symptoms:{dolor:'30–79%', disnea:'Variable', fatiga:'60–86%', depresion:'Frecuente', ansiedad:'Frecuente', confusion:'Encefalopatía hepática: 30-45%', insomnio:'Frecuente', nausea:'Frecuente', constipacion:'Variable', anorexia:'Prominente — ascitis contribuye'},
+      symptomSource:'Peng et al. 2019; Potosek et al. 2014',
+      keyEvidence:'Estudios observacionales predominan. CP en hepatología es un campo emergente. Nivel 4-5 de evidencia.',
+      colombianGap:'Cirrosis por alcohol es prevalente en Colombia pero el CP hepático no existe como subespecialidad. No hay estudios de carga sintomática en cirrosis avanzada en el país. La cobertura de trasplante en el SGSSS es inequitativa regionalmente.',
+      humanNote:'Don Manuel, 63 años, taxista en Cali. Su cirrosis alcohólica ha progresado a Child-Pugh C. Tiene ascitis a tensión y encefalopatía recurrente. No califica para trasplante. ¿Quién coordina su cuidado paliativo?'
+    }
+  ],
+  onco: [
+    {
+      id:'pulmon', icon:'🫁', name:'Cáncer de Pulmón', shortName:'Ca. Pulmón',
+      trajectory:'Declive relativamente rápido y predecible',
+      trajectoryType: 1,
+      timeframe:'Mediana 8-12 meses en estadio IV',
+      tools:['TNM (AJCC 8ª ed.)', 'ECOG PS', 'Karnofsky', 'PaP Score'],
+      toolDetail:'Estadio IV: metástasis a distancia. ECOG ≥3: candidato a CP exclusivo. Temel et al. (2010): CP temprana mejora supervivencia y calidad de vida.',
+      symptoms:{dolor:'35–96%', disnea:'10–70%', fatiga:'32–90%', depresion:'3–77%', ansiedad:'13–79%', confusion:'6–93%', insomnio:'9–69%', nausea:'6–68%', constipacion:'23–65%', anorexia:'30–92%'},
+      symptomSource:'Solano et al. 2006 (datos generales cáncer)',
+      keyEvidence:'Temel et al. NEJM 2010: hito fundacional de CP temprana en cáncer de pulmón. Meta-análisis confirman beneficio. Nivel 1-2 de evidencia para CP temprana.',
+      colombianGap:'Cáncer de pulmón es la primera causa de muerte por cáncer en hombres colombianos, pero la integración de CP es tardía. No hay estudios de CP temprana en centros oncológicos colombianos. Exposición a biomasa en áreas rurales como factor de riesgo subinvestigado.',
+      humanNote:'Don Alberto, 67 años, minero retirado en Boyacá. Su cáncer de pulmón fue diagnosticado en estadio IV. Viaja 4 horas para quimioterapia en Bogotá. Nadie le ha preguntado dónde quiere morir.'
+    },
+    {
+      id:'colorrectal', icon:'🔬', name:'Cáncer Colorrectal', shortName:'Ca. Colorrectal',
+      trajectory:'Declive variable según respuesta a tratamiento',
+      trajectoryType: 1,
+      timeframe:'Mediana 12-24 meses en estadio IV con tratamiento',
+      tools:['TNM', 'CEA', 'Microsatélites (MSI)', 'ECOG PS'],
+      toolDetail:'Pacientes con ostomía tienen necesidades de CP específicas: imagen corporal, sexualidad, manejo de dispositivo. Requiere apoyo multidisciplinario.',
+      symptoms:{dolor:'47–80%', disnea:'Variable', fatiga:'60–85%', depresion:'15–40%', ansiedad:'Variable', confusion:'Fase terminal', insomnio:'Frecuente', nausea:'30–60%', constipacion:'Frecuente — obstrucción intestinal', anorexia:'50–80%'},
+      symptomSource:'Teunissen et al. 2007; Mazzotta et al. 2019',
+      keyEvidence:'Evidencia de nivel 1-2 para tratamiento oncológico. CP en colorrectal: nivel 3-4, enfoque en síntomas GI y ostomías.',
+      colombianGap:'Segundo cáncer GI más frecuente en Colombia. No hay estudios de calidad de vida en pacientes con ostomía y CP. Ruralidad dificulta seguimiento y manejo de dispositivos.',
+      humanNote:'Doña Luz, 58 años, tiene cáncer colorrectal con colostomía. Vive en un municipio PDET del Caquetá. No hay enfermera estomaterapeuta en su región. Cambia su bolsa con miedo e incertidumbre.'
+    },
+    {
+      id:'mama', icon:'🎀', name:'Cáncer de Mama', shortName:'Ca. Mama',
+      trajectory:'Variable; supervivencia prolongada posible',
+      trajectoryType: 1,
+      timeframe:'Meses a años según subtipo molecular y respuesta',
+      tools:['TNM', 'Subtipo molecular (Luminal/HER2/Triple neg.)', 'ECOG', 'Ki-67'],
+      toolDetail:'Cáncer de mama metastásico: incurable pero con supervivencias medianas de 2-3 años en luminal. La frontera curativo/paliativo es fluida.',
+      symptoms:{dolor:'40–89%', disnea:'Variable', fatiga:'60–93%', depresion:'15–50%', ansiedad:'30–60%', confusion:'Fase terminal o cerebral', insomnio:'Frecuente', nausea:'Por quimioterapia', constipacion:'Por opioides', anorexia:'Fase terminal'},
+      symptomSource:'Teunissen et al. 2007; Cleeland et al. 2014',
+      keyEvidence:'Nivel 1-2 para tratamiento oncológico. CP en mama: nivel 3-4. Necesidades psicosociales y de imagen corporal subinvestigadas en LATAM.',
+      colombianGap:'Mayor incidencia en mujeres colombianas. Diagnóstico tardío en regiones rurales y PDET. No hay estudios de CP en cáncer de mama metastásico en Colombia. Necesidades de soporte psicológico no cubiertas por SGSSS.',
+      humanNote:'Ana María, 45 años, madre de tres hijos en Sincelejo. Su cáncer de mama triple negativo fue diagnosticado en estadio IIIB. Los quimioterapia la debilita, pero sigue trabajando porque no hay licencia por enfermedad catastrófica.'
+    },
+    {
+      id:'gastrico', icon:'🔴', name:'Cáncer Gástrico', shortName:'Ca. Gástrico',
+      trajectory:'Declive rápido en estadio avanzado',
+      trajectoryType: 1,
+      timeframe:'Mediana 6-12 meses en estadio IV',
+      tools:['TNM', 'Lauren classification', 'HER2', 'ECOG PS'],
+      toolDetail:'Colombia tiene una de las tasas más altas de cáncer gástrico en América Latina, particularmente en el altiplano (Boyacá, Nariño, Cauca). Alta mortalidad por diagnóstico tardío.',
+      symptoms:{dolor:'60–90%', disnea:'Fase terminal', fatiga:'70–90%', depresion:'20–50%', ansiedad:'Variable', confusion:'Fase terminal', insomnio:'Frecuente', nausea:'60–80%', constipacion:'Frecuente', anorexia:'70–90% — desnutrición prominente'},
+      symptomSource:'Merchant et al. 2019; Park et al. 2015',
+      keyEvidence:'Nivel 2-3 para tratamiento. CP: nivel 4-5. Desnutrición y caquexia como ejes centrales del sufrimiento.',
+      colombianGap:'A pesar de la alta incidencia en Colombia, no hay estudios de necesidades paliativas en cáncer gástrico avanzado. H. pylori como factor de riesgo en zonas rurales del altiplano. No hay programas de CP integrados en centros oncológicos de ciudades intermedias como Tunja o Pasto.',
+      humanNote:'Don Ernesto, 60 años, agricultor en Nariño. Su cáncer gástrico fue diagnosticado cuando ya no podía comer. Perdió 15 kg en dos meses. En su pueblo no hay oncólogo ni equipo de cuidados paliativos.'
+    },
+    {
+      id:'cervix', icon:'♀️', name:'Cáncer Cérvico-uterino', shortName:'Ca. Cervical',
+      trajectory:'Declive variable; mortalidad evitable',
+      trajectoryType: 1,
+      timeframe:'Variable según estadio y acceso a tratamiento',
+      tools:['FIGO staging', 'TNM', 'VPH genotipo', 'ECOG PS'],
+      toolDetail:'Cáncer prevenible (vacuna VPH) y detectable tempranamente (citología, VPH). La mortalidad por cáncer cervical es un indicador de inequidad en salud.',
+      symptoms:{dolor:'50–85%', disnea:'Fase terminal', fatiga:'Prominente', depresion:'Frecuente', ansiedad:'Frecuente', confusion:'Fase terminal', insomnio:'Variable', nausea:'Variable', constipacion:'Frecuente — compresión pélvica', anorexia:'Fase terminal'},
+      symptomSource:'Bhatla et al. 2018; WHO Cervical Cancer Guideline 2021',
+      keyEvidence:'Nivel 1 para prevención (vacuna, screening). CP: nivel 4-5. Las necesidades de mujeres con estadios avanzados en contextos de inequidad son poco documentadas.',
+      colombianGap:'Alta mortalidad en comunidades indígenas y afrocolombianas del Pacífico y Amazonía. Barreras culturales para screening. No hay estudios de CP en mujeres indígenas con cáncer cervical avanzado. La Ley 1733 no se implementa efectivamente en estas regiones.',
+      humanNote:'María, 38 años, mujer emberá en el Chocó. Nunca tuvo acceso a citología. Su cáncer cervical fue diagnosticado en estadio IVA cuando el dolor pélvico era insoportable. El hospital más cercano con radioterapia está en Medellín.'
+    },
+    {
+      id:'hepato', icon:'🟤', name:'Cáncer Hepatocelular', shortName:'HCC',
+      trajectory:'Declive rápido sobre enfermedad hepática crónica',
+      trajectoryType: 1,
+      timeframe:'Mediana 6-20 meses según BCLC y Child-Pugh',
+      tools:['BCLC Staging', 'Child-Pugh', 'MELD', 'AFP', 'ECOG PS'],
+      toolDetail:'BCLC D (terminal): CP como tratamiento primario. El dilema trasplante vs. CP es central. Child-Pugh C: contraindicación para terapia activa en mayoría de casos.',
+      symptoms:{dolor:'40–80%', disnea:'Variable', fatiga:'60–85%', depresion:'30–50%', ansiedad:'Frecuente', confusion:'Encefalopatía hepática', insomnio:'Frecuente', nausea:'Frecuente', constipacion:'Variable', anorexia:'60–80%'},
+      symptomSource:'Peng et al. 2019; Verma et al. 2020',
+      keyEvidence:'Nivel 2-3 para tratamiento (sorafenib, atezolizumab+bevacizumab). CP: nivel 4-5. Campo emergente en hepatología.',
+      colombianGap:'Hepatitis B/C como etiología subdiagnosticada. Cirrosis alcohólica progresando a HCC en población vulnerable. No hay programas de CP hepático. Inequidad en acceso a trasplante entre regiones.',
+      humanNote:'Don Pedro, 55 años, diagnosticado con HCC sobre cirrosis por hepatitis C en Barranquilla. No puede acceder a trasplante porque no tiene EPS contributiva. Su ascitis crece mientras espera una respuesta del sistema.'
+    }
+  ]
+};
+
+// ========================================
+// STAGING DATA
+// ========================================
+const stagingTools = [
+  {id:'gold', name:'GOLD (EPOC)', color:'#38b2ac', stages:['A','B','E'],
+   labels:['Bajo riesgo,\nbaja sintomatología','Más síntomas\n(mMRC≥2, CAT≥10)','≥2 exacerbaciones/año\no ≥1 hospitalización'],
+   cpEntry:'Grupo E con FEV1 <30% y exacerbaciones frecuentes a pesar de tratamiento óptimo',
+   note:'GOLD 2026 simplificó a 3 grupos (A, B, E). Sin validación en población colombiana rural expuesta a biomasa.'},
+  {id:'nyha', name:'NYHA (ICC)', color:'#d4a853', stages:['I','II','III','IV'],
+   labels:['Sin limitación\nfuncional','Ligera limitación.\nSíntomas con actividad\nordinaria','Marcada limitación.\nSíntomas con\nactividad menor','Síntomas en\nreposo. Cualquier\nesfuerzo empeora'],
+   cpEntry:'Clase III-IV persistente con FE <20% y tratamiento óptimo (criterios NHO)',
+   note:'Propuesta en 1928, revisada 1994. Correlación moderada con VO2máx (36-52%). Sin validación de reproducibilidad.'},
+  {id:'fast', name:'FAST (Demencia)', color:'#7c6fa0', stages:['1-4','5','6a-6e','7a-7f'],
+   labels:['Normal a\ndemencia leve','Demencia\nmoderada.\nNecesita ayuda\npara vestirse','Demencia\nmoderada-severa.\nPérdida de AVD\nbásicas','Demencia\nsevera.\nPérdida habla,\ndeambulación'],
+   cpEntry:'FAST 7c+: incapacidad de deambular sin asistencia, con comorbilidades',
+   note:'Basada en teoría de retrogénesis (Reisberg). Las capacidades se pierden en orden inverso al desarrollo infantil.'},
+  {id:'child', name:'Child-Pugh (Cirrosis)', color:'#c97a40', stages:['A (5-6)','B (7-9)','C (10-15)'],
+   labels:['Compensada.\nBuen pronóstico\na 1 año (~95%)','Compromiso\nsignificativo.\nSobrevida 1 año\n~80%','Descompensada.\nSobrevida 1 año\n~45%'],
+   cpEntry:'Child-Pugh C con MELD ≥21, sin opción de trasplante',
+   note:'Incluye: bilirrubina, albúmina, INR, ascitis, encefalopatía. MELD complementa para priorización de trasplante.'},
+  {id:'alsfrs', name:'ALSFRS-R (ELA)', color:'#c45b6e', stages:['48-36','35-24','23-12','11-0'],
+   labels:['Funcionalidad\npreservada.\nIndependencia','Limitación\nmoderada.\nNecesita\nasistencia','Dependencia\nsignificativa.\nConsiderar VNI','Dependencia\ntotal.\nFase terminal'],
+   cpEntry:'ALSFRS-R con pérdida >2pts/mes + CVF <50%',
+   note:'48 ítems: bulbar, extremidades superiores/inferiores, respiratorio. Pérdida rápida = peor pronóstico.'}
+];
+
+// ========================================
+// RESEARCH GAPS DATA
+// ========================================
+const gapData = [
+  {patho:'EPOC', type:'noOnco', gaps:['Prevalencia sintomática en exposición a biomasa','Validación SPICT/NECPAL Colombia','CP en zonas rurales/PDET'], priority:3, studies:1},
+  {patho:'ICC', type:'noOnco', gaps:['Integración CP en unidades de IC','Manejo conservador vs. dispositivos','Carga del cuidador'], priority:2, studies:2},
+  {patho:'Demencia', type:'noOnco', gaps:['Síntomas en hogares geriátricos','Validación PAINAD Colombia','Dolor en no comunicativos'], priority:3, studies:0},
+  {patho:'ERC', type:'noOnco', gaps:['CP renal (manejo conservador)','ERC por agroquímicos en PDET','Decisión de retiro de diálisis'], priority:3, studies:1},
+  {patho:'ELA', type:'noOnco', gaps:['Registro nacional','Acceso a VNI rural','CP neuromuscular especializado'], priority:3, studies:0},
+  {patho:'Cirrosis', type:'noOnco', gaps:['Carga sintomática cirrosis avanzada','CP hepático como subespecialidad','Inequidad trasplante'], priority:2, studies:0},
+  {patho:'Ca. Pulmón', type:'onco', gaps:['CP temprana en centros colombianos','Biomasa como factor de riesgo','Disnea refractaria'], priority:2, studies:3},
+  {patho:'Ca. Colorrectal', type:'onco', gaps:['CV con ostomía y CP','Seguimiento en zonas rurales','Obstrucción intestinal maligna'], priority:2, studies:1},
+  {patho:'Ca. Mama', type:'onco', gaps:['CP en mama metastásica','Soporte psicológico SGSSS','Diagnóstico tardío en PDET'], priority:2, studies:2},
+  {patho:'Ca. Gástrico', type:'onco', gaps:['Necesidades paliativas en altiplano','Caquexia y desnutrición','CP en ciudades intermedias'], priority:3, studies:1},
+  {patho:'Ca. Cervical', type:'onco', gaps:['CP en comunidades indígenas','Barreras culturales screening','Implementación Ley 1733'], priority:3, studies:0},
+  {patho:'HCC', type:'onco', gaps:['CP hepático oncológico','Hepatitis B/C subdiagnóstico','Trasplante vs CP decisión'], priority:2, studies:1}
+];
+
+// ========================================
+// NAVIGATION
+// ========================================
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({top: document.querySelector('.nav-bar').offsetTop, behavior:'smooth'});
+}
+
+// ========================================
+// CANVAS UTILITIES
+// ========================================
+function setupCanvas(canvas) {
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  const w = canvas.width;
+  const h = canvas.height;
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  canvas.style.width = w + 'px';
+  canvas.style.height = h + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  return {ctx, w, h};
+}
+
+function drawRoundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x+r, y);
+  ctx.lineTo(x+w-r, y);
+  ctx.arcTo(x+w, y, x+w, y+r, r);
+  ctx.lineTo(x+w, y+h-r);
+  ctx.arcTo(x+w, y+h, x+w-r, y+h, r);
+  ctx.lineTo(x+r, y+h);
+  ctx.arcTo(x, y+h, x, y+h-r, r);
+  ctx.lineTo(x, y+r);
+  ctx.arcTo(x, y, x+r, y, r);
+  ctx.closePath();
+}
+
+function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+  const lines = text.split('\n');
+  let cy = y;
+  for (const line of lines) {
+    const words = line.split(' ');
+    let currentLine = '';
+    for (const word of words) {
+      const test = currentLine + word + ' ';
+      if (ctx.measureText(test).width > maxWidth && currentLine) {
+        ctx.fillText(currentLine.trim(), x, cy);
+        currentLine = word + ' ';
+        cy += lineHeight;
+      } else {
+        currentLine = test;
+      }
+    }
+    ctx.fillText(currentLine.trim(), x, cy);
+    cy += lineHeight;
+  }
+  return cy;
+}
+
+// ========================================
+// VIZ 1: PANORAMA COMPARATIVO
+// ========================================
+function drawPanorama() {
+  const canvas = document.getElementById('canvasPanorama');
+  const {ctx, w, h} = setupCanvas(canvas);
+
+  // Background
+  ctx.fillStyle = '#0d1f1f';
+  drawRoundRect(ctx, 0, 0, w, h, 8);
+  ctx.fill();
+
+  // Title
+  ctx.fillStyle = '#e8f0ee';
+  ctx.font = '600 16px "DM Sans"';
+  ctx.fillText('Comparación de Carga Sintomática: No Oncológico vs Oncológico', 30, 35);
+  ctx.fillStyle = '#6b8a86';
+  ctx.font = '400 11px "DM Sans"';
+  ctx.fillText('Prevalencia máxima reportada por Solano et al. (2006) y fuentes complementarias · Barras representan % máximo', 30, 55);
+
+  const symptoms = ['Dolor','Disnea','Fatiga','Depresión','Ansiedad','Confusión','Insomnio','Náusea','Constipación','Anorexia'];
+  
+  // Non-oncologic max prevalence (representative: EPOC, ICC, ERC)
+  const noOncoMax = [77, 95, 82, 71, 75, 33, 65, 48, 70, 67];
+  // Oncologic max (cancer general from Solano)
+  const oncoMax =   [96, 70, 90, 77, 79, 93, 69, 68, 65, 92];
+
+  const barY = 80;
+  const barH = 18;
+  const gap = 34;
+  const leftMargin = 120;
+  const maxBarW = 380;
+
+  for (let i = 0; i < symptoms.length; i++) {
+    const y = barY + i * gap;
+    
+    // Label
+    ctx.fillStyle = '#b0b5c0';
+    ctx.font = '500 12px "DM Sans"';
+    ctx.textAlign = 'right';
+    ctx.fillText(symptoms[i], leftMargin - 12, y + barH/2 + 4);
+    ctx.textAlign = 'left';
+
+    // No oncológico bar
+    const noW = (noOncoMax[i] / 100) * maxBarW;
+    ctx.fillStyle = 'rgba(56,178,172,0.25)';
+    drawRoundRect(ctx, leftMargin, y, maxBarW, barH/2 - 1, 3);
+    ctx.fill();
+    ctx.fillStyle = '#38b2ac';
+    drawRoundRect(ctx, leftMargin, y, noW, barH/2 - 1, 3);
+    ctx.fill();
+    ctx.fillStyle = '#8fd8d2';
+    ctx.font = '600 9px "DM Sans"';
+    ctx.fillText(noOncoMax[i]+'%', leftMargin + noW + 6, y + barH/2 - 4);
+
+    // Oncológico bar
+    const onW = (oncoMax[i] / 100) * maxBarW;
+    ctx.fillStyle = 'rgba(212,168,83,0.2)';
+    drawRoundRect(ctx, leftMargin, y + barH/2 + 1, maxBarW, barH/2 - 1, 3);
+    ctx.fill();
+    ctx.fillStyle = '#d4a853';
+    drawRoundRect(ctx, leftMargin, y + barH/2 + 1, onW, barH/2 - 1, 3);
+    ctx.fill();
+    ctx.fillStyle = '#eccd8e';
+    ctx.font = '600 9px "DM Sans"';
+    ctx.fillText(oncoMax[i]+'%', leftMargin + onW + 6, y + barH - 2);
+  }
+
+  // Legend
+  const lx = leftMargin;
+  const ly = barY + symptoms.length * gap + 10;
+  ctx.fillStyle = '#38b2ac';
+  drawRoundRect(ctx, lx, ly, 12, 12, 2);
+  ctx.fill();
+  ctx.fillStyle = '#a0b8b4';
+  ctx.font = '500 11px "DM Sans"';
+  ctx.fillText('No Oncológico (máx. EPOC/ICC/ERC/EPOC)', lx + 18, ly + 10);
+
+  ctx.fillStyle = '#d4a853';
+  drawRoundRect(ctx, lx, ly + 20, 12, 12, 2);
+  ctx.fill();
+  ctx.fillStyle = '#a0b8b4';
+  ctx.fillText('Oncológico (máx. Cáncer — Solano et al. 2006)', lx + 18, ly + 30);
+
+  // Right side: Key insights
+  const rx = 560;
+  const ry = 80;
+
+  ctx.fillStyle = 'rgba(56,178,172,0.08)';
+  drawRoundRect(ctx, rx, ry, w - rx - 20, h - ry - 40, 8);
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(56,178,172,0.15)';
+  ctx.lineWidth = 1;
+  drawRoundRect(ctx, rx, ry, w - rx - 20, h - ry - 40, 8);
+  ctx.stroke();
+
+  ctx.fillStyle = '#5ec4be';
+  ctx.font = '600 13px "DM Sans"';
+  ctx.fillText('Hallazgos Clave', rx + 16, ry + 28);
+
+  const insights = [
+    {title:'Camino Común', text:'Dolor, disnea y fatiga superan 50% en ambos grupos — existe un «camino común» hacia el final de la vida.', color:'#38b2ac'},
+    {title:'Disnea: diferencia marcada', text:'EPOC alcanza 90-95% vs. cáncer 10-70%. La disnea es el síntoma que más diferencia ambos grupos.', color:'#e0be78'},
+    {title:'Confusión: brecha de datos', text:'No hay datos de confusión en ERC avanzada (Solano et al.). La demencia define confusión como síntoma cardinal.', color:'#c45b6e'},
+    {title:'Anorexia: subestimada', text:'En cáncer alcanza 92%, pero en ICC solo 21-41%. La caquexia cancerosa tiene bases fisiopatológicas distintas.', color:'#7c6fa0'},
+    {title:'Incertidumbre pronóstica', text:'El pronóstico en no oncológicos es más incierto: muerte «inesperada» es frecuente en ICC y EPOC, complicando planificación.', color:'#6b8a6b'},
+    {title:'Vacío colombiano', text:'No hay estudios nacionales de prevalencia sintomática comparativa entre patologías oncológicas y no oncológicas.', color:'#c97a40'}
+  ];
+
+  let iy = ry + 48;
+  for (const ins of insights) {
+    ctx.fillStyle = ins.color;
+    ctx.font = '600 10px "DM Sans"';
+    ctx.fillText('● ' + ins.title, rx + 16, iy);
+    ctx.fillStyle = '#a0b8b4';
+    ctx.font = '400 10px "DM Sans"';
+    iy = wrapText(ctx, ins.text, rx + 24, iy + 14, w - rx - 56, 13);
+    iy += 8;
+  }
+}
+
+// ========================================
+// VIZ 3: STAGING TOOLS
+// ========================================
+let currentStaging = 0;
+function drawStaging(index) {
+  currentStaging = index;
+  const canvas = document.getElementById('canvasStaging');
+  const {ctx, w, h} = setupCanvas(canvas);
+  const tool = stagingTools[index];
+
+  // Update tabs
+  document.querySelectorAll('#stagingTabs .tab-btn').forEach((b,i) => {
+    b.className = 'tab-btn' + (i===index ? ' active' : '');
+  });
+
+  ctx.fillStyle = '#0d1f1f';
+  drawRoundRect(ctx, 0, 0, w, h, 8);
+  ctx.fill();
+
+  // Title
+  ctx.fillStyle = '#e8f0ee';
+  ctx.font = '600 16px "DM Sans"';
+  ctx.fillText(tool.name, 30, 35);
+  ctx.fillStyle = '#6b8a86';
+  ctx.font = '400 11px "DM Sans"';
+  ctx.fillText('Estadificación y punto de entrada a cuidados paliativos', 30, 55);
+
+  // Draw stages as connected boxes
+  const n = tool.stages.length;
+  const stageW = Math.min(200, (w - 80) / n - 20);
+  const stageH = 120;
+  const startX = (w - (n * stageW + (n-1) * 30)) / 2;
+  const stageY = 90;
+
+  for (let i = 0; i < n; i++) {
+    const x = startX + i * (stageW + 30);
+    const isLast = i === n - 1;
+
+    // Connector arrow
+    if (i < n - 1) {
+      ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(x + stageW + 4, stageY + stageH/2);
+      ctx.lineTo(x + stageW + 26, stageY + stageH/2);
+      ctx.stroke();
+      ctx.fillStyle = 'rgba(255,255,255,0.15)';
+      ctx.beginPath();
+      ctx.moveTo(x + stageW + 22, stageY + stageH/2 - 5);
+      ctx.lineTo(x + stageW + 30, stageY + stageH/2);
+      ctx.lineTo(x + stageW + 22, stageY + stageH/2 + 5);
+      ctx.fill();
+    }
+
+    // Box
+    const alpha = isLast ? 0.3 : 0.1 + i * 0.05;
+    ctx.fillStyle = tool.color + Math.round(alpha * 255).toString(16).padStart(2,'0');
+    drawRoundRect(ctx, x, stageY, stageW, stageH, 8);
+    ctx.fill();
+    ctx.strokeStyle = tool.color + (isLast ? 'cc' : '66');
+    ctx.lineWidth = isLast ? 2 : 1;
+    drawRoundRect(ctx, x, stageY, stageW, stageH, 8);
+    ctx.stroke();
+
+    // Stage label
+    ctx.fillStyle = isLast ? '#ffffff' : tool.color;
+    ctx.font = '700 18px "DM Sans"';
+    ctx.textAlign = 'center';
+    ctx.fillText(tool.stages[i], x + stageW/2, stageY + 30);
+
+    // Description
+    ctx.fillStyle = isLast ? '#e8f0ee' : '#a0b8b4';
+    ctx.font = '400 10px "DM Sans"';
+    const descLines = tool.labels[i].split('\n');
+    descLines.forEach((line, li) => {
+      ctx.fillText(line, x + stageW/2, stageY + 50 + li * 14);
+    });
+    ctx.textAlign = 'left';
+
+    // CP marker on last
+    if (isLast) {
+      ctx.fillStyle = '#c45b6e';
+      drawRoundRect(ctx, x + 4, stageY + stageH - 24, stageW - 8, 18, 4);
+      ctx.fill();
+      ctx.fillStyle = '#fff';
+      ctx.font = '600 9px "DM Sans"';
+      ctx.textAlign = 'center';
+      ctx.fillText('→ CUIDADOS PALIATIVOS', x + stageW/2, stageY + stageH - 11);
+      ctx.textAlign = 'left';
+    }
+  }
+
+  // CP Entry criteria
+  const cpY = stageY + stageH + 40;
+  ctx.fillStyle = 'rgba(196,91,110,0.1)';
+  drawRoundRect(ctx, 30, cpY, w - 60, 70, 8);
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(196,91,110,0.3)';
+  ctx.lineWidth = 1;
+  drawRoundRect(ctx, 30, cpY, w - 60, 70, 8);
+  ctx.stroke();
+
+  ctx.fillStyle = '#d47585';
+  ctx.font = '600 12px "DM Sans"';
+  ctx.fillText('⏱ Punto de Entrada a Cuidados Paliativos', 50, cpY + 22);
+  ctx.fillStyle = '#e0919e';
+  ctx.font = '400 11px "DM Sans"';
+  wrapText(ctx, tool.cpEntry, 50, cpY + 40, w - 120, 15);
+
+  // Note
+  const noteY = cpY + 90;
+  ctx.fillStyle = 'rgba(124,111,160,0.08)';
+  drawRoundRect(ctx, 30, noteY, w - 60, 60, 8);
+  ctx.fill();
+  ctx.fillStyle = '#9b8fc0';
+  ctx.font = '600 11px "DM Sans"';
+  ctx.fillText('📋 Nota Clínica e Investigativa', 50, noteY + 20);
+  ctx.fillStyle = '#a0a0c0';
+  ctx.font = '400 10px "DM Sans"';
+  wrapText(ctx, tool.note, 50, noteY + 36, w - 120, 13);
+
+  // New concept: trajectory visualization at bottom
+  const trajY = noteY + 80;
+  ctx.fillStyle = '#6b8a86';
+  ctx.font = '600 11px "DM Sans"';
+  ctx.fillText('Trayectoria típica de la enfermedad:', 30, trajY);
+
+  // Mini trajectory curve
+  const trajStartX = 30;
+  const trajEndX = w - 30;
+  const trajMidY = trajY + 50;
+  const trajAmp = 30;
+
+  ctx.strokeStyle = tool.color;
+  ctx.lineWidth = 2.5;
+  ctx.setLineDash([]);
+  ctx.beginPath();
+
+  if (tool.id === 'gold' || tool.id === 'nyha' || tool.id === 'child') {
+    // Trajectory 2: decline with exacerbations
+    ctx.moveTo(trajStartX, trajMidY - trajAmp);
+    const steps = 6;
+    for (let s = 0; s < steps; s++) {
+      const sx = trajStartX + (s+0.5) * (trajEndX-trajStartX)/steps;
+      const ex = trajStartX + (s+1) * (trajEndX-trajStartX)/steps;
+      const baseY = trajMidY - trajAmp + (s * trajAmp * 1.5 / steps);
+      ctx.lineTo(sx, baseY + trajAmp * 0.6);
+      ctx.lineTo(sx + (trajEndX-trajStartX)/steps*0.3, baseY + trajAmp * 0.2);
+      ctx.lineTo(ex, baseY + trajAmp * 0.4);
+    }
+  } else if (tool.id === 'fast') {
+    // Trajectory 3: prolonged dwindling
+    ctx.moveTo(trajStartX, trajMidY - trajAmp);
+    ctx.bezierCurveTo(
+      trajStartX + (trajEndX-trajStartX)*0.4, trajMidY - trajAmp + 5,
+      trajStartX + (trajEndX-trajStartX)*0.6, trajMidY + trajAmp - 10,
+      trajEndX, trajMidY + trajAmp
+    );
+  } else {
+    // Trajectory 1: rapid decline
+    ctx.moveTo(trajStartX, trajMidY - trajAmp);
+    ctx.lineTo(trajStartX + (trajEndX-trajStartX)*0.6, trajMidY - trajAmp + 8);
+    ctx.bezierCurveTo(
+      trajStartX + (trajEndX-trajStartX)*0.7, trajMidY - 5,
+      trajStartX + (trajEndX-trajStartX)*0.85, trajMidY + trajAmp - 5,
+      trajEndX, trajMidY + trajAmp
+    );
+  }
+  ctx.stroke();
+
+  // Axis labels
+  ctx.fillStyle = '#4f5672';
+  ctx.font = '400 9px "DM Sans"';
+  ctx.fillText('Función', trajStartX, trajMidY - trajAmp - 8);
+  ctx.fillText('Alta', trajStartX, trajMidY - trajAmp + 4);
+  ctx.fillText('Baja', trajStartX, trajMidY + trajAmp + 12);
+  ctx.textAlign = 'right';
+  ctx.fillText('Tiempo →', trajEndX, trajMidY + trajAmp + 12);
+  ctx.textAlign = 'left';
+
+  // Death marker
+  ctx.fillStyle = '#c45b6e';
+  ctx.font = '600 9px "DM Sans"';
+  ctx.textAlign = 'right';
+  ctx.fillText('✝ Muerte', trajEndX, trajMidY + trajAmp - 4);
+  ctx.textAlign = 'left';
+}
+
+// ========================================
+// VIZ 4: RESEARCH GAPS
+// ========================================
+function drawGaps() {
+  const canvas = document.getElementById('canvasGaps');
+  const {ctx, w, h} = setupCanvas(canvas);
+
+  ctx.fillStyle = '#0d1f1f';
+  drawRoundRect(ctx, 0, 0, w, h, 8);
+  ctx.fill();
+
+  ctx.fillStyle = '#e8f0ee';
+  ctx.font = '600 16px "DM Sans"';
+  ctx.fillText('Mapa de Vacíos de Investigación en Cuidados Paliativos — Colombia', 30, 35);
+  ctx.fillStyle = '#6b8a86';
+  ctx.font = '400 11px "DM Sans"';
+  ctx.fillText('Tamaño del círculo = prioridad investigativa · Color = tipo de patología · Número = estudios colombianos identificados', 30, 55);
+
+  const rowH = 48;
+  const startY = 80;
+  const labelW = 110;
+
+  for (let i = 0; i < gapData.length; i++) {
+    const g = gapData[i];
+    const y = startY + i * rowH;
+    const isNoOnco = g.type === 'noOnco';
+
+    // Row background
+    if (i % 2 === 0) {
+      ctx.fillStyle = 'rgba(255,255,255,0.02)';
+      ctx.fillRect(0, y, w, rowH);
+    }
+
+    // Pathology label
+    ctx.fillStyle = isNoOnco ? '#5ec4be' : '#eccd8e';
+    ctx.font = '600 11px "DM Sans"';
+    ctx.fillText(g.patho, 20, y + 20);
+
+    // Type badge
+    ctx.fillStyle = isNoOnco ? 'rgba(56,178,172,0.15)' : 'rgba(212,168,83,0.15)';
+    drawRoundRect(ctx, 20, y + 26, isNoOnco ? 68 : 52, 14, 3);
+    ctx.fill();
+    ctx.fillStyle = isNoOnco ? '#38b2ac' : '#d4a853';
+    ctx.font = '500 8px "DM Sans"';
+    ctx.fillText(isNoOnco ? 'No Oncológico' : 'Oncológico', 24, y + 36);
+
+    // Priority circle
+    const circleR = 6 + g.priority * 4;
+    const circleX = labelW + 30;
+    ctx.fillStyle = (isNoOnco ? 'rgba(56,178,172,' : 'rgba(212,168,83,') + (0.15 + g.priority * 0.1) + ')';
+    ctx.beginPath();
+    ctx.arc(circleX, y + 22, circleR, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = isNoOnco ? '#38b2ac' : '#d4a853';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    // Studies count inside circle
+    ctx.fillStyle = '#fff';
+    ctx.font = '700 11px "DM Sans"';
+    ctx.textAlign = 'center';
+    ctx.fillText(g.studies, circleX, y + 26);
+    ctx.textAlign = 'left';
+
+    // Gaps text
+    ctx.fillStyle = '#b0b5c0';
+    ctx.font = '400 10px "DM Sans"';
+    const gapText = g.gaps.join(' · ');
+    ctx.fillText(gapText, labelW + 60, y + 18);
+
+    // Priority label
+    const prioLabels = ['','Baja','Media','Alta'];
+    const prioColors = ['','#6b8a6b','#d4a853','#c45b6e'];
+    ctx.fillStyle = prioColors[g.priority];
+    ctx.font = '600 9px "DM Sans"';
+    ctx.fillText('Prioridad: ' + prioLabels[g.priority], labelW + 60, y + 36);
+  }
+
+  // Legend at bottom
+  const ly = startY + gapData.length * rowH + 16;
+  ctx.fillStyle = 'rgba(255,255,255,0.04)';
+  drawRoundRect(ctx, 20, ly, w - 40, 50, 6);
+  ctx.fill();
+
+  ctx.fillStyle = '#6b8a86';
+  ctx.font = '500 10px "DM Sans"';
+  ctx.fillText('Leyenda:', 36, ly + 18);
+  
+  ctx.fillStyle = '#38b2ac';
+  ctx.beginPath(); ctx.arc(120, ly + 14, 5, 0, Math.PI*2); ctx.fill();
+  ctx.fillStyle = '#a0b8b4'; ctx.font = '400 10px "DM Sans"';
+  ctx.fillText('No Oncológico', 130, ly + 18);
+
+  ctx.fillStyle = '#d4a853';
+  ctx.beginPath(); ctx.arc(230, ly + 14, 5, 0, Math.PI*2); ctx.fill();
+  ctx.fillStyle = '#a0b8b4';
+  ctx.fillText('Oncológico', 240, ly + 18);
+
+  ctx.fillStyle = '#a0b8b4';
+  ctx.fillText('Número en círculo = estudios colombianos publicados identificados  ·  Tamaño = nivel de prioridad investigativa', 36, ly + 40);
+}
+
+// ========================================
+// PATHOLOGY PROFILES - Grid & Detail
+// ========================================
+function buildPathGrids() {
+  const gridNo = document.getElementById('gridNoOnco');
+  const gridOn = document.getElementById('gridOnco');
+
+  pathologies.noOnco.forEach(p => {
+    gridNo.innerHTML += `<div class="path-card" id="pc-${p.id}" onclick="selectPath('${p.id}','noOnco')">
+      <span class="path-icon">${p.icon}</span>
+      <span class="path-label">${p.shortName}</span>
+      <span class="path-type type-noOnco">No Oncológica</span>
+    </div>`;
+  });
+  pathologies.onco.forEach(p => {
+    gridOn.innerHTML += `<div class="path-card" id="pc-${p.id}" onclick="selectPath('${p.id}','onco')">
+      <span class="path-icon">${p.icon}</span>
+      <span class="path-label">${p.shortName}</span>
+      <span class="path-type type-onco">Oncológica</span>
+    </div>`;
+  });
+}
+
+let selectedPath = null;
+function selectPath(id, type) {
+  document.querySelectorAll('.path-card').forEach(c => {
+    c.classList.remove('selected-noOnco','selected-onco');
+  });
+  document.getElementById('pc-'+id).classList.add(type==='noOnco' ? 'selected-noOnco' : 'selected-onco');
+
+  const list = type === 'noOnco' ? pathologies.noOnco : pathologies.onco;
+  const p = list.find(x => x.id === id);
+  if (!p) return;
+
+  const tagClass = type === 'noOnco' ? 'tag-noOnco' : 'tag-onco';
+  const tagLabel = type === 'noOnco' ? 'No Oncológica' : 'Oncológica';
+
+  let sympHtml = '';
+  if (p.symptoms) {
+    sympHtml = Object.entries(p.symptoms).map(([k,v]) => {
+      const labels = {dolor:'Dolor',disnea:'Disnea',fatiga:'Fatiga',depresion:'Depresión',ansiedad:'Ansiedad',confusion:'Confusión',insomnio:'Insomnio',nausea:'Náusea',constipacion:'Constipación',anorexia:'Anorexia'};
+      return `<li>${labels[k] || k}: <strong style="color:var(--text)">${v}</strong></li>`;
+    }).join('');
+  }
+
+  const trajLabels = {1:'Trayectoria 1 — Declive rápido (tipo cáncer)', 2:'Trayectoria 2 — Declive con exacerbaciones (tipo fallo orgánico)', 3:'Trayectoria 3 — Declive prolongado (tipo fragilidad/demencia)'};
+
+  document.getElementById('profileDetail').innerHTML = `
+    <div class="card" style="margin-top:20px; animation: fadeIn 0.4s ease;">
+      <div class="profile-header">
+        <div class="profile-icon">${p.icon}</div>
+        <div>
+          <div class="profile-name">${p.name}</div>
+          <span class="profile-tag ${tagClass}">${tagLabel}</span>
+        </div>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-box">
+          <h4>Trayectoria</h4>
+          <p><strong style="color:var(--teal-300)">${trajLabels[p.trajectoryType]}</strong><br>${p.trajectory}<br><em style="color:var(--text-muted)">Duración: ${p.timeframe}</em></p>
+        </div>
+        <div class="info-box">
+          <h4>Herramientas de Clasificación</h4>
+          <ul>${p.tools.map(t => `<li>${t}</li>`).join('')}</ul>
+          <p style="margin-top:8px; font-size:0.82rem; color:var(--text-muted)">${p.toolDetail}</p>
+        </div>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-box">
+          <h4>Prevalencia Sintomática</h4>
+          <ul style="font-size:0.82rem;">${sympHtml}</ul>
+          <p style="margin-top:8px; font-size:0.75rem; color:var(--text-muted)">Fuente: ${p.symptomSource}</p>
+        </div>
+        <div class="info-box">
+          <h4>Nivel de Evidencia en CP</h4>
+          <p>${p.keyEvidence}</p>
+        </div>
+      </div>
+
+      <div class="highlight-gap">
+        <strong>⚠️ Vacío de Investigación en Colombia</strong>
+        ${p.colombianGap}
+      </div>
+
+      <div class="highlight-human">
+        <strong>🫀 Perspectiva Humana</strong>
+        <em>${p.humanNote}</em>
+      </div>
+    </div>
+  `;
+}
+
+// ========================================
+// ACTIVITY TABS
+// ========================================
+function showActivityBlock(id, btn) {
+  document.querySelectorAll('#sec-actividades .detail-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('#sec-actividades .tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('act-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ========================================
+// SCROLL PROGRESS
+// ========================================
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = h > 0 ? (window.scrollY / h) * 100 : 0;
+  document.getElementById('scrollProgress').style.width = pct + '%';
+});
+
+// ========================================
+// INIT
+// ========================================
+function init() {
+  buildPathGrids();
+  drawPanorama();
+
+  // Build staging tabs
+  const tabsEl = document.getElementById('stagingTabs');
+  stagingTools.forEach((t, i) => {
+    tabsEl.innerHTML += `<button class="tab-btn${i===0?' active':''}" onclick="drawStaging(${i})">${t.name}</button>`;
+  });
+  drawStaging(0);
+  drawGaps();
+}
+
+window.addEventListener('DOMContentLoaded', init);
+window.addEventListener('resize', () => {
+  drawPanorama();
+  drawStaging(currentStaging);
+  drawGaps();
+});
+</script>
+</body>
+</html>
