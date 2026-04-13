@@ -138,7 +138,7 @@ function sendToSheets(){
   if(!SHEETS_URL){showSheetsStatus('⚠️ La URL de Google Sheets no está configurada. Contacte al docente.','error');return;}
   var btn=document.getElementById('btnSendSheets');
   btn.disabled=true;btn.innerHTML='⏳ Enviando...';btn.style.background='#8882a0';
-  fetch(SHEETS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+  fetch(SHEETS_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(d)})
   .then(function(){
     btn.innerHTML='✓ Enviado correctamente';btn.style.background='#059669';btn.disabled=false;
     showSheetsStatus('✓ Respuestas enviadas a la base de datos del curso. Grupo '+d.f_grupo+' registrado.','success');
