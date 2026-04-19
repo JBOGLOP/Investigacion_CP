@@ -68,6 +68,50 @@ Cada síntesis incluye contexto clínico, diseño metodológico, resultados prin
 
 **Tiempo estimado de lectura:** 45 minutos en total (15 por artículo).
 
+---
+
+## ❓ Preguntas integradoras · llegar a la sesión con la conversación ya iniciada
+
+Las nueve preguntas siguientes cierran cada una de las síntesis críticas del documento de lecturas previas. No son preguntas de comprobación de lectura; son **puertas de entrada al razonamiento investigativo**. Cada una nace de un hallazgo específico del artículo y empuja hacia una pregunta aplicada en el contexto colombiano. Ninguna tiene respuesta única.
+
+Lleguen a la sesión del 24 de abril con **al menos tres de las nueve** ya pensadas —idealmente una de cada artículo— con argumentos escritos en el cuaderno personal. Durante la sesión estas preguntas alimentan el Bloque 2 (estaciones rotativas) y el Bloque 3 (debate Karl Popper adaptado).
+
+### Sobre Grudzen et al. (JAMA 2025) · el ensayo negativo PRIM-ER
+
+1. Si el desenlace "admisión hospitalaria" no capturó lo que importaba en cuidado paliativo, ¿qué desenlace elegirías tú si diseñaras una réplica parcial de este estudio en un hospital colombiano de mediana complejidad? Justifica con al menos dos argumentos.
+
+2. La intervención PRIM-ER fue solo educación y retroalimentación al personal. ¿Qué tres cambios estructurales agregarías para que el entrenamiento pudiera traducirse en cambio real de práctica en un servicio de urgencias del SGSSS?
+
+3. ¿Qué diferencias operacionales entre un servicio de urgencias colombiano de mediana complejidad y uno académico estadounidense harían más —o menos— probable que esta intervención produjera efecto aquí?
+
+### Sobre Basch et al. (JAMA 2022) · monitoreo electrónico de síntomas
+
+4. Si solo pudieras conservar uno de los dos mecanismos causales propuestos (empoderamiento del paciente por auto-reporte, alerta automatizada al clínico) porque el sistema de salud colombiano no puede financiar ambos, ¿cuál conservarías y qué argumentos darías?
+
+5. ¿Qué adaptaciones lingüísticas, tecnológicas y operativas requeriría PRO-CTCAE para usarse con pacientes oncológicos de una comunidad indígena Wayuu, o con pacientes afrocolombianos del Chocó? Menciona al menos tres adaptaciones específicas.
+
+6. Si el efecto absoluto es pequeño (+2,5 puntos en EORTC QLQ-C30) pero clínicamente relevante, ¿cómo argumentarías ante una aseguradora del SGSSS que vale la pena financiar esta intervención? ¿Qué desenlace económico adicional necesitarías medir para fortalecer el caso?
+
+### Sobre Kirkland et al. (Acad Emerg Med 2022) · tamizaje en urgencias
+
+7. Si tuvieras que recomendar hoy UN instrumento de tamizaje para un hospital de mediana complejidad en Boyacá, ¿cuál elegirías y qué tres argumentos específicos darías para defenderlo frente a los otros dos?
+
+8. El artículo muestra que tamizar bien sin un dispositivo de derivación activa produce tasas de consulta paliativa de apenas 1,4% a 12% en urgencias. ¿Qué componentes debería tener un dispositivo de derivación eficaz en el SGSSS colombiano para llevar esa cifra al rango 32–47% que documentan los estudios con intervención activa?
+
+9. La Surprise Question funciona mejor a 12 meses que a 30 días, y mejor en pacientes oncológicos que no oncológicos. ¿Qué implicaciones tiene esto para elegir el instrumento de tamizaje adecuado según el tipo de paciente (oncológico vs. no oncológico) y el propósito del tamizaje (identificación temprana de trayectoria vs. planeación inmediata al final de la vida)?
+
+### 🔄 Preguntas integradoras transversales
+
+Las tres preguntas siguientes no nacen de un artículo específico sino del diálogo entre los tres. Son las que anudan la sesión del 24 de abril con los entregables grupales posteriores:
+
+10. **Epistemología de la evidencia en cuidado paliativo.** Grudzen reporta un ensayo bien diseñado con resultado negativo; Basch reporta un ensayo bien diseñado con resultado positivo; Kirkland concluye que no hay evidencia suficiente para recomendar un instrumento sobre otro. ¿Cómo debe pensar un investigador novel en cuidado paliativo sobre qué "cuenta" como evidencia cuando los tres tipos de conclusión coexisten en el campo?
+
+11. **La voz del paciente como hilo.** Los tres artículos abordan, desde ángulos distintos, la pregunta de cómo integrar la perspectiva del paciente en el sistema de cuidado: Grudzen a través del entrenamiento del clínico, Basch a través del reporte electrónico directo, Kirkland a través del tamizaje estructurado. ¿Cuál de las tres estrategias consideras más factible para el contexto colombiano actual, y cuál de las tres consideras más necesaria a mediano plazo aunque sea menos factible hoy?
+
+12. **De la lectura a la pregunta propia.** A partir de la lectura conjunta de los tres artículos, formula en una sola oración la pregunta de investigación colombiana que te gustaría trabajar en tu proyecto de tesis de Maestría. No tiene que ser la definitiva; tiene que ser suficientemente específica como para poder defenderla en la sesión.
+
+---
+
 ### 🎯 Actividad interactiva de la sesión
 
 **[Actividad.html](https://jboglop.github.io/Investigacion_CP/Actividad.html)**
