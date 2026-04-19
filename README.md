@@ -8,6 +8,14 @@
 
 ---
 
+## 🔗 Accesos rápidos
+
+- 📖 **Lecturas antes de clase** → [https://jboglop.github.io/Investigacion_CP/Lecturas_antesdeclase.html](https://jboglop.github.io/Investigacion_CP/Lecturas_antesdeclase.html)
+- 🎯 **Actividad interactiva de la sesión** → [https://jboglop.github.io/Investigacion_CP/Actividad.html](https://jboglop.github.io/Investigacion_CP/Actividad.html)
+- 📊 **Prevalencias · No oncológicas vs oncológicas** → [https://jboglop.github.io/Investigacion_CP/Prevalencias_NoOnco_vs_Onco.html](https://jboglop.github.io/Investigacion_CP/Prevalencias_NoOnco_vs_Onco.html)
+
+---
+
 ## Presentación de la Unidad
 
 La Unidad 3 es el corazón clínico-investigativo del curso. Después de haber trabajado en las unidades 1 y 2 la contextualización de la persona en cuidado paliativo y los niveles de evidencia científica, esta unidad nos sumerge en la **evidencia específica por patología** y en las **herramientas emergentes** que están redefiniendo cómo se investiga y se practica el cuidado paliativo en el siglo XXI.
