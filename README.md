@@ -170,8 +170,7 @@ Colombia no cuenta hoy con ningún ensayo clínico aleatorizado publicado sobre 
 
 ## Créditos y autoría
 
-**Docente responsable:** Jorge
-**Decano de Facultad:** Wimber Ortiz Martínez
+**Docente responsable:** Jorge Bogoya López
 **Programa:** Maestría en Investigación en Cuidados Paliativos
 **Universidad:** Universidad Antonio Nariño · Facultad de Enfermería
 
