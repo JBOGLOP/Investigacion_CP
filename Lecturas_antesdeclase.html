@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lecturas ancla · Sesión 24 abril · Unit 3.3 & 3.4</title>
+<style>
+  /* =========================================================
+     Lectura amigable · tipografía generosa para celular y laptop
+     ========================================================= */
+  :root{
+    --bg:           #FAF8F3;   /* crema cálido, cómodo para lectura prolongada */
+    --surface:      #FFFFFF;
+    --ink:          #2A2430;
+    --ink-soft:     #5B5466;
+    --mute:         #8E8896;
+    --primary:      #6C63B7;   /* lila Unit 3 */
+    --primary-deep: #4A4290;
+    --accent-blue:  #5B8DB8;
+    --accent-sage:  #7FA88D;
+    --accent-sand:  #C9A370;
+    --accent-rose:  #B8839D;
+    --line:         #E4DFD4;
+    --line-soft:    #F0ECE2;
+    --shadow:       0 2px 6px rgba(42,36,48,.05), 0 16px 40px rgba(42,36,48,.06);
+    --radius:       16px;
+    --radius-sm:    10px;
+    --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    --font-body:    'Source Serif Pro', 'Libre Baskerville', Georgia, serif;
+    --font-sans:    'Inter', -apple-system, system-ui, sans-serif;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 17px;
+  }
+
+  /* Barra de progreso de lectura */
+  .progress-bar{
+    position: fixed; top: 0; left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent-blue), var(--accent-sage));
+    width: 0%;
+    z-index: 100;
+    transition: width .15s ease-out;
+  }
+
+  .wrap{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 28px 120px;
+  }
+
+  /* ============= HERO ============= */
+  header.hero{
+    margin-bottom: 56px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .kicker{
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent-blue);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  h1.title{
+    font-family: var(--font-display);
+    font-size: 56px;
+    font-weight: 500;
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    color: var(--primary-deep);
+    margin-bottom: 18px;
+  }
+  h1.title em{
+    font-style: italic;
+    color: var(--accent-blue);
+    font-weight: 400;
+  }
+  .hero-subtitle{
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 19px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin-bottom: 24px;
+    max-width: 640px;
+  }
+  .hero-meta{
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    padding-top: 18px;
+    border-top: 1px dashed var(--line);
+    font-family: var(--font-sans);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+  .hero-meta span strong{
+    display: block;
+    color: var(--primary-deep);
+    font-size: 10.5px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+    font-weight: 700;
+  }
+
+  /* ============= CARTA DE BIENVENIDA ============= */
+  .welcome{
+    background: linear-gradient(135deg, #FDFBF5 0%, #F7F2E8 100%);
+    border: 1px solid var(--accent-sand);
+    border-left: 4px solid var(--accent-sand);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin-bottom: 56px;
+  }
+  .welcome .tag{
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent-sand);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .welcome h2{
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 26px;
+    color: var(--primary-deep);
+    margin-bottom: 14px;
+    font-weight: 500;
+    line-height: 1.25;
+  }
+  .welcome p{
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .welcome p:last-child{ margin-bottom: 0; }
+  .welcome .signature{
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink-soft);
+    margin-top: 16px;
+  }
+
+  /* ============= NAVEGACIÓN DE ARTÍCULOS ============= */
+  .toc{
+    margin-bottom: 56px;
+  }
+  .toc-title{
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--mute);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .toc-items{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .toc-item{
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 18px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--ink);
+    transition: all .2s ease;
+  }
+  .toc-item:hover{
+    border-color: var(--primary);
+    transform: translateX(3px);
+    box-shadow: var(--shadow);
+  }
+  .toc-num{
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--accent-sand);
+    line-height: 1;
+    font-style: italic;
+    flex-shrink: 0;
+  }
+  .toc-text{
+    flex: 1;
+  }
+  .toc-text .label{
+    font-family: var(--font-sans);
+    font-size: 10.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--mute);
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+  .toc-text .name{
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-style: italic;
+    color: var(--primary-deep);
+    line-height: 1.3;
+    font-weight: 500;
+  }
+  .toc-time{
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: var(--mute);
+    letter-spacing: .04em;
+    padding-top: 4px;
+  }
+
+  /* ============= ARTÍCULO ============= */
+  article.paper{
+    margin-bottom: 80px;
+    scroll-margin-top: 24px;
+  }
+
+  .paper-header{
+    padding: 28px 0 24px;
+    margin-bottom: 32px;
+    border-bottom: 2px solid var(--line);
+    position: relative;
+  }
+  .paper-number{
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 72px;
+    font-weight: 500;
+    color: var(--accent-sand);
+    line-height: 1;
+    opacity: .6;
+    margin-bottom: 6px;
+  }
+  .paper-eyebrow{
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent-blue);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .paper-title{
+    font-family: var(--font-display);
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .paper-title em{
+    font-style: italic;
+    color: var(--primary-deep);
+  }
+  .paper-authors{
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  .paper-source{
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--mute);
+    letter-spacing: .02em;
+  }
+  .paper-source strong{
+    color: var(--primary-deep);
+    font-weight: 600;
+  }
+
+  /* Botones de acceso */
+  .access-buttons{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 20px 0 4px;
+  }
+  .btn-access{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .02em;
+    padding: 10px 18px;
+    border-radius: 22px;
+    text-decoration: none;
+    transition: all .2s ease;
+    border: 1px solid transparent;
+  }
+  .btn-access.primary{
+    background: linear-gradient(135deg, var(--primary), var(--primary-deep));
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(108,99,183,.2);
+  }
+  .btn-access.primary:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(108,99,183,.3);
+  }
+  .btn-access.secondary{
+    background: transparent;
+    color: var(--primary-deep);
+    border-color: var(--primary);
+  }
+  .btn-access.secondary:hover{
+    background: rgba(108,99,183,.08);
+  }
+  .btn-access.restricted{
+    background: transparent;
+    color: var(--accent-sand);
+    border-color: var(--accent-sand);
+  }
+  .btn-access.restricted:hover{
+    background: rgba(201,163,112,.08);
+  }
+  .btn-access .icon{
+    font-size: 14px;
+  }
+  .access-note{
+    font-family: var(--font-sans);
+    font-size: 11.5px;
+    color: var(--mute);
+    margin-top: 10px;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  /* ============= SECCIONES INTERNAS DEL ARTÍCULO ============= */
+  .paper h3{
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 26px;
+    color: var(--primary-deep);
+    margin: 40px 0 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    position: relative;
+    padding-left: 18px;
+  }
+  .paper h3::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    bottom: 10px;
+    width: 3px;
+    background: linear-gradient(180deg, var(--primary), var(--accent-blue));
+    border-radius: 2px;
+  }
+
+  .paper h4{
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent-blue);
+    margin: 24px 0 10px;
+  }
+
+  .paper p{
+    font-size: 17px;
+    line-height: 1.75;
+    margin-bottom: 18px;
+    color: var(--ink);
+  }
+  .paper p strong{
+    color: var(--primary-deep);
+    font-weight: 600;
+  }
+  .paper p em{
+    color: var(--accent-blue);
+    font-style: italic;
+  }
+
+  /* Bullet stylizados */
+  .paper ul{
+    list-style: none;
+    margin: 14px 0 20px;
+    padding: 0;
+  }
+  .paper ul li{
+    position: relative;
+    padding: 8px 0 8px 26px;
+    font-size: 16.5px;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .paper ul li::before{
+    content: "▸";
+    position: absolute;
+    left: 6px;
+    top: 8px;
+    color: var(--accent-sand);
+    font-size: 14px;
+  }
+
+  /* Números destacados en los resultados */
+  .key-number{
+    display: block;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, rgba(108,99,183,.06), rgba(91,141,184,.04));
+    border-left: 3px solid var(--primary);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin: 16px 0;
+  }
+  .key-number .num{
+    font-family: var(--font-display);
+    font-size: 42px;
+    font-weight: 500;
+    color: var(--primary-deep);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .key-number .desc{
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    font-style: italic;
+  }
+
+  /* Cajas temáticas */
+  .box{
+    padding: 22px 26px;
+    border-radius: var(--radius-sm);
+    margin: 24px 0;
+    border: 1px solid;
+  }
+  .box .box-label{
+    font-family: var(--font-sans);
+    font-size: 10.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .box p{
+    font-size: 15.5px;
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+  .box p:last-child{ margin-bottom: 0; }
+
+  .box.critica{
+    background: rgba(195,139,166,.06);
+    border-color: rgba(195,139,166,.35);
+  }
+  .box.critica .box-label{ color: var(--accent-rose); }
+
+  .box.colombia{
+    background: rgba(127,168,141,.06);
+    border-color: rgba(127,168,141,.35);
+  }
+  .box.colombia .box-label{ color: var(--accent-sage); }
+
+  .box.concepto{
+    background: rgba(91,141,184,.06);
+    border-color: rgba(91,141,184,.35);
+  }
+  .box.concepto .box-label{ color: var(--accent-blue); }
+
+  /* Preguntas para meditar al final de cada artículo */
+  .questions{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin-top: 32px;
+    box-shadow: var(--shadow);
+  }
+  .questions h4{
+    margin-top: 0;
+  }
+  .questions ol{
+    list-style: none;
+    counter-reset: qcounter;
+    padding: 0;
+    margin: 0;
+  }
+  .questions ol li{
+    counter-increment: qcounter;
+    padding: 14px 0 14px 40px;
+    border-bottom: 1px dashed var(--line-soft);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink);
+    position: relative;
+    line-height: 1.55;
+  }
+  .questions ol li:last-child{ border-bottom: none; }
+  .questions ol li::before{
+    content: counter(qcounter, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 14px;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: .06em;
+    font-style: normal;
+  }
+
+  /* ============= SEPARADOR ENTRE ARTÍCULOS ============= */
+  .separator{
+    text-align: center;
+    margin: 80px 0;
+    color: var(--mute);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 20px;
+    letter-spacing: .3em;
+  }
+
+  /* ============= FOOTER FINAL ============= */
+  .closing{
+    margin-top: 80px;
+    padding: 36px 32px;
+    background: linear-gradient(135deg, #FDFBF5 0%, #F7F2E8 100%);
+    border: 1px solid var(--accent-sand);
+    border-radius: var(--radius);
+    text-align: center;
+  }
+  .closing h3{
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 26px;
+    color: var(--primary-deep);
+    margin-bottom: 14px;
+  }
+  .closing p{
+    font-size: 15.5px;
+    color: var(--ink);
+    line-height: 1.65;
+    max-width: 560px;
+    margin: 0 auto 12px;
+  }
+  .closing p:last-child{ margin-bottom: 0; }
+
+  footer{
+    text-align: center;
+    padding-top: 40px;
+    margin-top: 40px;
+    border-top: 1px solid var(--line);
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: var(--mute);
+    line-height: 1.7;
+  }
+
+  /* Responsivo */
+  @media (max-width: 640px){
+    body{ font-size: 16px; }
+    .wrap{ padding: 32px 20px 100px; }
+    h1.title{ font-size: 40px; }
+    .paper-title{ font-size: 28px; }
+    .paper-number{ font-size: 54px; }
+    .paper h3{ font-size: 22px; }
+    .paper p{ font-size: 16px; }
+    .welcome{ padding: 24px; }
+    .access-buttons{ flex-direction: column; }
+    .btn-access{ justify-content: center; }
+  }
+
+  /* Impresión limpia */
+  @media print{
+    body{ background: white; }
+    .progress-bar, .access-buttons, .toc{ display: none; }
+    article.paper{ page-break-before: always; }
+    a{ color: var(--primary-deep); text-decoration: none; }
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Serif+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<div class="wrap">
+
+  <!-- ============= HERO ============= -->
+  <header class="hero">
+    <div class="kicker">Preparación · Sesión del 24 de abril de 2026</div>
+    <h1 class="title">Las tres <em>voces</em><br>que leeremos juntos</h1>
+    <p class="hero-subtitle">
+      Estos son los tres artículos ancla que trabajaremos en la sesión. No necesitas memorizar metodología; necesitas entender qué pregunta respondió cada uno, qué encontró, y qué puede significar para tu trabajo como investigador en cuidados paliativos en Colombia.
+    </p>
+    <div class="hero-meta">
+      <span><strong>Unidad</strong>3.3 Emergency care · 3.4 Digital tools</span>
+      <span><strong>Tiempo de lectura</strong>≈ 45 minutos en total</span>
+      <span><strong>Formato</strong>Síntesis crítica en español + enlaces al original</span>
+    </div>
+  </header>
+
+  <!-- ============= CARTA DE BIENVENIDA ============= -->
+  <div class="welcome">
+    <div class="tag">Cómo leer este documento</div>
+    <h2>Una lectura lenta, no una memorización</h2>
+    <p>
+      Estos tres artículos son el corazón metodológico de la sesión. Léelos sin prisa, idealmente en dos sesiones de media hora cada una. Cada artículo está resumido aquí en <strong>lenguaje claro en español</strong>, pero tienes acceso directo al PDF original —te recomiendo abrirlo al menos una vez durante tu lectura para familiarizarte con cómo se escribe ciencia en tu campo.
+    </p>
+    <p>
+      Al final de cada artículo encontrarás tres o cuatro <strong>preguntas para llevar a la sesión</strong>. No son para responder por escrito; son para que lleguen contigo el día 24 como conversación ya comenzada.
+    </p>
+    <p>
+      La única lectura obligatoria adicional son las <strong>cinco preguntas disparadoras</strong> que reciben por Moodle junto con este documento, y que sí deben traer respondidas por escrito (media cuartilla cada una).
+    </p>
+    <p class="signature">— Jorge</p>
+  </div>
+
+  <!-- ============= ÍNDICE ============= -->
+  <div class="toc">
+    <div class="toc-title">Las tres lecturas · en orden sugerido</div>
+    <div class="toc-items">
+
+      <a href="#grudzen" class="toc-item">
+        <div class="toc-num">01</div>
+        <div class="toc-text">
+          <div class="label">Artículo ancla para Unit 3.3 · Urgencias</div>
+          <div class="name">Cuando la atención paliativa comienza en urgencias</div>
+          <div class="toc-time">Grudzen et al. · JAMA 2025 · lectura ≈ 15 min</div>
+        </div>
+      </a>
+
+      <a href="#basch" class="toc-item">
+        <div class="toc-num">02</div>
+        <div class="toc-text">
+          <div class="label">Artículo ancla para Unit 3.4 · Herramientas digitales</div>
+          <div class="name">La voz del paciente como intervención</div>
+          <div class="toc-time">Basch et al. · JAMA 2022 · lectura ≈ 15 min</div>
+        </div>
+      </a>
+
+      <a href="#kirkland" class="toc-item">
+        <div class="toc-num">03</div>
+        <div class="toc-text">
+          <div class="label">Revisión sistemática transversal · Tamizaje en urgencias</div>
+          <div class="name">Catorce instrumentos, una pregunta abierta</div>
+          <div class="toc-time">Kirkland et al. · Acad Emerg Med 2022 · lectura ≈ 15 min</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+
+  <!-- ============================================================ -->
+  <!-- ARTÍCULO 01 · GRUDZEN 2025                                    -->
+  <!-- ============================================================ -->
+
+  <article class="paper" id="grudzen">
+
+    <div class="paper-header">
+      <div class="paper-number">01</div>
+      <div class="paper-eyebrow">Unit 3.3 · Emergency care</div>
+      <h1 class="paper-title">Cuando la atención paliativa <em>comienza en urgencias</em></h1>
+      <p class="paper-authors">
+        Grudzen CR, Siman N, Cuthel AM, Adeyemi O, Yamarik RL, Goldfeld KS, et al. (PRIM-ER Investigators)
+      </p>
+      <p class="paper-source">
+        <strong>JAMA · </strong>2025 · 333(7): 599-608 · <strong>DOI:</strong> 10.1001/jama.2024.23696
+      </p>
+
+      <div class="access-buttons">
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11836764/" target="_blank" class="btn-access primary">
+          <span class="icon">📄</span> Leer artículo completo (PMC · acceso abierto)
+        </a>
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11836764/pdf/jama_grudzen_2025_oi_240128_1740011059.41478.pdf" target="_blank" class="btn-access secondary">
+          <span class="icon">⬇</span> Descargar PDF
+        </a>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/39813042/" target="_blank" class="btn-access secondary">
+          <span class="icon">🔗</span> Abstract en PubMed
+        </a>
+      </div>
+      <p class="access-note">Este artículo está en acceso abierto vía PubMed Central. Puedes leerlo directamente en el navegador o descargarlo en PDF.</p>
+    </div>
+
+    <h3>El contexto y la pregunta que buscan responder</h3>
+
+    <p>
+      En Estados Unidos, la mitad de los adultos mayores visita un servicio de urgencias durante su último mes de vida, y muchos terminan muriendo en el hospital después de esa visita. La pregunta que se hicieron los autores es simple y enorme al mismo tiempo: <strong>si formamos al personal de urgencias para que ofrezca cuidados paliativos desde el primer contacto, ¿cambia algo?</strong>
+    </p>
+
+    <p>
+      Hasta ahora, la integración de cuidados paliativos en urgencias se hacía principalmente llamando al equipo especializado para una interconsulta. Pero eso toma tiempo, no siempre está disponible, y muchas veces ocurre cuando el paciente ya fue admitido. La idea de este ensayo fue distinta: <em>que la capacidad de cuidado paliativo viva adentro del propio equipo de urgencias</em>, no afuera.
+    </p>
+
+    <h3>Lo que hicieron · diseño del estudio</h3>
+
+    <p>
+      Es un <strong>ensayo clínico aleatorizado por clúster</strong> — no individualiza pacientes, sino hospitales enteros. Treintainueve servicios de urgencias de Estados Unidos se sortearon en distintos momentos para recibir la intervención (diseño por cuñas escalonadas, o <em>stepped-wedge</em>). En total se analizaron 98.922 visitas de adultos de 66 años o más con enfermedad grave limitante de la vida.
+    </p>
+
+    <h4>La intervención tenía cuatro componentes</h4>
+    <ul>
+      <li>Entrenamiento basado en evidencia para todo el personal de urgencias.</li>
+      <li>Formación en habilidades de comunicación en situaciones difíciles.</li>
+      <li>Entrenamiento con simulación de casos.</li>
+      <li>Ciclos de auditoría y retroalimentación con datos del propio servicio.</li>
+    </ul>
+
+    <p>
+      El <strong>desenlace primario</strong> que eligieron para medir éxito fue la tasa de admisión hospitalaria desde urgencias. Los desenlaces secundarios incluyeron derivación a cuidados paliativos, derivación a hospicio, revisita a 30 días y mortalidad.
+    </p>
+
+    <h3>Lo que encontraron · los resultados</h3>
+
+    <div class="key-number">
+      <div class="num">64,4% → 61,3%</div>
+      <div class="desc">Tasa de admisión hospitalaria antes vs. después de la intervención. La diferencia no fue estadísticamente significativa.</div>
+    </div>
+
+    <p>
+      Dicho sin rodeos: <strong>el paquete de intervención no redujo significativamente la tasa de admisiones hospitalarias</strong>. Tampoco mejoró de forma clara los desenlaces secundarios considerados.
+    </p>
+
+    <p>
+      Aquí está el giro que vale la pena entender bien: este <em>no</em> es un ensayo fallido. Es un ensayo que hace algo metodológicamente importante: mostrar con rigor que la intervención, tal como fue diseñada e implementada, no produjo el efecto esperado sobre el desenlace elegido. Eso es información crítica para el campo.
+    </p>
+
+    <div class="box concepto">
+      <div class="box-label">Concepto clave · ensayo negativo vs. ensayo fallido</div>
+      <p>Un ensayo "negativo" es aquel que no encuentra efecto pero está bien hecho. Un ensayo "fallido" es aquel cuyo diseño o ejecución impidió responder la pregunta. La diferencia es enorme: los ensayos negativos bien diseñados son tan valiosos como los positivos, porque cierran caminos que la comunidad científica ya no tiene que volver a recorrer.</p>
+    </div>
+
+    <h3>Cómo los autores interpretan su propio hallazgo</h3>
+
+    <p>
+      Los autores discuten tres explicaciones posibles. La primera es que el <strong>desenlace elegido —admisión hospitalaria— quizá no era el correcto</strong> para medir mejora en calidad de cuidado paliativo: un paciente con enfermedad grave avanzada puede ser correctamente admitido para control sintomático, y eso no es "fracaso". La segunda es que <strong>la heterogeneidad entre los 39 servicios de urgencias</strong> diluyó el efecto: lo que funcionaba en un centro con alta densidad de personal de cuidados paliativos no necesariamente funcionaba en otros. La tercera es que <strong>el entrenamiento solo</strong>, sin cambios estructurales en flujos y recursos, puede no ser suficiente para modificar prácticas arraigadas.
+    </p>
+
+    <h3>Lo que hay que leer con cuidado · crítica metodológica</h3>
+
+    <div class="box critica">
+      <div class="box-label">Aspectos que conviene interrogar</div>
+      <p>Primero, el riesgo de <strong>contaminación</strong> entre clústeres: como los hospitales participantes formaban parte de un consorcio académico, el personal intercambiaba información y formación, y eso puede haber diluido la diferencia entre brazos intervención y control.</p>
+      <p>Segundo, el <strong>tiempo entre la intervención y la medición de efecto</strong> puede ser corto para cambios culturales profundos en servicios de urgencias; la literatura sugiere que transformaciones organizacionales de este tipo toman años.</p>
+      <p>Tercero, el desenlace primario <strong>no captura lo que los pacientes y familias valoran</strong>: concordancia entre cuidado recibido y preferencias, control sintomático, satisfacción familiar, lugar de muerte. Si hubo mejoras en estas dimensiones, este estudio no las mide.</p>
+    </div>
+
+    <h3>Por qué este artículo importa para Colombia</h3>
+
+    <div class="box colombia">
+      <div class="box-label">Conexión con el SGSSS</div>
+      <p>Colombia no tiene, hoy, ningún ensayo publicado sobre integración de cuidados paliativos en urgencias. No tenemos ni siquiera datos descriptivos sistemáticos sobre cuántos pacientes oncológicos colombianos visitan urgencias en el último trimestre de vida, cuántas de esas visitas son evitables, y cuántas terminan en muerte hospitalaria no concordante con preferencias.</p>
+      <p>Esto significa que <strong>replicar Grudzen en Colombia sería demasiado ambicioso como primer paso</strong>, pero producir la descripción de base —el estudio de cohorte retrospectiva que aún no existe— es una pregunta de investigación perfectamente viable con datos de RIPS y de aseguradoras, dentro del horizonte temporal de una maestría.</p>
+    </div>
+
+    <div class="questions">
+      <h4>Preguntas para llevar a la sesión</h4>
+      <ol>
+        <li>Si el desenlace "admisión hospitalaria" no midió lo importante, ¿cuál elegirías tú si diseñaras una réplica de este estudio para Colombia? Justifica.</li>
+        <li>La intervención fue solo entrenamiento del personal. ¿Qué cambios estructurales crees que habría que añadir para que el entrenamiento produjera efecto?</li>
+        <li>¿Qué diferencias operacionales entre un servicio de urgencias colombiano de mediana complejidad y uno académico estadounidense harían más —o menos— probable que esta intervención funcionara aquí?</li>
+      </ol>
+    </div>
+
+  </article>
+
+  <div class="separator">· · ·</div>
+
+
+  <!-- ============================================================ -->
+  <!-- ARTÍCULO 02 · BASCH 2022                                      -->
+  <!-- ============================================================ -->
+
+  <article class="paper" id="basch">
+
+    <div class="paper-header">
+      <div class="paper-number">02</div>
+      <div class="paper-eyebrow">Unit 3.4 · Digital tools</div>
+      <h1 class="paper-title">La voz del paciente <em>como intervención</em></h1>
+      <p class="paper-authors">
+        Basch E, Schrag D, Henson S, Jansen J, Ginos B, Stover AM, et al.
+      </p>
+      <p class="paper-source">
+        <strong>JAMA · </strong>2022 · 327(24): 2413-2422 · <strong>PMID:</strong> 35661856
+      </p>
+
+      <div class="access-buttons">
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9168923/" target="_blank" class="btn-access primary">
+          <span class="icon">📄</span> Leer artículo completo (PMC · acceso abierto)
+        </a>
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9168923/pdf/jama_basch_2022_oi_220040_1654020478.31717.pdf" target="_blank" class="btn-access secondary">
+          <span class="icon">⬇</span> Descargar PDF
+        </a>
+        <a href="https://pubmed.ncbi.nlm.nih.gov/35661856/" target="_blank" class="btn-access secondary">
+          <span class="icon">🔗</span> Abstract en PubMed
+        </a>
+      </div>
+      <p class="access-note">Artículo en acceso abierto. Complementario recomendado (cinco minutos): Basch et al., JAMA 2017 (PMC5817466), que muestra el efecto sobre supervivencia global 5 meses mayor.</p>
+    </div>
+
+    <h3>El contexto y la pregunta que buscan responder</h3>
+
+    <p>
+      Los pacientes con cáncer metastásico sufren síntomas —dolor, fatiga, náusea, ansiedad— entre una consulta oncológica y la siguiente. El modelo tradicional es: el paciente espera hasta la próxima cita para reportar, o llama si el síntoma es grave. Pero muchas veces no llama a tiempo, o el síntoma escala silenciosamente y termina en una visita a urgencias evitable.
+    </p>
+
+    <p>
+      La pregunta de Basch y su equipo es: <strong>si damos al paciente una plataforma digital para reportar síntomas semanalmente desde su casa, y generamos alertas automáticas al clínico cuando un síntoma cruza un umbral, ¿mejora la calidad de vida del paciente?</strong>
+    </p>
+
+    <p>
+      Este no es un estudio cualquiera. Es la <strong>versión multicéntrica con validez externa</strong> del hallazgo original de Basch 2017, donde el mismo grupo demostró que el monitoreo electrónico de síntomas prolongaba la supervivencia global cinco meses en pacientes con cáncer metastásico. Aquel primer estudio era monocéntrico en Memorial Sloan Kettering; este amplía la demostración a 52 centros oncológicos distintos.
+    </p>
+
+    <h3>Lo que hicieron · diseño del estudio</h3>
+
+    <p>
+      <strong>Ensayo clínico aleatorizado por clúster</strong> en 52 centros oncológicos comunitarios de Estados Unidos. Se incluyeron 1.191 pacientes adultos con cáncer metastásico en tratamiento sistémico activo. Los centros se aleatorizaron a brindar monitoreo electrónico de síntomas con PRO-CTCAE o atención usual.
+    </p>
+
+    <h4>La intervención tenía dos ingredientes activos</h4>
+    <ul>
+      <li>El paciente recibía semanalmente un cuestionario electrónico PRO-CTCAE que cubría nueve síntomas comunes del tratamiento oncológico (dolor, náusea, fatiga, disnea, tristeza, ansiedad, neuropatía, diarrea, estreñimiento).</li>
+      <li>Cuando un síntoma alcanzaba severidad "grave" o empeoraba respecto al reporte anterior, el sistema enviaba <strong>alerta automática en tiempo real al equipo clínico</strong>, quien debía contactar al paciente en 48 horas o menos.</li>
+    </ul>
+
+    <p>
+      Los desenlaces primarios evaluados a 3 meses fueron calidad de vida relacionada con la salud (medida con el cuestionario EORTC QLQ-C30), gravedad de síntomas físicos y gravedad de síntomas psicológicos.
+    </p>
+
+    <div class="box concepto">
+      <div class="box-label">Recuerda · qué es PRO-CTCAE</div>
+      <p>El <strong>PRO-CTCAE</strong> (Patient-Reported Outcomes version of the Common Terminology Criteria for Adverse Events) es un sistema desarrollado por el National Cancer Institute de EE.UU. que permite al paciente, no al clínico, reportar frecuencia, intensidad e interferencia con su vida diaria de 124 posibles síntomas del tratamiento oncológico. Es el estándar internacional de reporte de síntomas desde la perspectiva del paciente.</p>
+    </div>
+
+    <h3>Lo que encontraron · los resultados</h3>
+
+    <div class="key-number">
+      <div class="num">+ 3,6 puntos</div>
+      <div class="desc">Mejora en calidad de vida relacionada con la salud (EORTC QLQ-C30) en el brazo intervención vs. control. La diferencia es estadísticamente significativa y clínicamente relevante.</div>
+    </div>
+
+    <p>
+      Los pacientes que recibieron monitoreo electrónico de síntomas tuvieron <strong>mejoría significativa en calidad de vida, en gravedad de síntomas físicos y en gravedad de síntomas psicológicos</strong> a los tres meses de seguimiento, comparados con los que recibieron atención usual.
+    </p>
+
+    <p>
+      El efecto no solo era estadísticamente significativo; era <em>clínicamente significativo</em>, es decir, del tamaño que los pacientes y clínicos pueden percibir en la práctica cotidiana.
+    </p>
+
+    <h3>Cómo los autores interpretan su propio hallazgo</h3>
+
+    <p>
+      Los autores argumentan que lo que funciona no es la tecnología por sí misma, sino la <strong>combinación de dos mecanismos causales</strong>. El primero es el <em>empoderamiento del paciente</em>: al reportar regularmente, el paciente se vuelve más consciente de sus propios síntomas y de su evolución, lo cual cambia su relación con la enfermedad y con el tratamiento. El segundo es la <em>reducción del retraso entre síntoma y atención</em>: la alerta automática fuerza al equipo clínico a actuar temprano, antes de que el síntoma escale.
+    </p>
+
+    <p>
+      Un sistema ePRO sin alertas al clínico es un registro muerto. Un sistema con alertas pero sin engagement del paciente es un formulario ignorado. Los dos mecanismos, combinados, producen el efecto.
+    </p>
+
+    <h3>Lo que hay que leer con cuidado · crítica metodológica</h3>
+
+    <div class="box critica">
+      <div class="box-label">Aspectos que conviene interrogar</div>
+      <p>Primero, la <strong>población del estudio</strong> son pacientes de centros oncológicos comunitarios estadounidenses, mayoritariamente con alfabetización digital y acceso a internet confiable. La validez externa a poblaciones rurales, indígenas o con brecha digital es una pregunta abierta.</p>
+      <p>Segundo, el <strong>algoritmo de alertas</strong> del sistema no se describe en detalle en el artículo: qué umbrales disparan la alerta, cómo se priorizan cuando llegan muchas simultáneamente, cuál es la carga de trabajo adicional para el equipo clínico. Esto es información crítica si se quisiera replicar el sistema.</p>
+      <p>Tercero, el desenlace principal es <strong>calidad de vida a 3 meses</strong>. El efecto de supervivencia —el hallazgo más impactante del equipo— requiere seguimiento más largo y no se demuestra en este estudio específico.</p>
+    </div>
+
+    <h3>Por qué este artículo importa para Colombia</h3>
+
+    <div class="box colombia">
+      <div class="box-label">Conexión con el contexto colombiano</div>
+      <p>La intervención de Basch tiene un efecto demostrado sobre calidad de vida e incluso sobre supervivencia (en los estudios previos del equipo). Pero requiere tres condiciones que en Colombia no son obvias: acceso a dispositivo digital por parte del paciente, conectividad a internet estable, y <strong>capacidad operativa del equipo clínico para responder a alertas en 48 horas</strong>.</p>
+      <p>Las preguntas colombianas son: ¿cómo se adapta culturalmente PRO-CTCAE para población oncológica rural del Pacífico o del piedemonte amazónico? ¿Qué modelo híbrido —digital + promotor comunitario— podría funcionar en zonas con brecha digital? ¿Se mantiene el efecto sobre calidad de vida cuando el tiempo de respuesta del sistema de salud es estructuralmente más lento que en los centros comunitarios estadounidenses?</p>
+    </div>
+
+    <div class="questions">
+      <h4>Preguntas para llevar a la sesión</h4>
+      <ol>
+        <li>Si solo pudieras conservar uno de los dos mecanismos causales (empoderamiento del paciente, alerta al clínico) porque el sistema de salud colombiano no puede pagar ambos, ¿cuál conservarías y por qué?</li>
+        <li>¿Qué adaptaciones operativas y lingüísticas requeriría PRO-CTCAE para usarse con pacientes oncológicos de una comunidad indígena colombiana?</li>
+        <li>Si el efecto es pequeño en puntos absolutos (+3,6 en EORTC) pero clínicamente relevante, ¿cómo argumentarías ante una aseguradora colombiana que vale la pena financiar esta intervención?</li>
+      </ol>
+    </div>
+
+  </article>
+
+  <div class="separator">· · ·</div>
+
+
+  <!-- ============================================================ -->
+  <!-- ARTÍCULO 03 · KIRKLAND 2022                                   -->
+  <!-- ============================================================ -->
+
+  <article class="paper" id="kirkland">
+
+    <div class="paper-header">
+      <div class="paper-number">03</div>
+      <div class="paper-eyebrow">Revisión sistemática · Tamizaje en urgencias</div>
+      <h1 class="paper-title">Catorce instrumentos, <em>una pregunta abierta</em></h1>
+      <p class="paper-authors">
+        Kirkland SW, Yang EH, Garrido Clua M, Kruhlak M, Campbell S, Villa-Roel C, Rowe BH.
+      </p>
+      <p class="paper-source">
+        <strong>Academic Emergency Medicine · </strong>2022 · 29(10): 1229-1246 · <strong>DOI:</strong> 10.1111/acem.14492 · <strong>PMID:</strong> 35344239
+      </p>
+
+      <div class="access-buttons">
+        <a href="https://pubmed.ncbi.nlm.nih.gov/35344239/" target="_blank" class="btn-access primary">
+          <span class="icon">🔗</span> Abstract en PubMed (acceso libre)
+        </a>
+        <a href="https://onlinelibrary.wiley.com/doi/10.1111/acem.14492" target="_blank" class="btn-access restricted">
+          <span class="icon">🔒</span> Texto completo en Wiley (vía SINABI UAN)
+        </a>
+      </div>
+      <p class="access-note">
+        Este artículo es de acceso restringido en Wiley. <strong>Para acceder al PDF completo ingresa a través de SINABI — la biblioteca virtual de la UAN</strong> e ir a la base Wiley Online Library. Si tienes dificultad para acceder, contacta al docente. La síntesis que viene a continuación se construyó sobre el texto completo, así que puedes trabajar con ella para la sesión.
+      </p>
+    </div>
+
+    <h3>El contexto y la pregunta que buscan responder</h3>
+
+    <p>
+      Muchos pacientes con necesidades paliativas no atendidas llegan a urgencias y nadie las identifica. El personal de urgencias, por formación y por presión de tiempo, está entrenado para salvar vidas, no para reconocer trayectorias de final de vida. Desde 2013 la <em>Choosing Wisely Campaign</em> recomienda iniciar cuidados paliativos desde urgencias, pero identificar a los pacientes elegibles en un ambiente caótico sigue siendo el obstáculo práctico central.
+    </p>
+
+    <p>
+      La pregunta de esta revisión es: <strong>¿qué instrumentos de tamizaje existen para identificar pacientes con necesidades paliativas no atendidas en urgencias, y cuál es su desempeño psicométrico?</strong> Es una revisión actualizada (búsqueda cerrada en agosto 2021) de una revisión previa de 2016 que solo había identificado siete estudios.
+    </p>
+
+    <h3>Lo que hicieron · diseño de la revisión sistemática</h3>
+
+    <p>
+      <strong>Revisión sistemática</strong> registrada en PROSPERO (CRD42018086178) siguiendo PRISMA. Búsqueda por bibliotecaria experta en OVID Medline, OVID EMBASE, CINAHL, Scopus, ProQuest, Cochrane Library y PROSPERO, sin límite de idioma ni de fecha. También búsqueda en literatura gris incluyendo registros de ensayos clínicos y resúmenes de congresos de medicina de urgencias. Cribado independiente por pares con resolución por consenso.
+    </p>
+
+    <p>
+      De 5491 títulos únicos tamizados, <strong>35 estudios fueron incluidos</strong>, que evaluaron <strong>14 instrumentos distintos</strong>. La calidad metodológica se evaluó con QUADAS, STARD y Newcastle-Ottawa según el diseño de cada estudio.
+    </p>
+
+    <h3>Lo que encontraron · los resultados principales</h3>
+
+    <p>
+      De los 14 instrumentos identificados, tres concentran la mayor parte de la evidencia empírica:
+    </p>
+
+    <ul>
+      <li>La <strong>Surprise Question (SQ)</strong> — 12 estudios. Una sola pregunta que el clínico se hace a sí mismo: "¿me sorprendería si este paciente muriera en los próximos 12 meses?". Si la respuesta es "no me sorprendería", el paciente entra al tamizaje positivo. Algunos estudios usan una versión modificada a 30 días.</li>
+      <li>El <strong>P-CaRES</strong> (Palliative Care and Rapid Emergency Screening) — 8 estudios. Dos dominios: primero identificar si el paciente tiene alguna condición limitante de vida (demencia avanzada, cáncer, EPOC, ERC, cirrosis, shock séptico, entre otras); si es así, evaluar factores de riesgo de necesidades no atendidas (hospitalizaciones previas en los últimos 6 meses, síntomas no controlados, deterioro funcional, incertidumbre de metas de cuidado, distrés del cuidador, respuesta afirmativa a la SQ). Si cumple al menos una condición limitante y dos factores de riesgo, tamizaje positivo.</li>
+      <li>El <strong>SPEED</strong> (Screening for Palliative and End-of-life care needs in the Emergency Department) — 4 estudios. 13 ítems organizados en cinco dominios: físico, psicológico, social, espiritual, terapéutico. Existe versión corta de 5 ítems. Los estudios con SPEED se centraron en pacientes con cáncer activo o falla cardíaca terminal.</li>
+    </ul>
+
+    <div class="key-number">
+      <div class="num">63% · 75%</div>
+      <div class="desc">Sensibilidad y especificidad medianas de la Surprise Question para predecir mortalidad (1 a 12 meses). Valor predictivo positivo bajo (32%, IQR 16-40%). Valor predictivo negativo alto (91%, IQR 88-95%).</div>
+    </div>
+
+    <p>
+      Un hallazgo metodológicamente fino: <strong>la SQ funciona mejor como predictor a 12 meses que a 30 días</strong>. La sensibilidad a 30 días osciló entre 12 y 43%; a 12 meses entre 57 y 89%. Es decir, la pregunta "¿le sorprendería que este paciente muriera en los próximos 30 días?" identifica muy mal a los que realmente fallecerán en ese lapso.
+    </p>
+
+    <p>
+      La SQ es operacionalmente imbatible porque se aplica en segundos y no requiere entrenamiento. Pero su valor predictivo positivo es bajo: <strong>de cada tres pacientes identificados como "sorprendería si murieran", solo uno efectivamente fallece en el plazo predicho</strong>. Su fortaleza está en el valor predictivo negativo alto: si el clínico <em>no</em> se sorprendería, la probabilidad de que el paciente sobreviva el período es alta. Es mejor herramienta para <em>descartar</em> necesidad paliativa que para confirmarla.
+    </p>
+
+    <div class="box concepto">
+      <div class="box-label">Matiz importante · SQ en pacientes con cáncer</div>
+      <p>El estudio de Verhoef 2020 en pacientes con cáncer terminal reportó sensibilidad 89% y VPP 85% — sustancialmente mejor que el promedio de la revisión. Una revisión sistemática independiente (Downar 2017, CMAJ) también encontró que la SQ funciona mejor en población oncológica que en pacientes con condiciones no oncológicas. Esto es directamente relevante para el caso de Carmen: en ella, la SQ probablemente habría funcionado.</p>
+    </div>
+
+    <h4>P-CaRES y SPEED: buena validez de contenido, propiedades psicométricas escasas</h4>
+
+    <p>
+      Aquí hay que leer la evidencia con cuidado. El P-CaRES y el SPEED tienen <strong>validez de contenido documentada</strong> — fueron desarrollados con revisión sistemática de literatura y consenso de expertos — pero la revisión encontró muy pocos estudios que reporten sus propiedades psicométricas formales (sensibilidad, especificidad) aplicados en urgencias.
+    </p>
+
+    <p>
+      De los 8 estudios con P-CaRES, solo uno (Howard 2021, n=58) comparó el desempeño cuando lo aplicaron capellanes clínicos entrenados versus médicos de urgencias, reportando <strong>VPP 34% (capellanes) vs. 44% (médicos)</strong> y <strong>VPN 76% (capellanes) vs. 88% (médicos)</strong>. De los 4 estudios con SPEED, uno reportó alta consistencia interna (alfa de Cronbach 0.716-0.991) pero ningún estudio reportó sensibilidad ni especificidad formales.
+    </p>
+
+    <div class="key-number">
+      <div class="num">32% · 62%</div>
+      <div class="desc">Proporción mediana de pacientes identificados como con necesidades paliativas no atendidas: con P-CaRES (IQR 30-55%), con SPEED (IQR 52-72%). Con SQ: 31% (IQR 15-49%). La alta variabilidad sugiere heterogeneidad real de los pacientes, pero también diferencias operacionales entre instrumentos.</div>
+    </div>
+
+    <p>
+      Un hallazgo del A-qCPR (Taiwán, Wang 2021, n=4627) merece mención: <strong>sensibilidad 99% y VPN 99%</strong> para predecir mortalidad a 12 meses. Es el instrumento con mejor desempeño reportado, aunque combinando variables ya registradas en la historia clínica (edad, qSOFA, cáncer, estado funcional, orden de no reanimación). Limitación: un solo estudio, en un solo centro asiático.
+    </p>
+
+    <h3>Qué pasa después del tamizaje positivo</h3>
+
+    <p>
+      Un dato que conviene subrayar porque es el que vuelve relevante todo el ejercicio de tamizaje: entre los pacientes identificados con necesidades paliativas no atendidas, <strong>la proporción que efectivamente recibió consulta de cuidados paliativos fue baja</strong> — entre 1,4% y 12% de los tamizados en urgencias, entre 8% y 55% de los hospitalizados. Solo los estudios que combinaron tamizaje con intervención activa de derivación lograron tasas entre 32% y 47% de consulta paliativa. Esto es crítico: <em>tamizar sin dispositivo de derivación posterior es casi inútil</em>.
+    </p>
+
+    <h3>Cómo los autores interpretan sus hallazgos</h3>
+
+    <p>
+      Los autores son deliberadamente cautelosos. Sostienen que <strong>no hay evidencia suficiente para recomendar un instrumento sobre los otros</strong>. La SQ tiene desempeño moderado pero ventaja operacional enorme; el P-CaRES tiene mejor estructura conceptual pero requiere entrenamiento y tiempo; el SPEED cubre dimensiones más amplias pero carece de punto de corte validado.
+    </p>
+
+    <p>
+      Argumentan además que, dado el costo y la disponibilidad limitada de servicios de cuidados paliativos en urgencias, se necesitan instrumentos con <strong>sensibilidad y especificidad iguales o superiores al 90%</strong> — nivel que ninguno de los 14 instrumentos alcanza consistentemente. Subrayan que la mayoría de estudios son de calidad metodológica baja a moderada y que se necesitan estudios de implementación pragmáticos, no solo de rendimiento diagnóstico.
+    </p>
+
+    <h3>Lo que hay que leer con cuidado · crítica metodológica</h3>
+
+    <div class="box critica">
+      <div class="box-label">Aspectos que conviene interrogar</div>
+      <p><strong>Primero, la heterogeneidad del estándar de referencia.</strong> Algunos estudios usan muerte confirmada por registros oficiales como patrón de oro; otros usan derivación efectiva a cuidados paliativos; otros usan juicio clínico de experto. Esto compromete la comparabilidad directa de las propiedades psicométricas entre instrumentos.</p>
+      <p><strong>Segundo, el conflicto de intereses.</strong> Los propios autores aclaran al final del artículo que todos excepto la bibliotecaria (Campbell) fueron coautores del estudio Kirkland 2021 incluido en esta revisión. Es transparente y se declara, pero es un dato que los estudiantes deben notar como ejemplo de cómo se reportan conflictos potenciales.</p>
+      <p><strong>Tercero, la validez externa.</strong> Los 35 estudios fueron mayoritariamente en EE.UU., Canadá, Europa y algunos en Asia. Ningún estudio latinoamericano (con excepción de un estudio peruano de Tineo 2020 en resumen de congreso). La aplicabilidad directa al sistema colombiano es, por tanto, una hipótesis no comprobada.</p>
+      <p><strong>Cuarto, la falta de medición de desenlaces importantes para el paciente.</strong> La mayoría de los estudios midió mortalidad o consulta paliativa como desenlaces, no concordancia con preferencias del paciente, control sintomático o satisfacción familiar. Tamizar bien no es lo mismo que cuidar bien.</p>
+    </div>
+
+    <h3>Por qué este artículo importa para Colombia</h3>
+
+    <div class="box colombia">
+      <div class="box-label">Conexión con el contexto colombiano</div>
+      <p>Este artículo es, probablemente, el que más directamente conecta con <strong>preguntas de investigación viables dentro del horizonte de una maestría colombiana</strong>. Ninguno de los 14 instrumentos identificados ha sido validado transculturalmente al español colombiano siguiendo metodología COSMIN. La validación transcultural de P-CaRES, SPEED o incluso la SQ aplicada a contexto colombiano es un proyecto factible en dos años que produce un artículo publicable y deja un instrumento útil al sistema de salud.</p>
+      <p>Una pregunta distinta pero igual de viable: un estudio de implementación pragmático que combine tamizaje (con cualquier instrumento razonable) con dispositivo de derivación activa en un hospital colombiano de mediana complejidad —como el Hospital Regional de Moniquirá que trabajamos en sesiones anteriores— puede responder la pregunta de si el tamizaje en urgencias efectivamente aumenta la derivación a cuidados paliativos en nuestro sistema. Si los datos del artículo sugieren que sin derivación activa el tamizaje es casi inútil, un ensayo pragmático que pruebe esa hipótesis en Colombia es altamente relevante.</p>
+    </div>
+
+    <div class="questions">
+      <h4>Preguntas para llevar a la sesión</h4>
+      <ol>
+        <li>Si tuvieras que recomendar hoy UN instrumento de tamizaje para un hospital de mediana complejidad en Boyacá, ¿cuál elegirías y qué tres argumentos específicos darías para defender la elección frente a los otros dos?</li>
+        <li>El artículo muestra que tamizar bien sin un dispositivo de derivación activa produce tasas de consulta paliativa de apenas 1,4 a 12%. ¿Qué componentes debería tener un dispositivo de derivación eficaz en el SGSSS colombiano?</li>
+        <li>La Surprise Question funciona mejor a 12 meses que a 30 días, y mejor en pacientes con cáncer que sin cáncer. ¿Qué implicaciones tiene esto para elegir el instrumento adecuado según el tipo de paciente (oncológico vs. no oncológico) y el propósito del tamizaje (identificación temprana vs. planeación inmediata)?</li>
+      </ol>
+    </div>
+
+  </article>
+
+
+  <!-- ============= CIERRE ============= -->
+  <div class="closing">
+    <h3>Una última cosa antes de cerrar</h3>
+    <p>
+      Estos tres artículos son el material de trabajo del <strong>Bloque 2</strong> de la sesión, donde rotarán por tres estaciones, cada una dedicada a uno de ellos. No necesitas saberlos de memoria. Necesitas haberlos habitado: haber pensado qué preguntan, qué encuentran y qué dejan abierto.
+    </p>
+    <p>
+      La tarea del investigador en cuidados paliativos colombiano no es repetir estas preguntas; es formular las suyas propias, con estos artículos como mapa de puntos de partida. Nos vemos el 24 de abril.
+    </p>
+  </div>
+
+  <footer>
+    Maestría en Investigación en Cuidados Paliativos · Universidad Antonio Nariño · Facultad de Enfermería<br>
+    Sesión sincrónica · 24 de abril de 2026 · Docente: Jorge · Decano: Wimber Ortiz Martínez
+  </footer>
+
+</div>
+
+<script>
+  /* Barra de progreso de lectura */
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+    document.getElementById('progressBar').style.width = scrolled + '%';
+  });
+</script>
+
+</body>
+</html>
