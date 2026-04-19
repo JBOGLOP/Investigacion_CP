@@ -3,18 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lecturas ancla · Sesión 24 abril · Unit 3.3 & 3.4</title>
+<title>Lecturas antes de clase · Sesión 24 de abril · Unit 3.3 & 3.4</title>
 <style>
-  /* =========================================================
-     Lectura amigable · tipografía generosa para celular y laptop
-     ========================================================= */
   :root{
-    --bg:           #FAF8F3;   /* crema cálido, cómodo para lectura prolongada */
+    --bg:           #FAF8F3;
     --surface:      #FFFFFF;
     --ink:          #2A2430;
     --ink-soft:     #5B5466;
     --mute:         #8E8896;
-    --primary:      #6C63B7;   /* lila Unit 3 */
+    --primary:      #6C63B7;
     --primary-deep: #4A4290;
     --accent-blue:  #5B8DB8;
     --accent-sage:  #7FA88D;
@@ -40,7 +37,6 @@
     font-size: 17px;
   }
 
-  /* Barra de progreso de lectura */
   .progress-bar{
     position: fixed; top: 0; left: 0;
     height: 3px;
@@ -56,12 +52,10 @@
     padding: 48px 28px 120px;
   }
 
-  /* ============= HERO ============= */
   header.hero{
     margin-bottom: 56px;
     padding-bottom: 36px;
     border-bottom: 1px solid var(--line);
-    position: relative;
   }
   .kicker{
     font-family: var(--font-sans);
@@ -115,7 +109,6 @@
     font-weight: 700;
   }
 
-  /* ============= CARTA DE BIENVENIDA ============= */
   .welcome{
     background: linear-gradient(135deg, #FDFBF5 0%, #F7F2E8 100%);
     border: 1px solid var(--accent-sand);
@@ -157,7 +150,6 @@
     margin-top: 16px;
   }
 
-  /* ============= NAVEGACIÓN DE ARTÍCULOS ============= */
   .toc{
     margin-bottom: 56px;
   }
@@ -201,9 +193,7 @@
     font-style: italic;
     flex-shrink: 0;
   }
-  .toc-text{
-    flex: 1;
-  }
+  .toc-text{ flex: 1; }
   .toc-text .label{
     font-family: var(--font-sans);
     font-size: 10.5px;
@@ -229,7 +219,6 @@
     padding-top: 4px;
   }
 
-  /* ============= ARTÍCULO ============= */
   article.paper{
     margin-bottom: 80px;
     scroll-margin-top: 24px;
@@ -239,7 +228,6 @@
     padding: 28px 0 24px;
     margin-bottom: 32px;
     border-bottom: 2px solid var(--line);
-    position: relative;
   }
   .paper-number{
     font-family: var(--font-display);
@@ -292,7 +280,6 @@
     font-weight: 600;
   }
 
-  /* Botones de acceso */
   .access-buttons{
     display: flex;
     gap: 10px;
@@ -338,9 +325,7 @@
   .btn-access.restricted:hover{
     background: rgba(201,163,112,.08);
   }
-  .btn-access .icon{
-    font-size: 14px;
-  }
+  .btn-access .icon{ font-size: 14px; }
   .access-note{
     font-family: var(--font-sans);
     font-size: 11.5px;
@@ -350,7 +335,6 @@
     line-height: 1.5;
   }
 
-  /* ============= SECCIONES INTERNAS DEL ARTÍCULO ============= */
   .paper h3{
     font-family: var(--font-display);
     font-style: italic;
@@ -397,8 +381,17 @@
     color: var(--accent-blue);
     font-style: italic;
   }
+  .paper .pico-question{
+    background: rgba(108,99,183,.05);
+    border-left: 3px solid var(--primary);
+    padding: 14px 18px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-weight: 600;
+    color: var(--primary-deep);
+    margin: 16px 0;
+    font-size: 16.5px;
+  }
 
-  /* Bullet stylizados */
   .paper ul{
     list-style: none;
     margin: 14px 0 20px;
@@ -420,7 +413,6 @@
     font-size: 14px;
   }
 
-  /* Números destacados en los resultados */
   .key-number{
     display: block;
     padding: 20px 24px;
@@ -445,7 +437,6 @@
     font-style: italic;
   }
 
-  /* Cajas temáticas */
   .box{
     padding: 22px 26px;
     border-radius: var(--radius-sm);
@@ -485,7 +476,6 @@
   }
   .box.concepto .box-label{ color: var(--accent-blue); }
 
-  /* Preguntas para meditar al final de cada artículo */
   .questions{
     background: var(--surface);
     border: 1px solid var(--line);
@@ -494,9 +484,7 @@
     margin-top: 32px;
     box-shadow: var(--shadow);
   }
-  .questions h4{
-    margin-top: 0;
-  }
+  .questions h4{ margin-top: 0; }
   .questions ol{
     list-style: none;
     counter-reset: qcounter;
@@ -528,7 +516,6 @@
     font-style: normal;
   }
 
-  /* ============= SEPARADOR ENTRE ARTÍCULOS ============= */
   .separator{
     text-align: center;
     margin: 80px 0;
@@ -539,7 +526,6 @@
     letter-spacing: .3em;
   }
 
-  /* ============= FOOTER FINAL ============= */
   .closing{
     margin-top: 80px;
     padding: 36px 32px;
@@ -575,7 +561,6 @@
     line-height: 1.7;
   }
 
-  /* Responsivo */
   @media (max-width: 640px){
     body{ font-size: 16px; }
     .wrap{ padding: 32px 20px 100px; }
@@ -589,7 +574,6 @@
     .btn-access{ justify-content: center; }
   }
 
-  /* Impresión limpia */
   @media print{
     body{ background: white; }
     .progress-bar, .access-buttons, .toc{ display: none; }
@@ -605,12 +589,12 @@
 
 <div class="wrap">
 
-  <!-- ============= HERO ============= -->
+  <!-- HERO -->
   <header class="hero">
     <div class="kicker">Preparación · Sesión del 24 de abril de 2026</div>
-    <h1 class="title">Las tres <em>voces</em><br>que leeremos juntos</h1>
+    <h1 class="title">Tres estudios, <em>tres preguntas</em><br>sobre la voz del paciente</h1>
     <p class="hero-subtitle">
-      Estos son los tres artículos ancla que trabajaremos en la sesión. No necesitas memorizar metodología; necesitas entender qué pregunta respondió cada uno, qué encontró, y qué puede significar para tu trabajo como investigador en cuidados paliativos en Colombia.
+      Los tres artículos que trabajaremos en la sesión sincrónica examinan, desde ángulos distintos, un mismo problema: cómo integrar la perspectiva y las necesidades del paciente oncológico —y del paciente con enfermedad limitante de vida en general— en puntos críticos de su trayectoria clínica. Urgencias y herramientas digitales son dos puertas; los artículos ancla las atraviesan de formas complementarias.
     </p>
     <div class="hero-meta">
       <span><strong>Unidad</strong>3.3 Emergency care · 3.4 Digital tools</span>
@@ -619,32 +603,32 @@
     </div>
   </header>
 
-  <!-- ============= CARTA DE BIENVENIDA ============= -->
+  <!-- CARTA DE BIENVENIDA -->
   <div class="welcome">
     <div class="tag">Cómo leer este documento</div>
-    <h2>Una lectura lenta, no una memorización</h2>
+    <h2>Léelo despacio · vuelve a los artículos originales</h2>
     <p>
-      Estos tres artículos son el corazón metodológico de la sesión. Léelos sin prisa, idealmente en dos sesiones de media hora cada una. Cada artículo está resumido aquí en <strong>lenguaje claro en español</strong>, pero tienes acceso directo al PDF original —te recomiendo abrirlo al menos una vez durante tu lectura para familiarizarte con cómo se escribe ciencia en tu campo.
+      Estas síntesis son punto de partida, no sustituto del artículo. Cada una te ofrece contexto, diseño, resultados, interpretación de los autores, crítica metodológica, conexión con Colombia, y tres preguntas para que llegues a la sesión con la conversación ya comenzada. Los datos numéricos están tomados verbatim del texto original; si notas algo que no cuadra con el artículo fuente, avísame.
     </p>
     <p>
-      Al final de cada artículo encontrarás tres o cuatro <strong>preguntas para llevar a la sesión</strong>. No son para responder por escrito; son para que lleguen contigo el día 24 como conversación ya comenzada.
+      Dos de los tres artículos están en acceso abierto vía PubMed Central, así que tendrás los PDF directamente. El tercero requiere el acceso institucional de SINABI. Recomendación: abre al menos una vez cada PDF durante tu lectura para familiarizarte con la estructura IMRaD real de una publicación en JAMA o en Academic Emergency Medicine.
     </p>
     <p>
-      La única lectura obligatoria adicional son las <strong>cinco preguntas disparadoras</strong> que reciben por Moodle junto con este documento, y que sí deben traer respondidas por escrito (media cuartilla cada una).
+      La tarea obligatoria por escrito no son estas lecturas en sí, sino las <strong>cinco preguntas disparadoras</strong> que recibirás por separado en Moodle. Estas lecturas son el insumo para responderlas.
     </p>
     <p class="signature">— Jorge</p>
   </div>
 
-  <!-- ============= ÍNDICE ============= -->
+  <!-- ÍNDICE -->
   <div class="toc">
-    <div class="toc-title">Las tres lecturas · en orden sugerido</div>
+    <div class="toc-title">Las tres lecturas · orden sugerido</div>
     <div class="toc-items">
 
       <a href="#grudzen" class="toc-item">
         <div class="toc-num">01</div>
         <div class="toc-text">
           <div class="label">Artículo ancla para Unit 3.3 · Urgencias</div>
-          <div class="name">Cuando la atención paliativa comienza en urgencias</div>
+          <div class="name">Un ensayo negativo que enseña mucho</div>
           <div class="toc-time">Grudzen et al. · JAMA 2025 · lectura ≈ 15 min</div>
         </div>
       </a>
@@ -661,7 +645,7 @@
       <a href="#kirkland" class="toc-item">
         <div class="toc-num">03</div>
         <div class="toc-text">
-          <div class="label">Revisión sistemática transversal · Tamizaje en urgencias</div>
+          <div class="label">Revisión sistemática · Tamizaje en urgencias</div>
           <div class="name">Catorce instrumentos, una pregunta abierta</div>
           <div class="toc-time">Kirkland et al. · Acad Emerg Med 2022 · lectura ≈ 15 min</div>
         </div>
@@ -669,7 +653,6 @@
 
     </div>
   </div>
-
 
   <!-- ============================================================ -->
   <!-- ARTÍCULO 01 · GRUDZEN 2025                                    -->
@@ -680,112 +663,135 @@
     <div class="paper-header">
       <div class="paper-number">01</div>
       <div class="paper-eyebrow">Unit 3.3 · Emergency care</div>
-      <h1 class="paper-title">Cuando la atención paliativa <em>comienza en urgencias</em></h1>
+      <h1 class="paper-title">Un <em>ensayo negativo</em> que enseña mucho</h1>
       <p class="paper-authors">
-        Grudzen CR, Siman N, Cuthel AM, Adeyemi O, Yamarik RL, Goldfeld KS, et al. (PRIM-ER Investigators)
+        Grudzen CR, Siman N, Cuthel AM, Adeyemi O, Liddicoat Yamarik R, Goldfeld KS; and the PRIM-ER Investigators.
       </p>
       <p class="paper-source">
-        <strong>JAMA · </strong>2025 · 333(7): 599-608 · <strong>DOI:</strong> 10.1001/jama.2024.23696
+        <strong>JAMA · </strong>2025 Feb 18; 333(7): 599-608 · <strong>DOI:</strong> 10.1001/jama.2024.23696 · <strong>PMID:</strong> 39813042 · <strong>Trial:</strong> NCT03424109
       </p>
 
       <div class="access-buttons">
         <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11836764/" target="_blank" class="btn-access primary">
-          <span class="icon">📄</span> Leer artículo completo (PMC · acceso abierto)
-        </a>
-        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11836764/pdf/jama_grudzen_2025_oi_240128_1740011059.41478.pdf" target="_blank" class="btn-access secondary">
-          <span class="icon">⬇</span> Descargar PDF
+          <span class="icon">📄</span> Artículo completo en PMC (acceso abierto)
         </a>
         <a href="https://pubmed.ncbi.nlm.nih.gov/39813042/" target="_blank" class="btn-access secondary">
-          <span class="icon">🔗</span> Abstract en PubMed
+          <span class="icon">🔗</span> Resumen en PubMed
         </a>
       </div>
-      <p class="access-note">Este artículo está en acceso abierto vía PubMed Central. Puedes leerlo directamente en el navegador o descargarlo en PDF.</p>
+      <p class="access-note">Acceso abierto completo vía PubMed Central. Recomendación: abre el artículo en PMC y descarga el PDF oficial desde allí. El suplemento con el protocolo completo y el plan de análisis estadístico también está disponible en PMC.</p>
     </div>
 
     <h3>El contexto y la pregunta que buscan responder</h3>
 
     <p>
-      En Estados Unidos, la mitad de los adultos mayores visita un servicio de urgencias durante su último mes de vida, y muchos terminan muriendo en el hospital después de esa visita. La pregunta que se hicieron los autores es simple y enorme al mismo tiempo: <strong>si formamos al personal de urgencias para que ofrezca cuidados paliativos desde el primer contacto, ¿cambia algo?</strong>
+      Los autores abren el artículo con una cifra que debería hacerte detenerte un momento: <strong>entre las personas de 65 años o más en Estados Unidos, la mitad visita un servicio de urgencias durante el último mes de vida</strong>, y tres cuartos lo hacen durante los seis meses previos a la muerte. El servicio de urgencias, por tanto, no es una excepción en la trayectoria del paciente con enfermedad avanzada; es un punto de contacto recurrente. Y sin embargo, la atención en urgencias no se ha adaptado a las necesidades y preferencias de estos pacientes, muchos de los cuales preferirían recibir cuidado en casa.
     </p>
 
     <p>
-      Hasta ahora, la integración de cuidados paliativos en urgencias se hacía principalmente llamando al equipo especializado para una interconsulta. Pero eso toma tiempo, no siempre está disponible, y muchas veces ocurre cuando el paciente ya fue admitido. La idea de este ensayo fue distinta: <em>que la capacidad de cuidado paliativo viva adentro del propio equipo de urgencias</em>, no afuera.
+      Otro dato contextual que conviene notar: los equipos de cuidados paliativos están presentes en más de dos tercios de los hospitales estadounidenses y en el 98% de los centros oncológicos designados por el National Cancer Institute. Pero la consulta a estos equipos suele estar disponible solo de lunes a viernes en horario laboral. Los pacientes que llegan a urgencias en crisis fuera de ese horario simplemente no acceden a cuidado paliativo especializado aunque lo necesiten.
+    </p>
+
+    <p class="pico-question">
+      ¿Una intervención multicomponente que entrene al personal de urgencias en habilidades primarias de cuidados paliativos reduce la tasa de admisión hospitalaria en adultos mayores con enfermedad grave limitante de la vida?
+    </p>
+
+    <p>
+      El equipo de PRIM-ER (Primary Palliative Care for Emergency Medicine) llegó a esta pregunta después de haber demostrado previamente, en un estudio citado aquí con la referencia 24, que la consulta especializada de cuidados paliativos disparada desde urgencias mejoraba la calidad de vida a 12 semanas en pacientes con cáncer avanzado. La limitación de ese hallazgo previo era la dependencia de personal especialista en cuidados paliativos, que escasea en muchos lugares. La pregunta nueva de este ensayo es si los cuidados paliativos <em>primarios</em> —habilidades básicas que cualquier clínico puede aprender— pueden ser enseñados y desplegados por la fuerza laboral de urgencias.
     </p>
 
     <h3>Lo que hicieron · diseño del estudio</h3>
 
-    <p>
-      Es un <strong>ensayo clínico aleatorizado por clúster</strong> — no individualiza pacientes, sino hospitales enteros. Treintainueve servicios de urgencias de Estados Unidos se sortearon en distintos momentos para recibir la intervención (diseño por cuñas escalonadas, o <em>stepped-wedge</em>). En total se analizaron 98.922 visitas de adultos de 66 años o más con enfermedad grave limitante de la vida.
-    </p>
-
-    <h4>La intervención tenía cuatro componentes</h4>
-    <ul>
-      <li>Entrenamiento basado en evidencia para todo el personal de urgencias.</li>
-      <li>Formación en habilidades de comunicación en situaciones difíciles.</li>
-      <li>Entrenamiento con simulación de casos.</li>
-      <li>Ciclos de auditoría y retroalimentación con datos del propio servicio.</li>
-    </ul>
+    <h4>Ensayo clínico aleatorizado por clúster, con diseño por cuñas escalonadas (stepped-wedge)</h4>
 
     <p>
-      El <strong>desenlace primario</strong> que eligieron para medir éxito fue la tasa de admisión hospitalaria desde urgencias. Los desenlaces secundarios incluyeron derivación a cuidados paliativos, derivación a hospicio, revisita a 30 días y mortalidad.
-    </p>
-
-    <h3>Lo que encontraron · los resultados</h3>
-
-    <div class="key-number">
-      <div class="num">64,4% → 61,3%</div>
-      <div class="desc">Tasa de admisión hospitalaria antes vs. después de la intervención. La diferencia no fue estadísticamente significativa.</div>
-    </div>
-
-    <p>
-      Dicho sin rodeos: <strong>el paquete de intervención no redujo significativamente la tasa de admisiones hospitalarias</strong>. Tampoco mejoró de forma clara los desenlaces secundarios considerados.
-    </p>
-
-    <p>
-      Aquí está el giro que vale la pena entender bien: este <em>no</em> es un ensayo fallido. Es un ensayo que hace algo metodológicamente importante: mostrar con rigor que la intervención, tal como fue diseñada e implementada, no produjo el efecto esperado sobre el desenlace elegido. Eso es información crítica para el campo.
+      Veintinueve servicios de urgencias de Estados Unidos participaron como clústeres. Cada servicio recibió la intervención en un momento distinto, asignado al azar, siguiendo la lógica del diseño stepped-wedge: al final del ensayo todos los clústeres han recibido la intervención, pero se compara el período antes versus después para cada uno. La aleatorización se hizo entre mayo 2019 y diciembre 2021, con una pausa de 6 meses entre marzo y septiembre de 2020 por la pandemia.
     </p>
 
     <div class="box concepto">
-      <div class="box-label">Concepto clave · ensayo negativo vs. ensayo fallido</div>
-      <p>Un ensayo "negativo" es aquel que no encuentra efecto pero está bien hecho. Un ensayo "fallido" es aquel cuyo diseño o ejecución impidió responder la pregunta. La diferencia es enorme: los ensayos negativos bien diseñados son tan valiosos como los positivos, porque cierran caminos que la comunidad científica ya no tiene que volver a recorrer.</p>
+      <div class="box-label">Concepto clave · diseño stepped-wedge</div>
+      <p>A diferencia del ECA paralelo clásico donde un grupo recibe la intervención y otro no, el diseño por cuñas escalonadas asigna el momento de cruce. Todos los clústeres terminan recibiendo la intervención, lo cual es éticamente más aceptable cuando se considera que la intervención podría beneficiar. Pero metodológicamente requiere controlar cuidadosamente las tendencias temporales, porque todo lo que cambie en el tiempo (nuevas guías clínicas, pandemia, rotación de personal) puede confundirse con el efecto de la intervención.</p>
+    </div>
+
+    <p>
+      La intervención PRIM-ER tenía cuatro componentes activos:
+    </p>
+
+    <ul>
+      <li>Educación multidisciplinaria basada en evidencia sobre cuidados paliativos primarios.</li>
+      <li>Talleres con simulación sobre comunicación en enfermedad grave.</li>
+      <li>Apoyo a la decisión clínica integrado al flujo de trabajo.</li>
+      <li>Ciclos de auditoría y retroalimentación al personal clínico del servicio.</li>
+    </ul>
+
+    <p>
+      La población elegible fueron pacientes de <strong>66 años o más</strong> con al menos 12 meses de enrolamiento previo en Medicare y un Gagne comorbidity score mayor a 6, que representa un riesgo de mortalidad a corto plazo superior al 30%. Se excluyó a pacientes de hogares geriátricos. El desenlace primario fue la admisión hospitalaria desde urgencias. Los desenlaces secundarios incluyeron uso subsecuente de atención en salud (unidad de cuidados intensivos, revisitas a urgencias, uso de hospicio, uso de atención domiciliaria, readmisión) y supervivencia a 6 meses.
+    </p>
+
+    <h3>Lo que encontraron · los resultados principales</h3>
+
+    <div class="key-number">
+      <div class="num">64,4% → 61,3%</div>
+      <div class="desc">Tasa de admisión hospitalaria en el período pre-intervención versus post-intervención. Diferencia absoluta −3,1% (IC 95%: −3,7 a −2,5). Odds ratio ajustado 1,03 (IC 95%: 0,93 a 1,14) — NO estadísticamente significativo.</div>
+    </div>
+
+    <p>
+      El ensayo incluyó <strong>98.922 visitas iniciales</strong> a urgencias. La mediana de edad fue 77 años (RIC 71-84), 50% mujeres, 13% pacientes Black y 78% White, con Gagne comorbidity score mediano de 8. El hallazgo principal es claro: la intervención <strong>no redujo significativamente la admisión hospitalaria</strong>. Aunque la diferencia absoluta bruta parece mostrar una caída de 3 puntos porcentuales, una vez ajustado por las tendencias temporales del diseño stepped-wedge el odds ratio es 1,03 con intervalo de confianza que cruza 1.
+    </p>
+
+    <p>
+      Los desenlaces secundarios cuentan la misma historia. La admisión a unidad de cuidados intensivos bajó de 7,8% a 6,7% (OR ajustado 0,98). Las revisitas a urgencias bajaron de 34,2% a 32,2% (OR ajustado 1,00). El uso de hospicio pasó de 17,7% a 17,2% (OR ajustado 1,04). El uso de atención domiciliaria pasó de 42,0% a 38,1% (OR ajustado 1,01). La readmisión hospitalaria bajó de 41,0% a 36,6% (OR ajustado 1,01). La mortalidad pasó de 28,1% a 28,7% (OR ajustado 1,07). <strong>Ningún desenlace secundario mostró diferencia estadísticamente significativa atribuible a la intervención.</strong>
+    </p>
+
+    <div class="box concepto">
+      <div class="box-label">Concepto clave · ensayo negativo versus ensayo fallido</div>
+      <p>Un ensayo "negativo" es aquel cuyos resultados no muestran el efecto esperado, pero cuyo diseño, ejecución y análisis son metodológicamente sólidos. Un ensayo "fallido" es aquel cuyo diseño o ejecución impide responder la pregunta. PRIM-ER es claramente lo primero. Reclutó casi 99.000 visitas, mantuvo rigor estadístico, ajustó por las tendencias temporales del stepped-wedge, y reporta sus hallazgos sin maquillaje. Los ensayos negativos bien hechos cierran caminos que la comunidad científica ya no tiene que volver a recorrer, y son tan valiosos como los positivos.</p>
     </div>
 
     <h3>Cómo los autores interpretan su propio hallazgo</h3>
 
     <p>
-      Los autores discuten tres explicaciones posibles. La primera es que el <strong>desenlace elegido —admisión hospitalaria— quizá no era el correcto</strong> para medir mejora en calidad de cuidado paliativo: un paciente con enfermedad grave avanzada puede ser correctamente admitido para control sintomático, y eso no es "fracaso". La segunda es que <strong>la heterogeneidad entre los 39 servicios de urgencias</strong> diluyó el efecto: lo que funcionaba en un centro con alta densidad de personal de cuidados paliativos no necesariamente funcionaba en otros. La tercera es que <strong>el entrenamiento solo</strong>, sin cambios estructurales en flujos y recursos, puede no ser suficiente para modificar prácticas arraigadas.
+      Los autores proponen varias explicaciones posibles. Reconocen que la intervención consistía exclusivamente en educación y retroalimentación al personal, sin cambios estructurales en flujos de trabajo ni en disponibilidad de equipos de cuidados paliativos. Sugieren que la transformación cultural en servicios de urgencias de alta rotación requiere más que entrenamiento del personal; requiere cambios en la infraestructura de atención.
+    </p>
+
+    <p>
+      También destacan la heterogeneidad entre los 29 servicios: lo que podía funcionar en un centro académico con alta densidad de personal de cuidados paliativos disponible para interconsulta no necesariamente funcionaba en los demás. La pandemia, además, interrumpió la implementación durante seis meses críticos, lo que pudo haber diluido el efecto acumulativo de la intervención.
+    </p>
+
+    <p>
+      Un matiz interpretativo importante: los autores sugieren que el desenlace primario elegido —admisión hospitalaria— puede no haber sido el adecuado para capturar beneficios reales en calidad de cuidado. Un paciente con enfermedad grave correctamente admitido para control sintomático no es un "fracaso" del cuidado paliativo. Los desenlaces que los pacientes y familias valoran —concordancia con preferencias, control sintomático, lugar de muerte, satisfacción familiar— no fueron medidos en este estudio.
     </p>
 
     <h3>Lo que hay que leer con cuidado · crítica metodológica</h3>
 
     <div class="box critica">
       <div class="box-label">Aspectos que conviene interrogar</div>
-      <p>Primero, el riesgo de <strong>contaminación</strong> entre clústeres: como los hospitales participantes formaban parte de un consorcio académico, el personal intercambiaba información y formación, y eso puede haber diluido la diferencia entre brazos intervención y control.</p>
-      <p>Segundo, el <strong>tiempo entre la intervención y la medición de efecto</strong> puede ser corto para cambios culturales profundos en servicios de urgencias; la literatura sugiere que transformaciones organizacionales de este tipo toman años.</p>
-      <p>Tercero, el desenlace primario <strong>no captura lo que los pacientes y familias valoran</strong>: concordancia entre cuidado recibido y preferencias, control sintomático, satisfacción familiar, lugar de muerte. Si hubo mejoras en estas dimensiones, este estudio no las mide.</p>
+      <p><strong>Primero, la elección del desenlace primario.</strong> Admisión hospitalaria es un desenlace binario y operacionalmente claro, pero semánticamente problemático en cuidado paliativo. Si un paciente con enfermedad grave prefiere morir en hospital con control de síntomas porque el hogar no es un entorno seguro para esa fase final, la admisión no es un fracaso; es concordancia con preferencias. El ensayo carece de instrumentos para distinguir esos dos casos.</p>
+      <p><strong>Segundo, la contaminación entre clústeres.</strong> Los 29 servicios participaban en consorcios académicos con intercambio habitual de personal, formación conjunta y rotación de residentes. Es plausible que el entrenamiento de la intervención se haya filtrado de forma difusa a los clústeres aún no intervenidos durante el período pre, atenuando la diferencia medida.</p>
+      <p><strong>Tercero, la interrupción por pandemia.</strong> Una pausa de 6 meses en un ensayo cuyo mecanismo de efecto es el cambio cultural progresivo en servicios de urgencias probablemente deshace buena parte de la consolidación previa. Los autores lo reconocen pero no cuantifican el impacto.</p>
+      <p><strong>Cuarto, los conflictos de interés declarados.</strong> Varios coautores reportan recibos personales de compañías farmacéuticas y honorarios de organizaciones profesionales. Ninguno es directamente proporcional al desenlace del ensayo, pero el ejercicio de leer la sección "Conflict of Interest Disclosures" es formativo en sí mismo para quienes aprenden a leer ensayos en JAMA.</p>
     </div>
 
     <h3>Por qué este artículo importa para Colombia</h3>
 
     <div class="box colombia">
-      <div class="box-label">Conexión con el SGSSS</div>
-      <p>Colombia no tiene, hoy, ningún ensayo publicado sobre integración de cuidados paliativos en urgencias. No tenemos ni siquiera datos descriptivos sistemáticos sobre cuántos pacientes oncológicos colombianos visitan urgencias en el último trimestre de vida, cuántas de esas visitas son evitables, y cuántas terminan en muerte hospitalaria no concordante con preferencias.</p>
-      <p>Esto significa que <strong>replicar Grudzen en Colombia sería demasiado ambicioso como primer paso</strong>, pero producir la descripción de base —el estudio de cohorte retrospectiva que aún no existe— es una pregunta de investigación perfectamente viable con datos de RIPS y de aseguradoras, dentro del horizonte temporal de una maestría.</p>
+      <div class="box-label">Conexión con el SGSSS y con los vacíos de evidencia local</div>
+      <p>Colombia no tiene, al día de hoy, ni un solo ensayo clínico aleatorizado publicado sobre integración de cuidados paliativos en servicios de urgencias. Tampoco existe una descripción sistemática, con datos RIPS, de cuántos pacientes oncológicos colombianos visitan urgencias en el último trimestre de vida, cuántas de esas visitas son evitables, y cuántas terminan en muerte hospitalaria no concordante con las preferencias del paciente y su familia.</p>
+      <p>Replicar PRIM-ER en Colombia sería demasiado ambicioso como primer paso: requeriría financiamiento multicéntrico que no existe, infraestructura de monitoreo que tampoco, y una cohorte base que ni siquiera hemos caracterizado. Pero producir la descripción de base —una cohorte retrospectiva con datos RIPS y registros de aseguradoras en una red de hospitales de mediana complejidad del SGSSS— es una pregunta de investigación perfectamente viable en el horizonte de dos años de una maestría. Piensa en municipios PDET con IPS de segundo nivel, o en hospitales regionales de Boyacá, Nariño o Cauca como posibles escenarios de partida.</p>
     </div>
 
     <div class="questions">
       <h4>Preguntas para llevar a la sesión</h4>
       <ol>
-        <li>Si el desenlace "admisión hospitalaria" no midió lo importante, ¿cuál elegirías tú si diseñaras una réplica de este estudio para Colombia? Justifica.</li>
-        <li>La intervención fue solo entrenamiento del personal. ¿Qué cambios estructurales crees que habría que añadir para que el entrenamiento produjera efecto?</li>
-        <li>¿Qué diferencias operacionales entre un servicio de urgencias colombiano de mediana complejidad y uno académico estadounidense harían más —o menos— probable que esta intervención funcionara aquí?</li>
+        <li>Si el desenlace "admisión hospitalaria" no capturó lo que importaba en cuidado paliativo, ¿qué desenlace elegirías tú si diseñaras una réplica parcial de este estudio en un hospital colombiano de mediana complejidad? Justifica con al menos dos argumentos.</li>
+        <li>La intervención PRIM-ER fue solo educación y retroalimentación al personal. ¿Qué tres cambios estructurales agregarías para que el entrenamiento pudiera traducirse en cambio real de práctica en un servicio de urgencias del SGSSS?</li>
+        <li>¿Qué diferencias operacionales entre un servicio de urgencias colombiano de mediana complejidad y uno académico estadounidense harían más —o menos— probable que esta intervención produjera efecto aquí?</li>
       </ol>
     </div>
 
   </article>
 
   <div class="separator">· · ·</div>
-
 
   <!-- ============================================================ -->
   <!-- ARTÍCULO 02 · BASCH 2022                                      -->
@@ -798,116 +804,130 @@
       <div class="paper-eyebrow">Unit 3.4 · Digital tools</div>
       <h1 class="paper-title">La voz del paciente <em>como intervención</em></h1>
       <p class="paper-authors">
-        Basch E, Schrag D, Henson S, Jansen J, Ginos B, Stover AM, et al.
+        Basch E, Schrag D, Henson S, Jansen J, Ginos B, Stover AM, et al. (Alliance PRO-TECT · AFT-39).
       </p>
       <p class="paper-source">
-        <strong>JAMA · </strong>2022 · 327(24): 2413-2422 · <strong>PMID:</strong> 35661856
+        <strong>JAMA · </strong>2022 Jun 28; 327(24): 2413-2422 · <strong>DOI:</strong> 10.1001/jama.2022.9265 · <strong>PMID:</strong> 35661856 · <strong>Trial:</strong> NCT03249090
       </p>
 
       <div class="access-buttons">
         <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9168923/" target="_blank" class="btn-access primary">
-          <span class="icon">📄</span> Leer artículo completo (PMC · acceso abierto)
-        </a>
-        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9168923/pdf/jama_basch_2022_oi_220040_1654020478.31717.pdf" target="_blank" class="btn-access secondary">
-          <span class="icon">⬇</span> Descargar PDF
+          <span class="icon">📄</span> Artículo completo en PMC (acceso abierto)
         </a>
         <a href="https://pubmed.ncbi.nlm.nih.gov/35661856/" target="_blank" class="btn-access secondary">
-          <span class="icon">🔗</span> Abstract en PubMed
+          <span class="icon">🔗</span> Resumen en PubMed
         </a>
       </div>
-      <p class="access-note">Artículo en acceso abierto. Complementario recomendado (cinco minutos): Basch et al., JAMA 2017 (PMC5817466), que muestra el efecto sobre supervivencia global 5 meses mayor.</p>
+      <p class="access-note">Acceso abierto completo vía PubMed Central. Complementario recomendado: Basch E et al., JAMA 2017 (PMC5817466), que reporta el efecto sobre supervivencia global en la versión monocéntrica previa del mismo sistema de monitoreo.</p>
     </div>
 
     <h3>El contexto y la pregunta que buscan responder</h3>
 
     <p>
-      Los pacientes con cáncer metastásico sufren síntomas —dolor, fatiga, náusea, ansiedad— entre una consulta oncológica y la siguiente. El modelo tradicional es: el paciente espera hasta la próxima cita para reportar, o llama si el síntoma es grave. Pero muchas veces no llama a tiempo, o el síntoma escala silenciosamente y termina en una visita a urgencias evitable.
+      Los pacientes con cáncer en tratamiento experimentan síntomas frecuentes relacionados con la enfermedad y con las terapias: dolor, náusea, fatiga, disnea, tristeza, ansiedad. Los autores citan evidencia previa que muestra que estos síntomas con frecuencia <strong>no son detectados ni tratados oportunamente</strong>. El modelo tradicional de atención oncológica asume que el paciente reportará espontáneamente los síntomas en la próxima cita o llamará si algo empeora. Pero el paciente muchas veces no llama a tiempo, o el síntoma escala silenciosamente y termina en una visita a urgencias evitable o en una hospitalización que podría haberse prevenido.
     </p>
 
     <p>
-      La pregunta de Basch y su equipo es: <strong>si damos al paciente una plataforma digital para reportar síntomas semanalmente desde su casa, y generamos alertas automáticas al clínico cuando un síntoma cruza un umbral, ¿mejora la calidad de vida del paciente?</strong>
+      Desde hace una década el grupo de Basch viene desarrollando sistemas de reporte electrónico de síntomas que permiten al paciente, no al clínico, registrar frecuencia, intensidad e interferencia con la vida diaria. El estudio monocéntrico original de 2017 mostró que este tipo de intervención prolongaba la supervivencia global cinco meses en pacientes con cáncer metastásico. Pero aquel primer estudio fue en un solo centro académico de altos recursos. Quedaba abierta la pregunta de validez externa.
+    </p>
+
+    <p class="pico-question">
+      En pacientes con cáncer metastásico recibiendo tratamiento sistémico en centros oncológicos comunitarios, ¿el monitoreo semanal electrónico de síntomas con alertas clínicas automatizadas mejora función física, control sintomático y calidad de vida a tres meses, comparado con atención usual?
     </p>
 
     <p>
-      Este no es un estudio cualquiera. Es la <strong>versión multicéntrica con validez externa</strong> del hallazgo original de Basch 2017, donde el mismo grupo demostró que el monitoreo electrónico de síntomas prolongaba la supervivencia global cinco meses en pacientes con cáncer metastásico. Aquel primer estudio era monocéntrico en Memorial Sloan Kettering; este amplía la demostración a 52 centros oncológicos distintos.
+      El ensayo PRO-TECT es la versión multicéntrica con validez externa del hallazgo original. Fue diseñado como estudio con <strong>doble desenlace primario</strong> (función física a 3 meses + supervivencia global), pero en diciembre 2020, antes del análisis de datos, se modificó el protocolo para dejar solo supervivencia global como desenlace primario. La función física pasó a desenlace secundario clave. El artículo publicado en 2022 reporta los desenlaces secundarios; los datos de supervivencia aún no estaban disponibles al momento de la publicación.
     </p>
 
     <h3>Lo que hicieron · diseño del estudio</h3>
 
+    <h4>Ensayo clínico aleatorizado por clúster, multicéntrico</h4>
+
     <p>
-      <strong>Ensayo clínico aleatorizado por clúster</strong> en 52 centros oncológicos comunitarios de Estados Unidos. Se incluyeron 1.191 pacientes adultos con cáncer metastásico en tratamiento sistémico activo. Los centros se aleatorizaron a brindar monitoreo electrónico de síntomas con PRO-CTCAE o atención usual.
+      Cincuenta y dos prácticas oncológicas comunitarias en 25 estados de Estados Unidos, pertenecientes a la red nacional Alliance for Clinical Trials in Oncology. Aleatorizadas 1:1 a intervención ePRO versus atención usual, con estratificación por designación rural/urbana del US Census. Catorce de las 52 prácticas (26,9%) eran rurales, siete por grupo. Entre octubre 2017 y marzo 2020 se enrolaron <strong>1.191 pacientes</strong> (la meta original era 1.200; la pandemia forzó a detener el reclutamiento con 99,3% de la meta alcanzada).
     </p>
 
-    <h4>La intervención tenía dos ingredientes activos</h4>
+    <p>
+      La intervención tenía varios componentes activos:
+    </p>
+
     <ul>
-      <li>El paciente recibía semanalmente un cuestionario electrónico PRO-CTCAE que cubría nueve síntomas comunes del tratamiento oncológico (dolor, náusea, fatiga, disnea, tristeza, ansiedad, neuropatía, diarrea, estreñimiento).</li>
-      <li>Cuando un síntoma alcanzaba severidad "grave" o empeoraba respecto al reporte anterior, el sistema enviaba <strong>alerta automática en tiempo real al equipo clínico</strong>, quien debía contactar al paciente en 48 horas o menos.</li>
+      <li>Encuesta semanal electrónica con ítems del PRO-CTCAE sobre nueve síntomas: dolor, náusea, vómito, estreñimiento, diarrea, disnea, insomnio, depresión, y capacidad de ingesta oral.</li>
+      <li>Incluía además estado funcional ECOG auto-reportado, caídas, y dificultades financieras.</li>
+      <li>Disponible en inglés, español y mandarín, vía internet o vía sistema telefónico automatizado.</li>
+      <li>Recordatorio automatizado si el paciente no completaba la encuesta en 24 horas; llamada de refuerzo del personal clínico si no completaba en 72 horas.</li>
+      <li>Alertas en tiempo real al equipo clínico cuando un síntoma alcanzaba nivel grave o empeoraba respecto al reporte previo.</li>
     </ul>
 
+    <div class="box concepto">
+      <div class="box-label">Concepto clave · qué es PRO-CTCAE</div>
+      <p>El <strong>Patient-Reported Outcomes version of the Common Terminology Criteria for Adverse Events</strong> es un sistema desarrollado por el National Cancer Institute de Estados Unidos que permite al paciente reportar síntomas directamente, con sus propias palabras, usando escalas Likert validadas. Contiene ítems que miden frecuencia, intensidad e interferencia con la vida diaria. Su validez psicométrica ha sido documentada en múltiples cohortes internacionales. El ensayo de Basch usa un subconjunto de ítems PRO-CTCAE seleccionados por su prevalencia en cáncer avanzado.</p>
+    </div>
+
     <p>
-      Los desenlaces primarios evaluados a 3 meses fueron calidad de vida relacionada con la salud (medida con el cuestionario EORTC QLQ-C30), gravedad de síntomas físicos y gravedad de síntomas psicológicos.
+      Los desenlaces secundarios reportados en este artículo son <strong>función física, control sintomático y calidad de vida relacionada con la salud a los 3 meses</strong>, todos medidos con el cuestionario EORTC QLQ-C30 (escala 0-100 puntos; puntajes más altos indican mejor estado). Para función física, la diferencia mínima clínicamente importante establecida es de 2 a 7 puntos; para control sintomático y calidad de vida no hay MCID establecido formalmente.
+    </p>
+
+    <h3>Lo que encontraron · los resultados principales</h3>
+
+    <div class="key-number">
+      <div class="num">+ 2,47 &nbsp; + 2,56 &nbsp; + 2,43</div>
+      <div class="desc">Diferencia media en puntos EORTC QLQ-C30 a los 3 meses, brazo intervención vs. control. Función física: +2,47 (IC 95%: 0,41-4,53; p=0,02). Control sintomático: +2,56 (IC 95%: 0,95-4,17; p=0,002). Calidad de vida: +2,43 (IC 95%: 0,90-3,96; p=0,002). Todas estadísticamente significativas.</div>
+    </div>
+
+    <p>
+      La mediana de edad fue 63 años (rango 28-93), 58,3% mujeres, 79,5% pacientes White, 16,8% Black o African American en el brazo ePRO. Un dato importante del perfil poblacional: <strong>39,4% de los participantes tenían educación secundaria o menor</strong>, y <strong>16,9% tenían experiencia limitada con internet</strong>. A los 3 meses, el 97,3% permanecía en el estudio y el 97,1% de ellos había completado el QLQ-C30. La adherencia a la encuesta semanal fue notable: 63,7% la completaba vía internet y 36,3% vía teléfono automatizado.
+    </p>
+
+    <p>
+      Más allá del promedio, el análisis de respondedores muestra que los pacientes del grupo ePRO tuvieron <strong>odds significativamente mayores de experimentar beneficio clínicamente relevante</strong> (definido como cambio de 5 puntos o más): para función física OR 1,35 (IC 95%: 1,08-1,70; p=0,009); para control sintomático OR 1,50 (IC 95%: 1,15-1,95; p=0,003); para calidad de vida OR 1,41 (IC 95%: 1,10-1,81; p=0,006).
     </p>
 
     <div class="box concepto">
-      <div class="box-label">Recuerda · qué es PRO-CTCAE</div>
-      <p>El <strong>PRO-CTCAE</strong> (Patient-Reported Outcomes version of the Common Terminology Criteria for Adverse Events) es un sistema desarrollado por el National Cancer Institute de EE.UU. que permite al paciente, no al clínico, reportar frecuencia, intensidad e interferencia con su vida diaria de 124 posibles síntomas del tratamiento oncológico. Es el estándar internacional de reporte de síntomas desde la perspectiva del paciente.</p>
+      <div class="box-label">Matiz importante · cuán grande es "+2,5 puntos"</div>
+      <p>Una mejoría de 2,47 puntos en una escala 0-100 puede parecer modesta. Pero en función física la diferencia mínima clínicamente importante está establecida entre 2 y 7 puntos, por lo que el efecto observado <em>cae dentro</em> del umbral clínicamente relevante. Además, el análisis de respondedores muestra que los pacientes del grupo ePRO fueron significativamente más propensos a mejorar en 5 o más puntos y menos propensos a empeorar en 5 o más puntos. El efecto es modesto en puntos absolutos pero robusto en distribución.</p>
     </div>
-
-    <h3>Lo que encontraron · los resultados</h3>
-
-    <div class="key-number">
-      <div class="num">+ 3,6 puntos</div>
-      <div class="desc">Mejora en calidad de vida relacionada con la salud (EORTC QLQ-C30) en el brazo intervención vs. control. La diferencia es estadísticamente significativa y clínicamente relevante.</div>
-    </div>
-
-    <p>
-      Los pacientes que recibieron monitoreo electrónico de síntomas tuvieron <strong>mejoría significativa en calidad de vida, en gravedad de síntomas físicos y en gravedad de síntomas psicológicos</strong> a los tres meses de seguimiento, comparados con los que recibieron atención usual.
-    </p>
-
-    <p>
-      El efecto no solo era estadísticamente significativo; era <em>clínicamente significativo</em>, es decir, del tamaño que los pacientes y clínicos pueden percibir en la práctica cotidiana.
-    </p>
 
     <h3>Cómo los autores interpretan su propio hallazgo</h3>
 
     <p>
-      Los autores argumentan que lo que funciona no es la tecnología por sí misma, sino la <strong>combinación de dos mecanismos causales</strong>. El primero es el <em>empoderamiento del paciente</em>: al reportar regularmente, el paciente se vuelve más consciente de sus propios síntomas y de su evolución, lo cual cambia su relación con la enfermedad y con el tratamiento. El segundo es la <em>reducción del retraso entre síntoma y atención</em>: la alerta automática fuerza al equipo clínico a actuar temprano, antes de que el síntoma escale.
+      Los autores son cuidadosos en llamar a sus hallazgos "provisionales" hasta que esté disponible el desenlace primario de supervivencia. Pero interpretan los resultados secundarios como consistentes con la hipótesis de trabajo del equipo: <strong>el monitoreo electrónico de síntomas funciona a través de dos mecanismos combinados</strong>. Por un lado, empodera al paciente: al reportar regularmente, el paciente se vuelve más consciente de sus síntomas y de su trayectoria, lo cual cambia su relación con la enfermedad y con el tratamiento. Por otro lado, reduce el retraso entre síntoma y atención: la alerta automática fuerza al equipo clínico a actuar temprano.
     </p>
 
     <p>
-      Un sistema ePRO sin alertas al clínico es un registro muerto. Un sistema con alertas pero sin engagement del paciente es un formulario ignorado. Los dos mecanismos, combinados, producen el efecto.
+      Un sistema ePRO sin alertas efectivas al clínico es un registro muerto. Un sistema con alertas pero sin engagement del paciente es un formulario ignorado. Los dos mecanismos, combinados, producen el efecto. Los autores sugieren que integrar el monitoreo electrónico de síntomas en el tratamiento oncológico rutinario puede mejorar desenlaces importantes para los pacientes, y que existen oportunidades de reembolso por parte de aseguradoras que podrían facilitar la implementación.
     </p>
 
     <h3>Lo que hay que leer con cuidado · crítica metodológica</h3>
 
     <div class="box critica">
       <div class="box-label">Aspectos que conviene interrogar</div>
-      <p>Primero, la <strong>población del estudio</strong> son pacientes de centros oncológicos comunitarios estadounidenses, mayoritariamente con alfabetización digital y acceso a internet confiable. La validez externa a poblaciones rurales, indígenas o con brecha digital es una pregunta abierta.</p>
-      <p>Segundo, el <strong>algoritmo de alertas</strong> del sistema no se describe en detalle en el artículo: qué umbrales disparan la alerta, cómo se priorizan cuando llegan muchas simultáneamente, cuál es la carga de trabajo adicional para el equipo clínico. Esto es información crítica si se quisiera replicar el sistema.</p>
-      <p>Tercero, el desenlace principal es <strong>calidad de vida a 3 meses</strong>. El efecto de supervivencia —el hallazgo más impactante del equipo— requiere seguimiento más largo y no se demuestra en este estudio específico.</p>
+      <p><strong>Primero, los desenlaces reportados son secundarios.</strong> El protocolo original declaraba función física y supervivencia como co-primarios. El cambio de protocolo en diciembre 2020 —antes del análisis de datos, según declaran los autores— dejó solo supervivencia como primario. El artículo publicado es, por tanto, el reporte de desenlaces secundarios. Los propios autores advierten que las conclusiones deben interpretarse como "provisionales" hasta que supervivencia esté disponible. Esto no descalifica los hallazgos, pero sí modula cómo deben citarse.</p>
+      <p><strong>Segundo, la población del estudio.</strong> 79,5% pacientes White, solo 2,4% hispanos en el brazo intervención. La validez externa a poblaciones rurales colombianas, a comunidades indígenas o afrocolombianas con distinta alfabetización digital, a contextos con brecha de conectividad estructural, es una pregunta completamente abierta.</p>
+      <p><strong>Tercero, la caja negra del algoritmo de alertas.</strong> El artículo describe que las alertas se disparan cuando un síntoma alcanza umbral o empeora respecto al reporte previo, pero los umbrales específicos están en el material suplementario, no en el cuerpo del texto. Replicar el sistema exigiría acceso a esa información, más implementación técnica no trivial.</p>
+      <p><strong>Cuarto, los conflictos de interés.</strong> Dr. Basch, el primer autor, reporta honorarios de varias compañías relacionadas con sistemas de ePRO y es propietario de Carolina Informatics. Los autores también declaran que Basch y Schrag son editores asociados de JAMA, aunque aclaran que no participaron en la decisión editorial sobre este artículo. El patrón es transparente pero merece ser notado. Un estudio sobre ePRO conducido por investigadores con intereses comerciales en ePRO no invalida sus resultados; sí obliga a leerlos con los ojos bien abiertos.</p>
     </div>
 
     <h3>Por qué este artículo importa para Colombia</h3>
 
     <div class="box colombia">
       <div class="box-label">Conexión con el contexto colombiano</div>
-      <p>La intervención de Basch tiene un efecto demostrado sobre calidad de vida e incluso sobre supervivencia (en los estudios previos del equipo). Pero requiere tres condiciones que en Colombia no son obvias: acceso a dispositivo digital por parte del paciente, conectividad a internet estable, y <strong>capacidad operativa del equipo clínico para responder a alertas en 48 horas</strong>.</p>
-      <p>Las preguntas colombianas son: ¿cómo se adapta culturalmente PRO-CTCAE para población oncológica rural del Pacífico o del piedemonte amazónico? ¿Qué modelo híbrido —digital + promotor comunitario— podría funcionar en zonas con brecha digital? ¿Se mantiene el efecto sobre calidad de vida cuando el tiempo de respuesta del sistema de salud es estructuralmente más lento que en los centros comunitarios estadounidenses?</p>
+      <p>La intervención de Basch tiene evidencia robusta de efecto sobre calidad de vida e indicios previos de efecto sobre supervivencia. Pero la intervención asume tres cosas que en Colombia no son obvias: acceso del paciente a dispositivo digital propio, conectividad a internet estable, y capacidad operativa del equipo clínico para responder a alertas en horas, no en semanas. Las tres condiciones son estándar en el sistema de salud estadounidense que describe el artículo; ninguna lo es en zonas rurales colombianas.</p>
+      <p>Las preguntas de investigación colombiana que se abren aquí son múltiples y todas viables en horizonte de maestría: ¿cómo se adapta culturalmente PRO-CTCAE para población oncológica del piedemonte amazónico, del Pacífico chocoano, o del Catatumbo? ¿Qué modelo híbrido —digital combinado con promotor comunitario— podría funcionar en zonas con brecha digital? ¿Se mantiene el efecto sobre calidad de vida cuando el tiempo de respuesta del sistema es estructuralmente más lento? ¿Qué adaptaciones requiere el algoritmo de alertas para que funcione en IPS donde el oncólogo ve pacientes cada 21 días y no semanalmente? Una cohorte piloto de 30 pacientes en una IPS oncológica colombiana es un protocolo defendible desde MORECare.</p>
     </div>
 
     <div class="questions">
       <h4>Preguntas para llevar a la sesión</h4>
       <ol>
-        <li>Si solo pudieras conservar uno de los dos mecanismos causales (empoderamiento del paciente, alerta al clínico) porque el sistema de salud colombiano no puede pagar ambos, ¿cuál conservarías y por qué?</li>
-        <li>¿Qué adaptaciones operativas y lingüísticas requeriría PRO-CTCAE para usarse con pacientes oncológicos de una comunidad indígena colombiana?</li>
-        <li>Si el efecto es pequeño en puntos absolutos (+3,6 en EORTC) pero clínicamente relevante, ¿cómo argumentarías ante una aseguradora colombiana que vale la pena financiar esta intervención?</li>
+        <li>Si solo pudieras conservar uno de los dos mecanismos causales propuestos (empoderamiento del paciente por auto-reporte, alerta automatizada al clínico) porque el sistema de salud colombiano no puede financiar ambos, ¿cuál conservarías y qué argumentos darías?</li>
+        <li>¿Qué adaptaciones lingüísticas, tecnológicas y operativas requeriría PRO-CTCAE para usarse con pacientes oncológicos de una comunidad indígena Wayuu, o con pacientes afrocolombianos del Chocó? Menciona al menos tres adaptaciones específicas.</li>
+        <li>Si el efecto absoluto es pequeño (+2,5 puntos en EORTC QLQ-C30) pero clínicamente relevante, ¿cómo argumentarías ante una aseguradora del SGSSS que vale la pena financiar esta intervención? ¿Qué desenlace económico adicional necesitarías medir para fortalecer el caso?</li>
       </ol>
     </div>
 
   </article>
 
   <div class="separator">· · ·</div>
-
 
   <!-- ============================================================ -->
   <!-- ARTÍCULO 03 · KIRKLAND 2022                                   -->
@@ -923,142 +943,170 @@
         Kirkland SW, Yang EH, Garrido Clua M, Kruhlak M, Campbell S, Villa-Roel C, Rowe BH.
       </p>
       <p class="paper-source">
-        <strong>Academic Emergency Medicine · </strong>2022 · 29(10): 1229-1246 · <strong>DOI:</strong> 10.1111/acem.14492 · <strong>PMID:</strong> 35344239
+        <strong>Academic Emergency Medicine · </strong>2022; 29(10): 1229-1246 · <strong>DOI:</strong> 10.1111/acem.14492 · <strong>PMID:</strong> 35344239 · <strong>PROSPERO:</strong> CRD42018086178
       </p>
 
       <div class="access-buttons">
         <a href="https://pubmed.ncbi.nlm.nih.gov/35344239/" target="_blank" class="btn-access primary">
-          <span class="icon">🔗</span> Abstract en PubMed (acceso libre)
+          <span class="icon">🔗</span> Resumen en PubMed (acceso libre)
         </a>
         <a href="https://onlinelibrary.wiley.com/doi/10.1111/acem.14492" target="_blank" class="btn-access restricted">
           <span class="icon">🔒</span> Texto completo en Wiley (vía SINABI UAN)
         </a>
       </div>
       <p class="access-note">
-        Este artículo es de acceso restringido en Wiley. <strong>Para acceder al PDF completo ingresa a través de SINABI — la biblioteca virtual de la UAN</strong> e ir a la base Wiley Online Library. Si tienes dificultad para acceder, contacta al docente. La síntesis que viene a continuación se construyó sobre el texto completo, así que puedes trabajar con ella para la sesión.
+        Este artículo es de acceso restringido en Wiley. <strong>Para acceder al PDF completo ingresa a través de SINABI — la biblioteca virtual de la UAN</strong>, base Wiley Online Library. Si tienes dificultad para acceder, contacta al docente: el PDF completo está disponible en el material de la asignatura. La síntesis a continuación se construyó sobre el texto completo del artículo.
       </p>
     </div>
 
     <h3>El contexto y la pregunta que buscan responder</h3>
 
     <p>
-      Muchos pacientes con necesidades paliativas no atendidas llegan a urgencias y nadie las identifica. El personal de urgencias, por formación y por presión de tiempo, está entrenado para salvar vidas, no para reconocer trayectorias de final de vida. Desde 2013 la <em>Choosing Wisely Campaign</em> recomienda iniciar cuidados paliativos desde urgencias, pero identificar a los pacientes elegibles en un ambiente caótico sigue siendo el obstáculo práctico central.
+      Con el aumento de visitas a urgencias de pacientes con enfermedad avanzada y de fin de vida, la iniciativa internacional Choosing Wisely ha recomendado desde 2013 la integración temprana de cuidados paliativos en urgencias. Pero identificar qué pacientes tienen necesidades paliativas no atendidas —y hacerlo en el ambiente caótico, con alta rotación y poco tiempo que caracteriza a un servicio de urgencias— es operacionalmente difícil. Múltiples instrumentos de tamizaje se han desarrollado con la intención de asistir al personal clínico en esta tarea, pero no hay consenso sobre cuál funciona mejor.
     </p>
 
     <p>
-      La pregunta de esta revisión es: <strong>¿qué instrumentos de tamizaje existen para identificar pacientes con necesidades paliativas no atendidas en urgencias, y cuál es su desempeño psicométrico?</strong> Es una revisión actualizada (búsqueda cerrada en agosto 2021) de una revisión previa de 2016 que solo había identificado siete estudios.
+      La revisión de Kirkland actualiza una revisión previa de 2016 (George et al.) que incluía apenas siete estudios. Desde entonces se ha publicado una cantidad sustancial de nueva evidencia que justifica una síntesis renovada.
+    </p>
+
+    <p class="pico-question">
+      ¿Cuáles son los instrumentos de tamizaje disponibles para identificar pacientes adultos con necesidades paliativas no atendidas en urgencias, y cuáles son sus propiedades psicométricas?
     </p>
 
     <h3>Lo que hicieron · diseño de la revisión sistemática</h3>
 
+    <h4>Revisión sistemática con protocolo registrado en PROSPERO (CRD42018086178), siguiendo PRISMA</h4>
+
     <p>
-      <strong>Revisión sistemática</strong> registrada en PROSPERO (CRD42018086178) siguiendo PRISMA. Búsqueda por bibliotecaria experta en OVID Medline, OVID EMBASE, CINAHL, Scopus, ProQuest, Cochrane Library y PROSPERO, sin límite de idioma ni de fecha. También búsqueda en literatura gris incluyendo registros de ensayos clínicos y resúmenes de congresos de medicina de urgencias. Cribado independiente por pares con resolución por consenso.
+      Búsqueda conducida por bibliotecaria experta en OVID Medline, OVID EMBASE, OVID Health and Psychosocial Instruments, EBSCO-CINAHL, Scopus, ProQuest Dissertations and Theses Global, Cochrane Library y PROSPERO. Búsquedas actualizadas hasta agosto 2021. Sin límites de idioma ni año. Búsqueda complementaria en literatura gris incluyendo Google Scholar, registros de ensayos clínicos, bibliografías de revisiones conocidas y resúmenes de congresos de medicina de urgencias. Cribado y extracción independiente por dos revisores con resolución de desacuerdos por consenso.
     </p>
 
     <p>
-      De 5491 títulos únicos tamizados, <strong>35 estudios fueron incluidos</strong>, que evaluaron <strong>14 instrumentos distintos</strong>. La calidad metodológica se evaluó con QUADAS, STARD y Newcastle-Ottawa según el diseño de cada estudio.
+      Criterios de inclusión: estudios que evaluaran un instrumento de tamizaje aplicado a pacientes adultos en servicios de urgencias para identificar necesidades paliativas no atendidas. No se exigía grupo control ni estándar de referencia ni reporte de propiedades psicométricas para ser incluido. Se excluyeron revisiones, editoriales y reportes de casos.
+    </p>
+
+    <p>
+      Evaluación de calidad metodológica con QUADAS y STARD para estudios que reportaban propiedades psicométricas; con Newcastle-Ottawa Scale para estudios observacionales que no las reportaban. Síntesis narrativa con medianas de medianas y rangos intercuartílicos. Sin meta-análisis formal debido a la heterogeneidad.
+    </p>
+
+    <p>
+      De 5.491 títulos únicos tamizados tras eliminar duplicados, <strong>35 estudios fueron incluidos</strong>, que evaluaron <strong>14 instrumentos distintos</strong>.
     </p>
 
     <h3>Lo que encontraron · los resultados principales</h3>
 
     <p>
-      De los 14 instrumentos identificados, tres concentran la mayor parte de la evidencia empírica:
+      Tres instrumentos concentran la mayor parte de la evidencia empírica:
     </p>
 
     <ul>
-      <li>La <strong>Surprise Question (SQ)</strong> — 12 estudios. Una sola pregunta que el clínico se hace a sí mismo: "¿me sorprendería si este paciente muriera en los próximos 12 meses?". Si la respuesta es "no me sorprendería", el paciente entra al tamizaje positivo. Algunos estudios usan una versión modificada a 30 días.</li>
-      <li>El <strong>P-CaRES</strong> (Palliative Care and Rapid Emergency Screening) — 8 estudios. Dos dominios: primero identificar si el paciente tiene alguna condición limitante de vida (demencia avanzada, cáncer, EPOC, ERC, cirrosis, shock séptico, entre otras); si es así, evaluar factores de riesgo de necesidades no atendidas (hospitalizaciones previas en los últimos 6 meses, síntomas no controlados, deterioro funcional, incertidumbre de metas de cuidado, distrés del cuidador, respuesta afirmativa a la SQ). Si cumple al menos una condición limitante y dos factores de riesgo, tamizaje positivo.</li>
-      <li>El <strong>SPEED</strong> (Screening for Palliative and End-of-life care needs in the Emergency Department) — 4 estudios. 13 ítems organizados en cinco dominios: físico, psicológico, social, espiritual, terapéutico. Existe versión corta de 5 ítems. Los estudios con SPEED se centraron en pacientes con cáncer activo o falla cardíaca terminal.</li>
+      <li>La <strong>Surprise Question (SQ)</strong> — 12 estudios. Una sola pregunta que el clínico se hace a sí mismo: "¿Me sorprendería si este paciente muriera en los próximos 12 meses?". Respuesta "no me sorprendería" = tamizaje positivo. Algunos estudios usan versión modificada a 30 días.</li>
+      <li>El <strong>P-CaRES</strong> (Palliative Care and Rapid Emergency Screening tool) — 8 estudios. Primero identifica condiciones limitantes de vida (demencia avanzada, enfermedad del SNC, cáncer, EPOC, enfermedad renal crónica, cirrosis, shock séptico en mayores de 65, o discreción del clínico por alta probabilidad de muerte acelerada). Si hay al menos una, evalúa factores de riesgo de necesidades no atendidas (visitas a urgencias u hospitalizaciones en los 6 meses previos, síntomas no controlados, deterioro funcional, incertidumbre sobre metas de cuidado, distrés del cuidador, respuesta positiva a SQ). Positivo si al menos una condición + dos o más factores de riesgo.</li>
+      <li>El <strong>SPEED</strong> (Screening for Palliative and End-of-life care needs in the Emergency Department) — 4 estudios. 13 ítems organizados en cinco dominios: físico, psicológico, social, espiritual, terapéutico. Existe versión corta de 5 ítems. Los estudios se centraron en pacientes con cáncer activo o falla cardíaca terminal.</li>
     </ul>
 
+    <p>
+      De los 35 estudios, solo 12 reportaron propiedades psicométricas formales. De estos, 9 evaluaron la SQ, principalmente para predecir mortalidad. Los demás instrumentos están mucho menos caracterizados psicométricamente.
+    </p>
+
     <div class="key-number">
-      <div class="num">63% · 75%</div>
-      <div class="desc">Sensibilidad y especificidad medianas de la Surprise Question para predecir mortalidad (1 a 12 meses). Valor predictivo positivo bajo (32%, IQR 16-40%). Valor predictivo negativo alto (91%, IQR 88-95%).</div>
+      <div class="num">63% · 75% · 32% · 91%</div>
+      <div class="desc">Sensibilidad mediana (IQR 38-78%), especificidad mediana (IQR 57-84%), VPP mediano (IQR 16-40%), VPN mediano (IQR 88-95%) de la Surprise Question para predecir mortalidad a 1 o 12 meses, sobre 9 estudios.</div>
     </div>
 
     <p>
-      Un hallazgo metodológicamente fino: <strong>la SQ funciona mejor como predictor a 12 meses que a 30 días</strong>. La sensibilidad a 30 días osciló entre 12 y 43%; a 12 meses entre 57 y 89%. Es decir, la pregunta "¿le sorprendería que este paciente muriera en los próximos 30 días?" identifica muy mal a los que realmente fallecerán en ese lapso.
-    </p>
-
-    <p>
-      La SQ es operacionalmente imbatible porque se aplica en segundos y no requiere entrenamiento. Pero su valor predictivo positivo es bajo: <strong>de cada tres pacientes identificados como "sorprendería si murieran", solo uno efectivamente fallece en el plazo predicho</strong>. Su fortaleza está en el valor predictivo negativo alto: si el clínico <em>no</em> se sorprendería, la probabilidad de que el paciente sobreviva el período es alta. Es mejor herramienta para <em>descartar</em> necesidad paliativa que para confirmarla.
+      Un hallazgo fino: <strong>la SQ funciona sustancialmente mejor como predictor a 12 meses que a 30 días</strong>. La sensibilidad a 30 días osciló entre 12% y 43%; a 12 meses entre 57% y 89%. La especificidad a 30 días fue entre 82% y 95%; a 12 meses entre 40% y 79%. Es decir: la pregunta "¿me sorprendería que este paciente muriera en los próximos 30 días?" tiene muy baja capacidad de identificar a los que efectivamente fallecerán en ese lapso. La versión original de 12 meses es la que tiene mejor desempeño.
     </p>
 
     <div class="box concepto">
-      <div class="box-label">Matiz importante · SQ en pacientes con cáncer</div>
-      <p>El estudio de Verhoef 2020 en pacientes con cáncer terminal reportó sensibilidad 89% y VPP 85% — sustancialmente mejor que el promedio de la revisión. Una revisión sistemática independiente (Downar 2017, CMAJ) también encontró que la SQ funciona mejor en población oncológica que en pacientes con condiciones no oncológicas. Esto es directamente relevante para el caso de Carmen: en ella, la SQ probablemente habría funcionado.</p>
+      <div class="box-label">Matiz importante · SQ en pacientes oncológicos</div>
+      <p>El estudio de Verhoef 2020 (Países Bajos, n=245, pacientes con cáncer en fase terminal) reportó para la SQ sensibilidad 89%, especificidad 40%, VPP 85% y VPN 50%. Son cifras sustancialmente distintas del promedio de la revisión. Una revisión sistemática independiente (Downar 2017, CMAJ) también documentó que la SQ funciona peor en pacientes con condiciones no oncológicas. Esto es directamente relevante para el caso de Carmen y para nuestra sesión: en pacientes oncológicos la SQ probablemente habría funcionado.</p>
     </div>
 
     <h4>P-CaRES y SPEED: buena validez de contenido, propiedades psicométricas escasas</h4>
 
     <p>
-      Aquí hay que leer la evidencia con cuidado. El P-CaRES y el SPEED tienen <strong>validez de contenido documentada</strong> — fueron desarrollados con revisión sistemática de literatura y consenso de expertos — pero la revisión encontró muy pocos estudios que reporten sus propiedades psicométricas formales (sensibilidad, especificidad) aplicados en urgencias.
+      Aquí la evidencia requiere lectura cuidadosa. El P-CaRES y el SPEED tienen validez de contenido documentada en sus estudios de desarrollo (George 2015 para P-CaRES; Richards 2011 para SPEED). Pero la revisión encontró muy pocos estudios que reporten sus propiedades psicométricas formales cuando se aplican en urgencias.
     </p>
 
     <p>
-      De los 8 estudios con P-CaRES, solo uno (Howard 2021, n=58) comparó el desempeño cuando lo aplicaron capellanes clínicos entrenados versus médicos de urgencias, reportando <strong>VPP 34% (capellanes) vs. 44% (médicos)</strong> y <strong>VPN 76% (capellanes) vs. 88% (médicos)</strong>. De los 4 estudios con SPEED, uno reportó alta consistencia interna (alfa de Cronbach 0.716-0.991) pero ningún estudio reportó sensibilidad ni especificidad formales.
+      El único estudio comparativo con P-CaRES es Howard 2021 (Estados Unidos, n=58 pacientes de 80 años o más), que comparó el desempeño cuando el instrumento lo aplicaban capellanes clínicos entrenados versus médicos de urgencias. Los datos reportados: <strong>VPP 34% (capellanes) versus 44% (médicos); VPN 76% (capellanes) versus 88% (médicos)</strong>. Ningún estudio reportó sensibilidad ni especificidad formales del P-CaRES aplicado en urgencias. El SPEED, por su parte, tiene un estudio que reporta validez concurrente alta con el instrumento NEST (coeficiente alfa de Cronbach entre 0,716 y 0,991), pero ningún estudio reporta sensibilidad ni especificidad formales.
     </p>
 
     <div class="key-number">
-      <div class="num">32% · 62%</div>
-      <div class="desc">Proporción mediana de pacientes identificados como con necesidades paliativas no atendidas: con P-CaRES (IQR 30-55%), con SPEED (IQR 52-72%). Con SQ: 31% (IQR 15-49%). La alta variabilidad sugiere heterogeneidad real de los pacientes, pero también diferencias operacionales entre instrumentos.</div>
+      <div class="num">31% · 32% · 62%</div>
+      <div class="desc">Proporción mediana de pacientes identificados como con necesidades paliativas no atendidas usando SQ (IQR 15-49%), P-CaRES (IQR 30-55%) y SPEED (IQR 52-72%). La alta variabilidad refleja tanto heterogeneidad real de las poblaciones estudiadas como diferencias operacionales en cómo se aplicaron los instrumentos.</div>
     </div>
 
     <p>
-      Un hallazgo del A-qCPR (Taiwán, Wang 2021, n=4627) merece mención: <strong>sensibilidad 99% y VPN 99%</strong> para predecir mortalidad a 12 meses. Es el instrumento con mejor desempeño reportado, aunque combinando variables ya registradas en la historia clínica (edad, qSOFA, cáncer, estado funcional, orden de no reanimación). Limitación: un solo estudio, en un solo centro asiático.
+      Un instrumento que merece mención por sus cifras llamativas es el <strong>A-qCPR</strong> (estudio único de Wang 2021, Taiwán, n=4627): sensibilidad 99% y VPN 99% para predecir mortalidad a 12 meses. Es el instrumento con mejor desempeño reportado en toda la revisión. La limitación es obvia: un solo estudio, un solo centro asiático, sin replicación independiente. El A-qCPR combina variables clínicas ya disponibles en la historia clínica (edad, qSOFA, cáncer, estado funcional, orden de no reanimación), lo cual podría facilitar su operacionalización pero también hace que el hallazgo dependa de la calidad y completitud de los registros fuente.
     </p>
 
-    <h3>Qué pasa después del tamizaje positivo</h3>
+    <h3>Qué pasa después del tamizaje positivo — el dato crítico</h3>
 
     <p>
-      Un dato que conviene subrayar porque es el que vuelve relevante todo el ejercicio de tamizaje: entre los pacientes identificados con necesidades paliativas no atendidas, <strong>la proporción que efectivamente recibió consulta de cuidados paliativos fue baja</strong> — entre 1,4% y 12% de los tamizados en urgencias, entre 8% y 55% de los hospitalizados. Solo los estudios que combinaron tamizaje con intervención activa de derivación lograron tasas entre 32% y 47% de consulta paliativa. Esto es crítico: <em>tamizar sin dispositivo de derivación posterior es casi inútil</em>.
+      Este hallazgo merece subrayado porque es el que vuelve relevante todo el ejercicio de tamizaje. Entre pacientes identificados como con necesidades paliativas no atendidas, la proporción que efectivamente recibió consulta de cuidados paliativos fue baja:
+    </p>
+
+    <ul>
+      <li>Consulta basada en urgencias: entre <strong>1,4%</strong> (Kirkland 2021) y <strong>12%</strong> (Haydar 2019).</li>
+      <li>Consulta durante hospitalización: entre <strong>8%</strong> (Minor 2013) y <strong>55%</strong> (Glick 2018).</li>
+      <li>Consulta post-egreso: entre <strong>5%</strong> (Verhoef 2020) y <strong>29%</strong> (Kirkland 2021).</li>
+      <li>Solo los estudios que combinaron tamizaje con intervención activa de derivación lograron tasas del <strong>32% al 47%</strong>.</li>
+    </ul>
+
+    <p>
+      La lección metodológica es contundente: <em>tamizar sin dispositivo de derivación posterior es casi inútil</em>. La identificación del paciente es necesaria pero insuficiente; sin el mecanismo operativo que traduce la identificación en atención efectiva, el esfuerzo se pierde.
     </p>
 
     <h3>Cómo los autores interpretan sus hallazgos</h3>
 
     <p>
-      Los autores son deliberadamente cautelosos. Sostienen que <strong>no hay evidencia suficiente para recomendar un instrumento sobre los otros</strong>. La SQ tiene desempeño moderado pero ventaja operacional enorme; el P-CaRES tiene mejor estructura conceptual pero requiere entrenamiento y tiempo; el SPEED cubre dimensiones más amplias pero carece de punto de corte validado.
+      Los autores son deliberadamente cautelosos. Sostienen que <strong>no hay evidencia suficiente para recomendar un instrumento sobre los otros</strong> para implementación generalizada. Argumentan que, dado el costo y la disponibilidad limitada de servicios de cuidados paliativos en urgencias/hospital, los instrumentos de tamizaje aplicados a pacientes con condiciones limitantes de vida necesitan sensibilidad y especificidad del 90% o mayor para justificar su uso sistemático. Ninguno de los 14 instrumentos identificados alcanza consistentemente ese umbral.
     </p>
 
     <p>
-      Argumentan además que, dado el costo y la disponibilidad limitada de servicios de cuidados paliativos en urgencias, se necesitan instrumentos con <strong>sensibilidad y especificidad iguales o superiores al 90%</strong> — nivel que ninguno de los 14 instrumentos alcanza consistentemente. Subrayan que la mayoría de estudios son de calidad metodológica baja a moderada y que se necesitan estudios de implementación pragmáticos, no solo de rendimiento diagnóstico.
+      Calculan, con una probabilidad pre-prueba del 30% (la proporción mediana de pacientes con necesidades no atendidas en las poblaciones estudiadas), que las razones de verosimilitud de la SQ son insuficientes para confirmar o descartar con certeza: un resultado positivo lleva la probabilidad post-prueba de 30% a 45%; un resultado negativo la lleva de 30% a 18%. Usar la SQ estrictamente resultaría en derivar un número grande de pacientes que no se beneficiarían del cuidado paliativo.
+    </p>
+
+    <p>
+      Los autores recomiendan investigación adicional para caracterizar el desempeño de P-CaRES y SPEED, y estudios de implementación pragmáticos —no solo de rendimiento diagnóstico— para saber si el tamizaje efectivamente mejora desenlaces para el paciente, no solo si identifica pacientes correctamente.
     </p>
 
     <h3>Lo que hay que leer con cuidado · crítica metodológica</h3>
 
     <div class="box critica">
       <div class="box-label">Aspectos que conviene interrogar</div>
-      <p><strong>Primero, la heterogeneidad del estándar de referencia.</strong> Algunos estudios usan muerte confirmada por registros oficiales como patrón de oro; otros usan derivación efectiva a cuidados paliativos; otros usan juicio clínico de experto. Esto compromete la comparabilidad directa de las propiedades psicométricas entre instrumentos.</p>
-      <p><strong>Segundo, el conflicto de intereses.</strong> Los propios autores aclaran al final del artículo que todos excepto la bibliotecaria (Campbell) fueron coautores del estudio Kirkland 2021 incluido en esta revisión. Es transparente y se declara, pero es un dato que los estudiantes deben notar como ejemplo de cómo se reportan conflictos potenciales.</p>
-      <p><strong>Tercero, la validez externa.</strong> Los 35 estudios fueron mayoritariamente en EE.UU., Canadá, Europa y algunos en Asia. Ningún estudio latinoamericano (con excepción de un estudio peruano de Tineo 2020 en resumen de congreso). La aplicabilidad directa al sistema colombiano es, por tanto, una hipótesis no comprobada.</p>
-      <p><strong>Cuarto, la falta de medición de desenlaces importantes para el paciente.</strong> La mayoría de los estudios midió mortalidad o consulta paliativa como desenlaces, no concordancia con preferencias del paciente, control sintomático o satisfacción familiar. Tamizar bien no es lo mismo que cuidar bien.</p>
+      <p><strong>Primero, la heterogeneidad del estándar de referencia.</strong> Los estudios incluidos usan definiciones distintas de "necesidad paliativa no atendida": algunos usan muerte confirmada por registros oficiales; otros usan derivación efectiva a cuidados paliativos; otros usan juicio clínico de experto; otros usan una combinación. Esto compromete la comparabilidad directa de las propiedades psicométricas entre instrumentos. Cuando un instrumento A y un instrumento B se miden contra estándares distintos, sus cifras de sensibilidad y especificidad no son estrictamente comparables.</p>
+      <p><strong>Segundo, el conflicto de intereses declarado.</strong> Los propios autores, en la sección Conflict of Interest, aclaran que todos excepto la bibliotecaria (Campbell) fueron coautores de uno de los estudios incluidos en la revisión (Kirkland 2021). Es transparente y se declara en el texto, y el procedimiento que adoptaron para minimizar sesgo —que ese estudio específico fuera evaluado por un autor distinto del que lo había coautorado— es defendible. Pero es un dato metodológicamente importante que los estudiantes deben notar como ejemplo de cómo se reportan conflictos en una revisión sistemática.</p>
+      <p><strong>Tercero, la validez externa a Latinoamérica.</strong> Los 35 estudios fueron mayoritariamente en Estados Unidos, Canadá, Europa y algunos en Asia. El único estudio latinoamericano es un resumen de congreso de Tineo 2020 en Perú, con muestra pequeña y sin propiedades psicométricas formales. La aplicabilidad directa de los instrumentos al sistema colombiano es una hipótesis no comprobada.</p>
+      <p><strong>Cuarto, la ausencia de desenlaces centrados en el paciente.</strong> La mayoría de los estudios midió mortalidad o consulta paliativa como desenlaces, no concordancia con preferencias del paciente, control sintomático, satisfacción familiar, o calidad del lugar de muerte. Tamizar bien no es lo mismo que cuidar bien. Un instrumento con excelente desempeño psicométrico puede ser irrelevante si lo que detecta no se traduce en mejor cuidado.</p>
     </div>
 
     <h3>Por qué este artículo importa para Colombia</h3>
 
     <div class="box colombia">
       <div class="box-label">Conexión con el contexto colombiano</div>
-      <p>Este artículo es, probablemente, el que más directamente conecta con <strong>preguntas de investigación viables dentro del horizonte de una maestría colombiana</strong>. Ninguno de los 14 instrumentos identificados ha sido validado transculturalmente al español colombiano siguiendo metodología COSMIN. La validación transcultural de P-CaRES, SPEED o incluso la SQ aplicada a contexto colombiano es un proyecto factible en dos años que produce un artículo publicable y deja un instrumento útil al sistema de salud.</p>
-      <p>Una pregunta distinta pero igual de viable: un estudio de implementación pragmático que combine tamizaje (con cualquier instrumento razonable) con dispositivo de derivación activa en un hospital colombiano de mediana complejidad —como el Hospital Regional de Moniquirá que trabajamos en sesiones anteriores— puede responder la pregunta de si el tamizaje en urgencias efectivamente aumenta la derivación a cuidados paliativos en nuestro sistema. Si los datos del artículo sugieren que sin derivación activa el tamizaje es casi inútil, un ensayo pragmático que pruebe esa hipótesis en Colombia es altamente relevante.</p>
+      <p>Este artículo es, probablemente, el que más directamente conecta con preguntas de investigación viables dentro del horizonte de una maestría colombiana. Ninguno de los 14 instrumentos identificados ha sido validado transculturalmente al español colombiano siguiendo metodología COSMIN. La validación transcultural de P-CaRES, SPEED, o incluso la Surprise Question aplicada a contexto colombiano, es un proyecto factible en dos años, que produce un artículo publicable en revista indexada y deja un instrumento útil al sistema de salud.</p>
+      <p>Una pregunta distinta pero igualmente viable: un estudio de implementación pragmático que combine tamizaje (con cualquier instrumento razonable) con dispositivo de derivación activa en un hospital colombiano de mediana complejidad —como el Hospital Regional de Moniquirá que hemos trabajado en sesiones anteriores, o una IPS oncológica en un municipio PDET— puede responder la pregunta de si el tamizaje en urgencias efectivamente aumenta la derivación a cuidados paliativos en el SGSSS. Dado que el artículo muestra que sin derivación activa el tamizaje es casi inútil, un ensayo pragmático que pruebe esa hipótesis en Colombia es altamente relevante tanto científica como operativamente.</p>
     </div>
 
     <div class="questions">
       <h4>Preguntas para llevar a la sesión</h4>
       <ol>
-        <li>Si tuvieras que recomendar hoy UN instrumento de tamizaje para un hospital de mediana complejidad en Boyacá, ¿cuál elegirías y qué tres argumentos específicos darías para defender la elección frente a los otros dos?</li>
-        <li>El artículo muestra que tamizar bien sin un dispositivo de derivación activa produce tasas de consulta paliativa de apenas 1,4 a 12%. ¿Qué componentes debería tener un dispositivo de derivación eficaz en el SGSSS colombiano?</li>
-        <li>La Surprise Question funciona mejor a 12 meses que a 30 días, y mejor en pacientes con cáncer que sin cáncer. ¿Qué implicaciones tiene esto para elegir el instrumento adecuado según el tipo de paciente (oncológico vs. no oncológico) y el propósito del tamizaje (identificación temprana vs. planeación inmediata)?</li>
+        <li>Si tuvieras que recomendar hoy UN instrumento de tamizaje para un hospital de mediana complejidad en Boyacá, ¿cuál elegirías y qué tres argumentos específicos darías para defenderlo frente a los otros dos?</li>
+        <li>El artículo muestra que tamizar bien sin un dispositivo de derivación activa produce tasas de consulta paliativa de apenas 1,4% a 12% en urgencias. ¿Qué componentes debería tener un dispositivo de derivación eficaz en el SGSSS colombiano para llevar esa cifra al rango 32-47% que documentan los estudios con intervención activa?</li>
+        <li>La Surprise Question funciona mejor a 12 meses que a 30 días, y mejor en pacientes oncológicos que no oncológicos. ¿Qué implicaciones tiene esto para elegir el instrumento de tamizaje adecuado según el tipo de paciente (oncológico vs. no oncológico) y el propósito del tamizaje (identificación temprana de trayectoria vs. planeación inmediata al final de la vida)?</li>
       </ol>
     </div>
 
   </article>
 
-
-  <!-- ============= CIERRE ============= -->
+  <!-- CIERRE -->
   <div class="closing">
     <h3>Una última cosa antes de cerrar</h3>
     <p>
-      Estos tres artículos son el material de trabajo del <strong>Bloque 2</strong> de la sesión, donde rotarán por tres estaciones, cada una dedicada a uno de ellos. No necesitas saberlos de memoria. Necesitas haberlos habitado: haber pensado qué preguntan, qué encuentran y qué dejan abierto.
+      Estos tres artículos dialogan entre sí más de lo que podrían parecer a primera vista. Grudzen muestra un ensayo negativo bien hecho sobre una intervención multicomponente; Basch muestra un ensayo positivo sobre una intervención con mecanismo causal claro; Kirkland muestra que la evidencia disponible sobre tamizaje es insuficiente para recomendaciones firmes. Los tres, juntos, componen una lección sobre epistemología de la evidencia en cuidados paliativos: qué sabemos, qué no sabemos, y qué no podemos todavía afirmar con confianza.
     </p>
     <p>
       La tarea del investigador en cuidados paliativos colombiano no es repetir estas preguntas; es formular las suyas propias, con estos artículos como mapa de puntos de partida. Nos vemos el 24 de abril.
@@ -1067,13 +1115,13 @@
 
   <footer>
     Maestría en Investigación en Cuidados Paliativos · Universidad Antonio Nariño · Facultad de Enfermería<br>
-    Sesión sincrónica · 24 de abril de 2026 · Docente: Jorge · Decano: Wimber Ortiz Martínez
+    Sesión sincrónica · 24 de abril de 2026 · Docente: Jorge · Decano: Wimber Ortiz Martínez<br>
+    Síntesis construidas con base en los textos completos de los artículos originales · Todas las cifras son verbatim de la fuente
   </footer>
 
 </div>
 
 <script>
-  /* Barra de progreso de lectura */
   window.addEventListener('scroll', () => {
     const h = document.documentElement;
     const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
