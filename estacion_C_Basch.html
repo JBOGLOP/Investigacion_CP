@@ -289,48 +289,7 @@
     </div>
   </div>
 
-  <h2>3. Simulador · ¿cuál sería el efecto esperado según componentes?</h2>
-
-  <div class="sim-card">
-    <h3>Estime el efecto de una implementación parcial</h3>
-    <p style="font-size:13.5px;color:var(--ink-soft);margin:0">Basch 2022 reportó +2,47 puntos en función física (QLQ-C30) cuando los tres mecanismos operaron plenamente. Perry 2024 sugiere que los mecanismos son sinérgicos con pesos aproximados 25% · 40% · 35%. Ajuste el grado de implementación de cada uno.</p>
-
-    <div class="sliders">
-      <div class="slider-group">
-        <label>Consejo personalizado</label>
-        <input type="range" id="s1" min="0" max="100" value="60" oninput="computeSim()">
-        <div class="slider-value">
-          <span>%</span>
-          <span class="current" id="v1">60</span>
-        </div>
-      </div>
-      <div class="slider-group">
-        <label>Alertas al clínico</label>
-        <input type="range" id="s2" min="0" max="100" value="30" oninput="computeSim()">
-        <div class="slider-value">
-          <span>%</span>
-          <span class="current" id="v2">30</span>
-        </div>
-      </div>
-      <div class="slider-group">
-        <label>Empoderamiento</label>
-        <input type="range" id="s3" min="0" max="100" value="80" oninput="computeSim()">
-        <div class="slider-value">
-          <span>%</span>
-          <span class="current" id="v3">80</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="sim-result">
-      <p class="big-num" id="sim-num">+1,34</p>
-      <div class="big-label">puntos estimados en función física (QLQ-C30)</div>
-      <div class="sim-verdict" id="sim-verdict">Por debajo del MCID · efecto modesto</div>
-    </div>
-    <p style="font-size:11.5px;color:var(--mute);margin-top:12px;text-align:center;font-style:italic">MCID (mínima diferencia clínicamente importante) para función física QLQ-C30: 2-7 puntos. Estimación pedagógica basada en pesos relativos de Perry 2024; no es una predicción empírica.</p>
-  </div>
-
-  <h2>4. Recomendación escalonada por nivel de complejidad</h2>
+  <h2>3. Recomendación escalonada por nivel de complejidad</h2>
 
   <div class="levels">
     <div class="level-card n1">
@@ -366,29 +325,6 @@
         <li>Replicación científica con ECA pragmático</li>
       </ul>
     </div>
-  </div>
-
-  <h2>5. Pregunta PICO resultante</h2>
-
-  <div class="pico-box">
-    <h3 style="margin-bottom:4px">Pregunta de investigación candidata</h3>
-    <p style="font-size:13px;color:var(--ink-soft);margin:0;font-style:italic">Diseñada para tesis de Maestría · factible en 18-24 meses con financiación institucional</p>
-
-    <div class="pico-grid">
-      <div class="pico-letter">P</div>
-      <div class="pico-text">Pacientes oncológicos en segunda línea de tratamiento atendidos en IPS de mediana complejidad de municipios PDET del departamento de Boyacá o Cauca.</div>
-
-      <div class="pico-letter">I</div>
-      <div class="pico-text">Sistema de monitoreo sintomático semanal basado en SMS/IVR con alerta a call center de enfermería compartido, más diario pictográfico impreso.</div>
-
-      <div class="pico-letter">C</div>
-      <div class="pico-text">Atención estándar según GPC No. 58/2016 del Ministerio de Salud.</div>
-
-      <div class="pico-letter">O</div>
-      <div class="pico-text">Primario: visitas a urgencias evitables a 6 meses. Secundarios: calidad de vida (EORTC QLQ-C15-PAL), concordancia con preferencias de cuidado, satisfacción del cuidador, equidad por gradiente socioeconómico y rural/urbano.</div>
-    </div>
-
-    <p style="font-size:13.5px;color:var(--ink-soft);margin-top:14px;margin-bottom:0"><strong style="color:var(--ink)">Diseño sugerido:</strong> ECA clúster pragmático con 12 IPS, aleatorización 1:1, análisis por intención de tratar con modelos mixtos ajustados por ICC. Marco MORECare para adecuación ética en población vulnerable. Desenlaces según COSMIN. Aprobación Resolución 8430/1993.</p>
   </div>
 
   <div class="vacio-box">
