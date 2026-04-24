@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadoras de tamizaje paliativo · Maestría UAN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FAF8F3;
+    --surface: #FFFFFF;
+    --ink: #2A2A2A;
+    --ink-soft: #4A4A4A;
+    --mute: #888;
+    --border: #E8E3D9;
+    --primary: #6C63B7;
+    --primary-deep: #4A4590;
+    --accent-blue: #5B8DB8;
+    --accent-sage: #7FA88D;
+    --accent-rose: #B8839D;
+    --accent-sand: #C9A370;
+    --danger-bg: #FCEBEB;
+    --danger-text: #A32D2D;
+    --success-bg: #EAF3DE;
+    --success-text: #3B6D11;
+    --warning-bg: #FAEEDA;
+    --warning-text: #854F0B;
+    --info-bg: #E6F1FB;
+    --info-text: #0C447C;
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-serif: 'Source Serif Pro', Georgia, serif;
+    --font-display: 'Cormorant Garamond', serif;
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:var(--font-sans);line-height:1.55}
+  .container{max-width:920px;margin:0 auto;padding:40px 24px 80px}
+
+  /* Header */
+  .header{margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+  .eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);font-weight:600;margin-bottom:10px}
+  h1{font-family:var(--font-display);font-size:42px;font-weight:500;margin:0 0 8px;line-height:1.15;color:var(--primary-deep)}
+  .subtitle{font-family:var(--font-serif);font-size:17px;color:var(--ink-soft);font-style:italic;margin:0 0 14px}
+  .meta{font-size:13px;color:var(--mute);display:flex;gap:18px;flex-wrap:wrap}
+  .meta span strong{color:var(--ink-soft);font-weight:500}
+
+  /* Intro */
+  .intro{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 24px;margin-bottom:28px}
+  .intro p{margin:0;font-size:14.5px;line-height:1.65;color:var(--ink-soft)}
+  .intro strong{color:var(--ink)}
+
+  /* Tabs */
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;border-bottom:1px solid var(--border);padding-bottom:10px}
+  .tab{padding:10px 16px;font-family:var(--font-sans);font-size:13px;font-weight:500;background:transparent;border:1px solid var(--border);border-radius:var(--radius-md);cursor:pointer;color:var(--ink-soft);transition:all .15s ease}
+  .tab:hover{background:var(--surface);border-color:var(--primary)}
+  .tab.active{background:rgba(108,99,183,.1);color:var(--primary-deep);border-color:var(--primary)}
+
+  /* Panel */
+  .panel{display:none;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+  .panel.active{display:block}
+  .panel-head{padding:22px 26px 16px;border-bottom:1px solid var(--border);background:rgba(108,99,183,.03)}
+  .panel-head h2{font-family:var(--font-display);font-size:26px;font-weight:500;margin:0 0 4px;color:var(--primary-deep)}
+  .panel-head .sub{font-family:var(--font-serif);font-size:14px;color:var(--ink-soft);font-style:italic;margin:0}
+
+  /* Meta psicométrica */
+  .psych-meta{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--ink-soft);padding:14px 26px;background:rgba(108,99,183,.04);border-bottom:1px solid var(--border)}
+  .psych-meta span strong{color:var(--primary-deep);font-weight:600}
+  .psych-source{padding:12px 26px;font-size:12.5px;color:var(--mute);font-style:italic;border-bottom:1px solid var(--border);background:rgba(201,163,112,.05)}
+
+  /* Items */
+  .items{padding:8px 26px}
+  .section-head{font-family:var(--font-sans);font-size:10.5px;font-weight:600;color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin:16px 0 6px;padding:6px 0;border-bottom:1px dashed rgba(108,99,183,.25)}
+  .item-row{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:12px 0;border-bottom:1px solid var(--border)}
+  .item-row:last-child{border-bottom:none}
+  .item-text{flex:1;font-size:14.5px;line-height:1.55;color:var(--ink)}
+  .item-controls{display:flex;gap:6px;flex-shrink:0}
+  .btn-opt{padding:6px 14px;font-family:var(--font-sans);font-size:13px;font-weight:500;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);cursor:pointer;color:var(--ink-soft);min-width:44px;transition:all .15s}
+  .btn-opt:hover{border-color:var(--primary)}
+  .btn-opt.sel-yes{background:var(--danger-bg);color:var(--danger-text);border-color:#E2B5B5}
+  .btn-opt.sel-no{background:var(--success-bg);color:var(--success-text);border-color:#B9D692}
+
+  /* Result */
+  .result{padding:20px 26px;background:linear-gradient(135deg,rgba(108,99,183,.06),rgba(91,141,184,.04));border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .result-main{flex:1;min-width:200px}
+  .result-number{font-family:var(--font-display);font-size:32px;font-weight:500;line-height:1;color:var(--primary-deep)}
+  .result-label{font-size:13px;color:var(--ink-soft);margin-top:6px}
+  .result-verdict{font-family:var(--font-sans);font-size:13px;padding:8px 16px;border-radius:var(--radius-md);font-weight:600;white-space:nowrap}
+  .v-pos{background:var(--danger-bg);color:var(--danger-text)}
+  .v-neg{background:var(--success-bg);color:var(--success-text)}
+  .v-mid{background:var(--warning-bg);color:var(--warning-text)}
+  .v-info{background:var(--info-bg);color:var(--info-text)}
+
+  /* Footer tools */
+  .panel-footer{padding:14px 26px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,.015)}
+  .reset-btn{font-family:var(--font-sans);font-size:12.5px;background:transparent;border:1px solid var(--border);padding:6px 14px;border-radius:var(--radius-md);cursor:pointer;color:var(--ink-soft);transition:all .15s}
+  .reset-btn:hover{background:var(--surface);border-color:var(--primary);color:var(--primary-deep)}
+  .interp-note{font-size:11.5px;color:var(--mute);font-style:italic;max-width:60%;text-align:right}
+
+  /* Disclaimer */
+  .disclaimer{margin-top:32px;padding:18px 22px;background:rgba(201,163,112,.1);border-left:3px solid var(--accent-sand);border-radius:var(--radius-md);font-size:13px;line-height:1.6;color:var(--ink-soft)}
+  .disclaimer strong{color:var(--ink)}
+
+  @media (max-width: 600px){
+    h1{font-size:32px}
+    .container{padding:24px 16px 60px}
+    .items,.psych-meta,.panel-head,.result,.psych-source,.panel-footer{padding-left:18px;padding-right:18px}
+    .item-row{flex-direction:column;align-items:stretch}
+    .item-controls{justify-content:flex-end}
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="eyebrow">Maestría en Investigación en Cuidados Paliativos · UAN</div>
+    <h1>Calculadoras de tamizaje paliativo</h1>
+    <p class="subtitle">Cinco instrumentos lado a lado · aplicación, cómputo y veredicto automático</p>
+    <div class="meta">
+      <span><strong>Docente:</strong> Jorge Bogoya López</span>
+      <span><strong>Sesión:</strong> 24 abril 2026</span>
+      <span><strong>Estación B · Bloque 2</strong></span>
+    </div>
+  </div>
+
+  <div class="intro">
+    <p>Estos cinco instrumentos son los que aparecen en la revisión sistemática de <strong>Kirkland et al., Acad Emerg Med 2022</strong> (Surprise Question, P-CaRES, SPEED) y en la práctica paliativa española y anglosajona (SPICT 2025, NECPAL CCOMS-ICO 4.0). No son intercambiables. Cada uno negocia distinto entre sensibilidad, especificidad, tiempo de aplicación y población blanco. Use la herramienta con el caso de doña Carmen y luego compare los veredictos entre grupos.</p>
+  </div>
+
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-tool="sq">Surprise Question</button>
+    <button class="tab" data-tool="pcares">P-CaRES</button>
+    <button class="tab" data-tool="speed">SPEED</button>
+    <button class="tab" data-tool="spict">SPICT</button>
+    <button class="tab" data-tool="necpal">NECPAL 4.0</button>
+  </div>
+
+  <!-- SQ -->
+  <div id="tool-sq" class="panel active">
+    <div class="panel-head">
+      <h2>Surprise Question</h2>
+      <p class="sub">La pregunta única más estudiada en tamizaje paliativo</p>
+    </div>
+    <div class="psych-meta">
+      <span><strong>Ítems:</strong> 1</span>
+      <span><strong>Sens. mediana:</strong> 63% (IQR 38–78%)</span>
+      <span><strong>Esp. mediana:</strong> 75% (IQR 57–84%)</span>
+      <span><strong>VPP:</strong> 32%</span>
+      <span><strong>VPN:</strong> 91%</span>
+    </div>
+    <div class="psych-source">Kirkland et al. Acad Emerg Med 2022 · 12 estudios · mejor rendimiento a 12 meses que a 30 días · mejor en cáncer que en patologías no oncológicas.</div>
+    <div class="items" id="sq-items"></div>
+    <div class="result">
+      <div class="result-main">
+        <div class="result-number" id="sq-num">—</div>
+        <div class="result-label" id="sq-label">Responda el ítem para obtener el veredicto</div>
+      </div>
+      <div class="result-verdict" id="sq-verdict" style="display:none"></div>
+    </div>
+    <div class="panel-footer">
+      <button class="reset-btn" onclick="resetTool('sq')">Reiniciar</button>
+      <div class="interp-note">Verhoef 2020: en cáncer, sens 89%, VPP 85%.</div>
+    </div>
+  </div>
+
+  <!-- P-CaRES -->
+  <div id="tool-pcares" class="panel">
+    <div class="panel-head">
+      <h2>P-CaRES</h2>
+      <p class="sub">Palliative Care and Rapid Emergency Screening</p>
+    </div>
+    <div class="psych-meta">
+      <span><strong>Ítems:</strong> 5</span>
+      <span><strong>VPP médicos:</strong> 44%</span>
+      <span><strong>VPN médicos:</strong> 88%</span>
+      <span><strong>VPP capellanes:</strong> 34%</span>
+      <span><strong>VPN capellanes:</strong> 76%</span>
+    </div>
+    <div class="psych-source">Kirkland 2022 (8 estudios) · Howard 2021 (n=58, único estudio comparativo) · diseñado específicamente para urgencias hospitalarias.</div>
+    <div class="items" id="pcares-items"></div>
+    <div class="result">
+      <div class="result-main">
+        <div class="result-number" id="pcares-num">0 / 5</div>
+        <div class="result-label" id="pcares-label">Positivo si ≥1 criterio presente</div>
+      </div>
+      <div class="result-verdict" id="pcares-verdict" style="display:none"></div>
+    </div>
+    <div class="panel-footer">
+      <button class="reset-btn" onclick="resetTool('pcares')">Reiniciar</button>
+      <div class="interp-note">Rendimiento depende del evaluador: médico &gt; capellán.</div>
+    </div>
+  </div>
+
+  <!-- SPEED -->
+  <div id="tool-speed" class="panel">
+    <div class="panel-head">
+      <h2>SPEED</h2>
+      <p class="sub">Screen for Palliative and End-of-life care needs in the Emergency Department</p>
+    </div>
+    <div class="psych-meta">
+      <span><strong>Ítems:</strong> 13</span>
+      <span><strong>Dominios:</strong> 5</span>
+      <span><strong>Cronbach α:</strong> 0.716–0.991</span>
+      <span><strong>Validez:</strong> solo de contenido</span>
+    </div>
+    <div class="psych-source">Kirkland 2022 (4 estudios) · sin datos primarios de sensibilidad/especificidad reportados · instrumento estructurado por dominios de sufrimiento total.</div>
+    <div class="items" id="speed-items"></div>
+    <div class="result">
+      <div class="result-main">
+        <div class="result-number" id="speed-num">0 / 13</div>
+        <div class="result-label" id="speed-label">Suma de ítems positivos · se interpreta también por dominio</div>
+      </div>
+      <div class="result-verdict" id="speed-verdict" style="display:none"></div>
+    </div>
+    <div class="panel-footer">
+      <button class="reset-btn" onclick="resetTool('speed')">Reiniciar</button>
+      <div class="interp-note">Ausencia de validación psicométrica limita uso clínico directo.</div>
+    </div>
+  </div>
+
+  <!-- SPICT -->
+  <div id="tool-spict" class="panel">
+    <div class="panel-head">
+      <h2>SPICT 2025</h2>
+      <p class="sub">Supportive and Palliative Care Indicators Tool · Universidad de Edimburgo</p>
+    </div>
+    <div class="psych-meta">
+      <span><strong>Indicadores generales:</strong> 5</span>
+      <span><strong>Indicadores clínicos:</strong> 8</span>
+      <span><strong>Criterio +:</strong> ≥2 generales + ≥1 clínico</span>
+    </div>
+    <div class="psych-source">Instrumento de consenso clínico · adaptado internacionalmente · útil para planificación anticipada de cuidados, no solo para tamizaje agudo.</div>
+    <div class="items" id="spict-items"></div>
+    <div class="result">
+      <div class="result-main">
+        <div class="result-number" id="spict-num">0 generales · 0 clínicos</div>
+        <div class="result-label" id="spict-label">Positivo si ≥2 generales AND ≥1 clínico</div>
+      </div>
+      <div class="result-verdict" id="spict-verdict" style="display:none"></div>
+    </div>
+    <div class="panel-footer">
+      <button class="reset-btn" onclick="resetTool('spict')">Reiniciar</button>
+      <div class="interp-note">Para uso clínico real: consulte spict.org.uk</div>
+    </div>
+  </div>
+
+  <!-- NECPAL -->
+  <div id="tool-necpal" class="panel">
+    <div class="panel-head">
+      <h2>NECPAL CCOMS-ICO 4.0</h2>
+      <p class="sub">Necesidades Paliativas · Institut Català d'Oncologia</p>
+    </div>
+    <div class="psych-meta">
+      <span><strong>Estructura:</strong> SQ + 10 parámetros</span>
+      <span><strong>Criterio +:</strong> SQ = No + ≥1 parámetro</span>
+      <span><strong>Idioma:</strong> validado en español</span>
+    </div>
+    <div class="psych-source">Instrumento español de tamizaje poblacional · ICO Cataluña · validado para identificar pacientes con necesidades paliativas en atención primaria y hospitalaria.</div>
+    <div class="items" id="necpal-items"></div>
+    <div class="result">
+      <div class="result-main">
+        <div class="result-number" id="necpal-num">SQ: — · Parámetros: 0</div>
+        <div class="result-label" id="necpal-label">Positivo si SQ = No + al menos 1 parámetro adicional</div>
+      </div>
+      <div class="result-verdict" id="necpal-verdict" style="display:none"></div>
+    </div>
+    <div class="panel-footer">
+      <button class="reset-btn" onclick="resetTool('necpal')">Reiniciar</button>
+      <div class="interp-note">Único instrumento del panel con validación en español.</div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Advertencia pedagógica.</strong> Esta herramienta es una adaptación educativa para uso en la asignatura. Los ítems son fieles a la estructura y lógica de cada instrumento, pero no reemplazan los formularios oficiales. Para uso clínico real consulte las versiones validadas: <em>spict.org.uk</em> para SPICT, <em>iconcologia.net</em> para NECPAL, y los artículos originales para SQ, P-CaRES y SPEED. Las decisiones de derivación a cuidados paliativos deben tomarse en el contexto de evaluación clínica integral por equipo interprofesional.
+  </div>
+
+</div>
+
+<script>
+const TOOLS = {
+  sq: {
+    items: [
+      {id:'sq1', text:'¿Le sorprendería a usted que este paciente muriera en los próximos 12 meses?'}
+    ]
+  },
+  pcares: {
+    items: [
+      {section:'Criterios de necesidades paliativas no atendidas'},
+      {id:'p1', text:'Síntomas físicos no controlados (dolor, disnea, náusea, delirium)'},
+      {id:'p2', text:'Estrés psicosocial o espiritual del paciente o la familia'},
+      {id:'p3', text:'Conflicto o confusión sobre decisiones al final de la vida'},
+      {id:'p4', text:'Múltiples visitas a urgencias u hospitalizaciones en los últimos meses'},
+      {id:'p5', text:'Declive funcional progresivo o pérdida de peso no intencional'}
+    ]
+  },
+  speed: {
+    items: [
+      {section:'Dominio físico'},
+      {id:'sp1', text:'Dolor no controlado'},
+      {id:'sp2', text:'Disnea'},
+      {id:'sp3', text:'Náusea o vómito'},
+      {section:'Dominio terapéutico'},
+      {id:'sp4', text:'Necesidad de ajuste de medicación'},
+      {id:'sp5', text:'Efectos secundarios significativos'},
+      {section:'Dominio psicológico'},
+      {id:'sp6', text:'Depresión, ansiedad o angustia emocional'},
+      {id:'sp7', text:'Miedo o preocupación por la muerte'},
+      {section:'Dominio social'},
+      {id:'sp8', text:'Estrés o agotamiento del cuidador'},
+      {id:'sp9', text:'Barreras de acceso al sistema de salud'},
+      {id:'sp10', text:'Falta de red de apoyo'},
+      {section:'Dominio existencial / espiritual'},
+      {id:'sp11', text:'Sufrimiento espiritual o pérdida de sentido'},
+      {id:'sp12', text:'Conflicto con valores o creencias'},
+      {id:'sp13', text:'Necesidad de cierre o reconciliación'}
+    ]
+  },
+  spict: {
+    items: [
+      {section:'Indicadores generales'},
+      {id:'g1', text:'Deterioro funcional sostenido · Karnofsky ≤50% o dependencia creciente para AVD'},
+      {id:'g2', text:'Dos o más ingresos hospitalarios no planificados en los últimos 6 meses'},
+      {id:'g3', text:'Pérdida de peso ≥10% en los últimos meses, o IMC <18,5'},
+      {id:'g4', text:'Síntomas persistentes a pesar de tratamiento óptimo'},
+      {id:'g5', text:'El paciente o cuidador pide cuidado paliativo, rechaza tratamiento activo o prioriza confort'},
+      {section:'Indicadores clínicos específicos'},
+      {id:'c1', text:'Cáncer con deterioro funcional progresivo o metastásico refractario'},
+      {id:'c2', text:'Demencia avanzada · dependencia en AVD, comunicación limitada, incontinencia doble'},
+      {id:'c3', text:'Enfermedad neurológica progresiva (ELA, Parkinson avanzado, ECV con secuelas)'},
+      {id:'c4', text:'Insuficiencia cardíaca NYHA III-IV o enfermedad valvular grave inoperable'},
+      {id:'c5', text:'EPOC con disnea de reposo, hipoxemia persistente o cor pulmonale'},
+      {id:'c6', text:'Enfermedad renal crónica estadio 4-5 sin diálisis o con mal control'},
+      {id:'c7', text:'Hepatopatía avanzada con descompensación (ascitis, encefalopatía, hemorragia)'},
+      {id:'c8', text:'Otra enfermedad avanzada e irreversible con mal pronóstico'}
+    ]
+  },
+  necpal: {
+    items: [
+      {section:'Pregunta sorpresa (requerida)'},
+      {id:'n_sq', text:'¿Le sorprendería a usted que este paciente muriera en los próximos 12 meses?'},
+      {section:'Parámetros adicionales'},
+      {id:'n1', text:'Demanda explícita del paciente, familia o cuidador de cuidado paliativo'},
+      {id:'n2', text:'Marcadores nutricionales: pérdida ponderal >10%, albúmina <2,5 g/dL o desnutrición severa'},
+      {id:'n3', text:'Marcadores funcionales: Karnofsky <50% o Barthel <60 con declive progresivo'},
+      {id:'n4', text:'Marcadores de dependencia: necesidad de ayuda para AVD o pérdida de autonomía'},
+      {id:'n5', text:'Marcadores emocionales: distrés severo, depresión clínica o impacto emocional significativo'},
+      {id:'n6', text:'Marcadores geriátricos: síndromes geriátricos complejos, deterioro cognitivo avanzado'},
+      {id:'n7', text:'Marcadores sociales: vulnerabilidad social, aislamiento o claudicación del cuidador'},
+      {id:'n8', text:'Uso de recursos: ≥2 ingresos urgentes en 6 meses o demanda intensiva de atención'},
+      {id:'n9', text:'Multimorbilidad: ≥2 enfermedades crónicas concurrentes avanzadas'},
+      {id:'n10', text:'Indicador específico de enfermedad (cáncer, EPOC, IC, demencia, neurológica, hepática, renal, VIH)'}
+    ]
+  }
+};
+
+const state = {sq:{}, pcares:{}, speed:{}, spict:{}, necpal:{}};
+
+function renderItems(tool){
+  const container = document.getElementById(tool + '-items');
+  container.innerHTML = '';
+  TOOLS[tool].items.forEach(item => {
+    if(item.section){
+      const h = document.createElement('div');
+      h.className = 'section-head';
+      h.textContent = item.section;
+      container.appendChild(h);
+      return;
+    }
+    const row = document.createElement('div');
+    row.className = 'item-row';
+    const txt = document.createElement('div');
+    txt.className = 'item-text';
+    txt.textContent = item.text;
+    const ctrls = document.createElement('div');
+    ctrls.className = 'item-controls';
+    [{v:'yes',l:'Sí'},{v:'no',l:'No'}].forEach(opt => {
+      const b = document.createElement('button');
+      b.className = 'btn-opt';
+      b.textContent = opt.l;
+      b.onclick = () => selectOption(tool, item.id, opt.v);
+      b.dataset.id = item.id;
+      b.dataset.val = opt.v;
+      ctrls.appendChild(b);
+    });
+    row.appendChild(txt);
+    row.appendChild(ctrls);
+    container.appendChild(row);
+  });
+}
+
+function selectOption(tool, itemId, value){
+  state[tool][itemId] = value;
+  document.querySelectorAll(`#tool-${tool} .btn-opt[data-id="${itemId}"]`).forEach(b => {
+    b.classList.remove('sel-yes','sel-no');
+    if(b.dataset.val === value){
+      b.classList.add(value === 'yes' ? 'sel-yes' : 'sel-no');
+    }
+  });
+  computeResult(tool);
+}
+
+function setVerdict(id, text, cls){
+  const el = document.getElementById(id);
+  if(!text){ el.style.display = 'none'; return; }
+  el.style.display = 'inline-block';
+  el.textContent = text;
+  el.className = 'result-verdict ' + cls;
+}
+
+function computeResult(tool){
+  if(tool === 'sq') computeSQ();
+  else if(tool === 'pcares') computePCaRES();
+  else if(tool === 'speed') computeSPEED();
+  else if(tool === 'spict') computeSPICT();
+  else if(tool === 'necpal') computeNECPAL();
+}
+
+function computeSQ(){
+  const v = state.sq.sq1;
+  const num = document.getElementById('sq-num');
+  const lbl = document.getElementById('sq-label');
+  if(!v){ num.textContent = '—'; lbl.textContent = 'Responda el ítem para obtener el veredicto'; setVerdict('sq-verdict','',''); return; }
+  if(v === 'no'){
+    num.textContent = 'SQ +';
+    lbl.textContent = 'El clínico NO se sorprendería de que el paciente falleciera en 12 meses';
+    setVerdict('sq-verdict','Derivación a CP recomendada','v-pos');
+  } else {
+    num.textContent = 'SQ −';
+    lbl.textContent = 'El clínico sí se sorprendería · bajo riesgo pronóstico a 12 meses';
+    setVerdict('sq-verdict','Reevaluación periódica','v-neg');
+  }
+}
+
+function computePCaRES(){
+  const ids = ['p1','p2','p3','p4','p5'];
+  const pos = ids.filter(i => state.pcares[i] === 'yes').length;
+  document.getElementById('pcares-num').textContent = `${pos} / 5`;
+  if(Object.keys(state.pcares).length < 5){
+    document.getElementById('pcares-label').textContent = `${5 - Object.keys(state.pcares).length} ítems pendientes · positivo si ≥1`;
+  } else {
+    document.getElementById('pcares-label').textContent = 'Evaluación completa · positivo si ≥1 criterio';
+  }
+  if(pos >= 1) setVerdict('pcares-verdict','P-CaRES + · consulta paliativa','v-pos');
+  else if(Object.keys(state.pcares).length === 5) setVerdict('pcares-verdict','P-CaRES − · sin necesidad inmediata','v-neg');
+  else setVerdict('pcares-verdict','','');
+}
+
+function computeSPEED(){
+  const ids = ['sp1','sp2','sp3','sp4','sp5','sp6','sp7','sp8','sp9','sp10','sp11','sp12','sp13'];
+  const pos = ids.filter(i => state.speed[i] === 'yes').length;
+  document.getElementById('speed-num').textContent = `${pos} / 13`;
+  const answered = Object.keys(state.speed).length;
+  if(answered === 0){ setVerdict('speed-verdict','',''); return; }
+  if(pos === 0) setVerdict('speed-verdict','Sin necesidades identificadas','v-neg');
+  else if(pos <= 3) setVerdict('speed-verdict','Necesidades leves · seguimiento','v-mid');
+  else if(pos <= 7) setVerdict('speed-verdict','Necesidades múltiples · consulta CP','v-pos');
+  else setVerdict('speed-verdict','Sufrimiento total · CP urgente','v-pos');
+}
+
+function computeSPICT(){
+  const gen = ['g1','g2','g3','g4','g5'];
+  const cli = ['c1','c2','c3','c4','c5','c6','c7','c8'];
+  const posGen = gen.filter(i => state.spict[i] === 'yes').length;
+  const posCli = cli.filter(i => state.spict[i] === 'yes').length;
+  document.getElementById('spict-num').textContent = `${posGen} generales · ${posCli} clínicos`;
+  const totalAnswered = Object.keys(state.spict).length;
+  if(totalAnswered === 0){ setVerdict('spict-verdict','',''); return; }
+  if(posGen >= 2 && posCli >= 1) setVerdict('spict-verdict','SPICT + · revisar plan de cuidado','v-pos');
+  else if(posGen >= 1 || posCli >= 1) setVerdict('spict-verdict','Criterios parciales · monitorizar','v-mid');
+  else setVerdict('spict-verdict','SPICT − · sin indicadores','v-neg');
+}
+
+function computeNECPAL(){
+  const sq = state.necpal.n_sq;
+  const params = ['n1','n2','n3','n4','n5','n6','n7','n8','n9','n10'];
+  const posParams = params.filter(i => state.necpal[i] === 'yes').length;
+  const sqTxt = !sq ? '—' : (sq === 'no' ? 'No (+)' : 'Sí (−)');
+  document.getElementById('necpal-num').textContent = `SQ: ${sqTxt} · Parámetros: ${posParams}`;
+  if(!sq){ setVerdict('necpal-verdict','',''); return; }
+  if(sq === 'no' && posParams >= 1) setVerdict('necpal-verdict','NECPAL + · paciente con necesidades paliativas','v-pos');
+  else if(sq === 'no' && posParams === 0) setVerdict('necpal-verdict','SQ + aislado · monitorizar parámetros','v-mid');
+  else setVerdict('necpal-verdict','NECPAL − · reevaluar periódicamente','v-neg');
+}
+
+function resetTool(tool){
+  state[tool] = {};
+  document.querySelectorAll(`#tool-${tool} .btn-opt`).forEach(b => b.classList.remove('sel-yes','sel-no'));
+  if(tool === 'sq'){ document.getElementById('sq-num').textContent='—'; document.getElementById('sq-label').textContent='Responda el ítem para obtener el veredicto'; }
+  if(tool === 'pcares'){ document.getElementById('pcares-num').textContent='0 / 5'; document.getElementById('pcares-label').textContent='Positivo si ≥1 criterio presente'; }
+  if(tool === 'speed'){ document.getElementById('speed-num').textContent='0 / 13'; document.getElementById('speed-label').textContent='Suma de ítems positivos · se interpreta también por dominio'; }
+  if(tool === 'spict'){ document.getElementById('spict-num').textContent='0 generales · 0 clínicos'; document.getElementById('spict-label').textContent='Positivo si ≥2 generales AND ≥1 clínico'; }
+  if(tool === 'necpal'){ document.getElementById('necpal-num').textContent='SQ: — · Parámetros: 0'; document.getElementById('necpal-label').textContent='Positivo si SQ = No + al menos 1 parámetro adicional'; }
+  setVerdict(tool + '-verdict','','');
+}
+
+document.getElementById('tabs').addEventListener('click', e => {
+  if(!e.target.classList.contains('tab')) return;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  e.target.classList.add('active');
+  document.getElementById('tool-' + e.target.dataset.tool).classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+
+['sq','pcares','speed','spict','necpal'].forEach(renderItems);
+</script>
+</body>
+</html>
