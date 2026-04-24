@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estación A · Grudzen 2025 · PRIM-ER · ECA clúster stepped-wedge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF8F3; --surface:#FFF; --ink:#2A2A2A; --ink-soft:#4A4A4A; --mute:#888;
+    --border:#E8E3D9; --primary:#6C63B7; --primary-deep:#4A4590;
+    --accent-blue:#5B8DB8; --accent-sage:#7FA88D; --accent-sand:#C9A370; --accent-rose:#B8839D;
+    --danger-bg:#FCEBEB; --danger-text:#A32D2D;
+    --success-bg:#EAF3DE; --success-text:#3B6D11;
+    --warning-bg:#FAEEDA; --warning-text:#854F0B;
+    --info-bg:#E6F1FB; --info-text:#0C447C;
+    --neutral-bg:#EEF0F3; --neutral-text:#4A4A4A;
+    --font-sans:'Inter',system-ui,sans-serif;
+    --font-serif:'Source Serif Pro',Georgia,serif;
+    --font-display:'Cormorant Garamond',serif;
+    --radius-md:8px; --radius-lg:12px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:var(--font-sans);line-height:1.55}
+  .container{max-width:1020px;margin:0 auto;padding:40px 24px 80px}
+
+  .header{margin-bottom:28px;padding-bottom:22px;border-bottom:1px solid var(--border)}
+  .eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);font-weight:600;margin-bottom:10px}
+  h1{font-family:var(--font-display);font-size:40px;font-weight:500;margin:0 0 6px;line-height:1.15;color:var(--primary-deep)}
+  .subtitle{font-family:var(--font-serif);font-size:17px;color:var(--ink-soft);font-style:italic;margin:0 0 14px}
+  .meta{font-size:13px;color:var(--mute);display:flex;gap:18px;flex-wrap:wrap}
+  .meta span strong{color:var(--ink-soft);font-weight:500}
+
+  h2{font-family:var(--font-display);font-size:28px;font-weight:500;margin:40px 0 12px;color:var(--primary-deep);letter-spacing:-0.01em}
+  h3{font-family:var(--font-display);font-size:22px;font-weight:500;margin:0 0 8px;color:var(--primary-deep)}
+
+  .intro{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 24px;margin-bottom:28px;border-left:3px solid var(--primary)}
+  .intro p{margin:0;font-size:14.5px;line-height:1.65;color:var(--ink-soft)}
+  .intro strong{color:var(--ink)}
+
+  .study-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:18px 0 28px}
+  .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:14px 16px;text-align:center}
+  .stat-num{font-family:var(--font-display);font-size:26px;font-weight:500;color:var(--primary-deep);line-height:1}
+  .stat-lbl{font-size:11.5px;color:var(--ink-soft);margin-top:6px;letter-spacing:.04em}
+
+  /* CASP sections */
+  .casp-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:18px;overflow:hidden}
+  .casp-head{padding:14px 22px;background:linear-gradient(90deg,rgba(108,99,183,.07),transparent);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none}
+  .casp-head:hover{background:linear-gradient(90deg,rgba(108,99,183,.1),transparent)}
+  .casp-head h3{margin:0;font-size:20px}
+  .casp-head .sub{font-size:12px;color:var(--ink-soft);margin-top:2px;font-style:italic}
+  .casp-toggle{font-size:22px;color:var(--primary);font-weight:300;width:28px;height:28px;display:flex;align-items:center;justify-content:center;transition:transform .2s}
+  .casp-section.open .casp-toggle{transform:rotate(45deg)}
+  .casp-body{max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .casp-section.open .casp-body{max-height:2000px}
+  .casp-section.cluster .casp-head{background:linear-gradient(90deg,rgba(91,141,184,.08),transparent)}
+  .casp-section.results .casp-head{background:linear-gradient(90deg,rgba(127,168,141,.08),transparent)}
+  .casp-section.local .casp-head{background:linear-gradient(90deg,rgba(201,163,112,.1),transparent)}
+
+  .casp-table{width:100%;border-collapse:collapse}
+  .casp-table td{padding:12px 22px;border-bottom:1px solid var(--border);font-size:14px;line-height:1.55;vertical-align:top}
+  .casp-table tr:last-child td{border-bottom:none}
+  .casp-table td:first-child{font-weight:500;color:var(--primary-deep);width:38%}
+  .verdict-chip{display:inline-block;padding:3px 10px;border-radius:6px;font-size:12px;font-weight:500;margin-right:8px}
+  .v-si{background:var(--success-bg);color:var(--success-text)}
+  .v-no{background:var(--danger-bg);color:var(--danger-text)}
+  .v-parcial{background:var(--warning-bg);color:var(--warning-text)}
+  .v-noaplica{background:var(--neutral-bg);color:var(--neutral-text)}
+
+  /* Razones grid */
+  .razones-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:18px 0 28px}
+  .razon-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;border-left:3px solid var(--accent-rose);cursor:pointer;transition:all .2s}
+  .razon-card:hover{transform:translateY(-2px);border-left-color:var(--primary)}
+  .razon-num{display:inline-block;width:26px;height:26px;border-radius:50%;background:rgba(184,131,157,.15);color:#8A4A66;font-weight:600;font-size:13px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:8px}
+  .razon-card h4{font-family:var(--font-display);font-size:17px;margin:0 0 8px;color:var(--primary-deep);font-weight:500}
+  .razon-card p{margin:0;font-size:13.5px;line-height:1.6;color:var(--ink-soft)}
+
+  /* Outcome cards */
+  .outcome-primary{background:linear-gradient(135deg,rgba(127,168,141,.1),rgba(108,99,183,.06));border:1px solid var(--accent-sage);border-radius:var(--radius-lg);padding:22px 26px;margin:18px 0}
+  .outcome-primary h3{margin-top:0}
+  .outcome-primary .why-list{margin:12px 0 0;padding-left:20px}
+  .outcome-primary .why-list li{font-size:14px;line-height:1.65;color:var(--ink);margin-bottom:6px}
+  .outcome-primary strong{color:var(--primary-deep)}
+
+  .outcome-table{width:100%;border-collapse:collapse;margin:14px 0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+  .outcome-table th{text-align:left;padding:12px 16px;background:rgba(108,99,183,.06);font-family:var(--font-sans);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--primary);font-weight:600;border-bottom:1px solid var(--border)}
+  .outcome-table td{padding:12px 16px;border-bottom:1px solid var(--border);font-size:13.5px;line-height:1.5;vertical-align:top}
+  .outcome-table tr:last-child td{border-bottom:none}
+  .outcome-table td:first-child{font-weight:500;color:var(--primary-deep);width:32%}
+
+  /* Colombia box */
+  .colombia-box{background:rgba(201,163,112,.1);border-left:3px solid var(--accent-sand);border-radius:var(--radius-md);padding:20px 24px;margin:20px 0}
+  .colombia-box h3{margin-top:0;color:#7A5F2A}
+  .colombia-box p{font-size:14px;line-height:1.65;color:var(--ink);margin:6px 0}
+  .colombia-box strong{color:var(--ink)}
+
+  .footer-nav{display:flex;justify-content:space-between;align-items:center;margin-top:40px;padding-top:20px;border-top:1px solid var(--border);font-size:13px;color:var(--mute)}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="eyebrow">Estación A · Bloque 2 · Maestría en Investigación en Cuidados Paliativos · UAN</div>
+    <h1>PRIM-ER · Grudzen 2025</h1>
+    <p class="subtitle">ECA clúster stepped-wedge de cuidado paliativo iniciado en urgencias · un ensayo negativo bien hecho</p>
+    <div class="meta">
+      <span><strong>Docente:</strong> Jorge Bogoya López</span>
+      <span><strong>Sesión:</strong> 24 abril 2026</span>
+      <span><strong>Duración:</strong> 25 min</span>
+    </div>
+  </div>
+
+  <div class="intro">
+    <p>Grudzen et al. JAMA 2025 · NCT03424109 · PMC11836764 · 29 servicios de urgencias, 98.922 visitas, pacientes ≥66 años con Gagne score >6. Intervención multicomponente (educación, comunicación, simulación, auditoría). <strong>Desenlace primario no significativo:</strong> admisión hospitalaria OR ajustado 1,03 (IC95% 0,93–1,14). Valor pedagógico: aprender a leer un ensayo negativo con diseño robusto.</p>
+  </div>
+
+  <div class="study-stats">
+    <div class="stat-card"><div class="stat-num">29</div><div class="stat-lbl">Servicios de urgencias</div></div>
+    <div class="stat-card"><div class="stat-num">98.922</div><div class="stat-lbl">Visitas iniciales</div></div>
+    <div class="stat-card"><div class="stat-num">64,4 → 61,3%</div><div class="stat-lbl">Admisión pre/post</div></div>
+    <div class="stat-card"><div class="stat-num">1,03</div><div class="stat-lbl">OR ajustado</div></div>
+    <div class="stat-card"><div class="stat-num">0,93–1,14</div><div class="stat-lbl">IC95%</div></div>
+  </div>
+
+  <h2>1. Evaluación CASP · 15 ítems por sección</h2>
+  <p style="font-size:14px;color:var(--ink-soft);margin:0 0 14px">Haga clic en cada sección para expandir.</p>
+
+  <div class="casp-section open" onclick="toggleSection(this, event)">
+    <div class="casp-head">
+      <div>
+        <h3>Sección A · Validez de los resultados</h3>
+        <div class="sub">Sesgos de selección, detección, desempeño</div>
+      </div>
+      <div class="casp-toggle">+</div>
+    </div>
+    <div class="casp-body">
+      <table class="casp-table">
+        <tr>
+          <td>1. ¿Pregunta claramente enfocada?</td>
+          <td><span class="verdict-chip v-si">Sí</span>¿Reduce PRIM-ER las admisiones hospitalarias en adultos ≥66 años con Gagne >6 que consultan a urgencias?</td>
+        </tr>
+        <tr>
+          <td>2. ¿Aleatorización de clústeres?</td>
+          <td><span class="verdict-chip v-si">Sí</span>29 servicios aleatorizados a secuencia de cruce stepped-wedge, generación computarizada.</td>
+        </tr>
+        <tr>
+          <td>3. ¿Contabilización completa?</td>
+          <td><span class="verdict-chip v-si">Sí</span>98.922 visitas iniciales · seguimiento administrativo con datos Medicare.</td>
+        </tr>
+        <tr>
+          <td>4. ¿Cegamiento?</td>
+          <td><span class="verdict-chip v-no">No</span>Inevitable en stepped-wedge · personal sabía cuándo implementar · riesgo de sesgo de detección para desenlaces subjetivos.</td>
+        </tr>
+        <tr>
+          <td>5. ¿Similitud basal entre clústeres?</td>
+          <td><span class="verdict-chip v-parcial">Parcial</span>Heterogeneidad entre SU (académicos vs comunitarios, tamaño, volumen) ajustada estadísticamente.</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="casp-section cluster" onclick="toggleSection(this, event)">
+    <div class="casp-head">
+      <div>
+        <h3>Sección A · Ítems clúster específicos</h3>
+        <div class="sub">CONSORT 2012 extensión clúster + Hemming 2015 stepped-wedge</div>
+      </div>
+      <div class="casp-toggle">+</div>
+    </div>
+    <div class="casp-body">
+      <table class="casp-table">
+        <tr>
+          <td>6. ¿Unidad de aleatorización justificada?</td>
+          <td><span class="verdict-chip v-si">Sí</span>Intervención educativa operaba a nivel de servicio completo, no individual.</td>
+        </tr>
+        <tr>
+          <td>7. ¿Tamaño muestral con ICC?</td>
+          <td><span class="verdict-chip v-si">Sí</span>Declarado a priori con coeficiente de correlación intraclase.</td>
+        </tr>
+        <tr>
+          <td>8. ¿Análisis ajustado por agrupamiento?</td>
+          <td><span class="verdict-chip v-si">Sí</span>Modelos mixtos con efectos aleatorios de clúster.</td>
+        </tr>
+        <tr>
+          <td>9. ¿Control de efecto temporal secular?</td>
+          <td><span class="verdict-chip v-parcial">Parcial</span>Stepped-wedge permite ajustar por tiempo calendario, pero vulnerable a cambios concurrentes en práctica paliativa EE.UU. 2018–2022.</td>
+        </tr>
+        <tr>
+          <td>10. ¿Contaminación o cambios concurrentes?</td>
+          <td><span class="verdict-chip v-no">Sí hubo</span>Expansión de programas paliativos y COVID-19 durante el período del estudio.</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="casp-section results" onclick="toggleSection(this, event)">
+    <div class="casp-head">
+      <div>
+        <h3>Sección B · Resultados</h3>
+        <div class="sub">Magnitud y precisión del efecto</div>
+      </div>
+      <div class="casp-toggle">+</div>
+    </div>
+    <div class="casp-body">
+      <table class="casp-table">
+        <tr>
+          <td>11. ¿Cuán grande fue el efecto?</td>
+          <td><span class="verdict-chip v-no">Nulo</span>Admisión primaria: OR ajustado 1,03 · todos los secundarios (ICU, revisitas, hospicio, atención domiciliaria, readmisión, mortalidad) también no significativos.</td>
+        </tr>
+        <tr>
+          <td>12. ¿Cuán precisa fue la estimación?</td>
+          <td><span class="verdict-chip v-si">Alta</span>IC95% 0,93–1,14 · n grande · precisión estadística no es la limitación.</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="casp-section local" onclick="toggleSection(this, event)">
+    <div class="casp-head">
+      <div>
+        <h3>Sección C · Aplicabilidad local</h3>
+        <div class="sub">¿Se traslada al SGSSS colombiano?</div>
+      </div>
+      <div class="casp-toggle">+</div>
+    </div>
+    <div class="casp-body">
+      <table class="casp-table">
+        <tr>
+          <td>13. ¿Aplicabilidad a población local?</td>
+          <td><span class="verdict-chip v-no">Limitada</span>SU estadounidenses con infraestructura paliativa preexistente ≠ urgencias SGSSS saturadas, con fragmentación EPS/IPS.</td>
+        </tr>
+        <tr>
+          <td>14. ¿Desenlaces clínicamente importantes?</td>
+          <td><span class="verdict-chip v-no">Insuficiente</span>Admisión captura recurso, no calidad del proceso · faltan concordancia con preferencias, satisfacción familiar, lugar de muerte.</td>
+        </tr>
+        <tr>
+          <td>15. ¿Beneficios valen daños y costos?</td>
+          <td><span class="verdict-chip v-parcial">No evaluable</span>Costo de implementación no reportado · análisis costo-efectividad pendiente.</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <h2>2. Razones propuestas para la ausencia de efecto</h2>
+  <p style="font-size:14px;color:var(--ink-soft);margin:0 0 4px">Los autores y editorialistas identifican cinco causas del resultado nulo.</p>
+
+  <div class="razones-grid">
+    <div class="razon-card">
+      <div class="razon-num">1</div>
+      <h4>Contaminación temporal</h4>
+      <p>Durante 2018–2022 los SU estadounidenses adoptaron programas paliativos concurrentes al margen de PRIM-ER. El "control" ya no era control puro.</p>
+    </div>
+    <div class="razon-card">
+      <div class="razon-num">2</div>
+      <h4>Efecto techo en admisiones</h4>
+      <p>La decisión de hospitalizar depende de severidad aguda, disponibilidad ambulatoria, presión familiar · educar al personal no modifica esas variables.</p>
+    </div>
+    <div class="razon-card">
+      <div class="razon-num">3</div>
+      <h4>Intervención solo educativa</h4>
+      <p>Sin cambios estructurales (paliativistas 24/7, protocolos vinculantes, incentivos), el conocimiento no se tradujo en cambio de práctica.</p>
+    </div>
+    <div class="razon-card">
+      <div class="razon-num">4</div>
+      <h4>COVID-19</h4>
+      <p>Alteró flujos de urgencias, criterios de admisión y disponibilidad de recursos paliativos durante parte sustancial del ensayo.</p>
+    </div>
+    <div class="razon-card">
+      <div class="razon-num">5</div>
+      <h4>Heterogeneidad de implementación</h4>
+      <p>Fidelidad variable entre los 29 SU · adopción real probablemente inferior a la prescrita en el protocolo.</p>
+    </div>
+  </div>
+
+  <h2>3. Outcome alternativo más sensible al cambio</h2>
+
+  <div class="outcome-primary">
+    <h3>Propuesta primaria</h3>
+    <p style="font-size:16px;color:var(--ink);margin:0 0 10px;font-family:var(--font-serif);font-style:italic;line-height:1.5"><strong>Concordancia entre cuidado recibido y preferencias documentadas del paciente a 30 días.</strong></p>
+    <p style="font-size:13.5px;margin:0;color:var(--ink-soft)"><strong style="color:var(--primary-deep)">Por qué es más sensible:</strong></p>
+    <ul class="why-list">
+      <li><strong>Mide el mecanismo real</strong> de la intervención (comunicación, planificación anticipada) en lugar del resultado distal (admisión) que tiene múltiples determinantes ajenos a paliativos.</li>
+      <li><strong>Capturable</strong> con revisión de historia clínica + entrevista familiar estructurada.</li>
+      <li><strong>Clínicamente significativo</strong> aunque la admisión ocurra — un paciente admitido con plan concordante sigue siendo un éxito paliativo.</li>
+      <li><strong>Éticamente central</strong> · alinea el desenlace con el propósito del cuidado paliativo, no con métricas administrativas.</li>
+    </ul>
+  </div>
+
+  <h3 style="margin-top:24px">Alternativas secundarias ordenadas por sensibilidad esperada</h3>
+  <table class="outcome-table">
+    <thead>
+      <tr><th>Desenlace</th><th>Por qué es sensible</th><th>Cómo medirlo</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Documentación de objetivos de cuidado en HC</td>
+        <td>Mide proceso directo de la intervención</td>
+        <td>Auditoría de historia clínica</td>
+      </tr>
+      <tr>
+        <td>Derivación a hospicio o CP ambulatorio</td>
+        <td>Captura cambio en flujo post-alta</td>
+        <td>Registros administrativos</td>
+      </tr>
+      <tr>
+        <td>Días en casa en últimos 30 días de vida</td>
+        <td>Desenlace centrado en preferencia mayoritaria</td>
+        <td>Registros + seguimiento telefónico</td>
+      </tr>
+      <tr>
+        <td>Satisfacción familiar con comunicación</td>
+        <td>Mide calidad experiencial del proceso</td>
+        <td>FS-ICU-24 o equivalente validado</td>
+      </tr>
+      <tr>
+        <td>Lugar de muerte concordante con preferencia</td>
+        <td>Cierra el circuito de planificación anticipada</td>
+        <td>Seguimiento a 6 meses</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="colombia-box">
+    <h3>Réplica colombiana</h3>
+    <p><strong>Primario:</strong> documentación de plan anticipado de cuidado bajo Ley 1733/2014 durante visita a urgencias.</p>
+    <p><strong>Secundarios:</strong> derivación formal a CP, satisfacción familiar (requiere validación transcultural COSMIN previa), lugar de muerte concordante.</p>
+    <p><strong>Marco ético:</strong> MORECare + Resolución 8430/1993. <strong>Consideración adicional:</strong> incluir pacientes de zonas PDET y comunidades indígenas/afrocolombianas con consulta previa bajo Convenio 169 OIT.</p>
+  </div>
+
+  <div class="footer-nav">
+    <span>Estación A · Bloque 2</span>
+    <span>Maestría en Investigación en Cuidados Paliativos · UAN · 24 abril 2026</span>
+  </div>
+
+</div>
+
+<script>
+function toggleSection(el, event){
+  if(event.target.tagName === 'A') return;
+  el.classList.toggle('open');
+}
+</script>
+</body>
+</html>
