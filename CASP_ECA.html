@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plantilla CASP adaptada · ECA clúster stepped-wedge · Grudzen 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAF8F3; --surface:#FFF; --ink:#2A2A2A; --ink-soft:#4A4A4A; --mute:#888;
+    --border:#E8E3D9; --primary:#6C63B7; --primary-deep:#4A4590;
+    --accent-blue:#5B8DB8; --accent-sage:#7FA88D; --accent-sand:#C9A370; --accent-rose:#B8839D;
+    --danger-bg:#FCEBEB; --danger-text:#A32D2D;
+    --success-bg:#EAF3DE; --success-text:#3B6D11;
+    --warning-bg:#FAEEDA; --warning-text:#854F0B;
+    --neutral-bg:#EEF0F3; --neutral-text:#4A4A4A;
+    --font-sans:'Inter',system-ui,sans-serif;
+    --font-serif:'Source Serif Pro',Georgia,serif;
+    --font-display:'Cormorant Garamond',serif;
+    --radius-md:8px; --radius-lg:12px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:var(--font-sans);line-height:1.55}
+  .container{max-width:960px;margin:0 auto;padding:40px 24px 80px}
+
+  .header{margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+  .eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);font-weight:600;margin-bottom:10px}
+  h1{font-family:var(--font-display);font-size:40px;font-weight:500;margin:0 0 8px;line-height:1.15;color:var(--primary-deep)}
+  .subtitle{font-family:var(--font-serif);font-size:17px;color:var(--ink-soft);font-style:italic;margin:0 0 14px}
+  .meta{font-size:13px;color:var(--mute);display:flex;gap:18px;flex-wrap:wrap}
+  .meta span strong{color:var(--ink-soft);font-weight:500}
+
+  .study-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 22px;margin-bottom:28px;border-left:3px solid var(--primary)}
+  .study-card h3{font-family:var(--font-display);font-size:22px;margin:0 0 6px;color:var(--primary-deep);font-weight:500}
+  .study-card .ref{font-family:var(--font-serif);font-size:14px;font-style:italic;color:var(--ink-soft);margin:0 0 8px}
+  .study-card p{margin:0;font-size:14px;line-height:1.6;color:var(--ink-soft)}
+
+  .progress-bar{position:sticky;top:0;background:var(--bg);padding:14px 0;margin-bottom:20px;z-index:10;border-bottom:1px solid var(--border)}
+  .progress-row{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--ink-soft)}
+  .progress-track{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent-blue));transition:width .3s ease}
+  .progress-label{font-weight:500;color:var(--primary-deep);font-variant-numeric:tabular-nums}
+
+  .section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:18px;overflow:hidden}
+  .section-head{padding:16px 22px;background:linear-gradient(90deg,rgba(108,99,183,.06),transparent);border-bottom:1px solid var(--border)}
+  .section-head .tag{font-family:var(--font-sans);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);font-weight:600;margin-bottom:4px}
+  .section-head h2{font-family:var(--font-display);font-size:23px;font-weight:500;margin:0;color:var(--primary-deep)}
+  .section-head .desc{font-size:13px;color:var(--ink-soft);margin-top:4px;font-style:italic}
+
+  .section.cluster .section-head{background:linear-gradient(90deg,rgba(91,141,184,.08),transparent)}
+  .section.cluster .section-head .tag,.section.cluster .section-head h2{color:var(--accent-blue)}
+  .section.results .section-head{background:linear-gradient(90deg,rgba(127,168,141,.08),transparent)}
+  .section.results .section-head .tag,.section.results .section-head h2{color:var(--accent-sage)}
+  .section.local .section-head{background:linear-gradient(90deg,rgba(201,163,112,.1),transparent)}
+  .section.local .section-head .tag,.section.local .section-head h2{color:var(--accent-sand)}
+
+  .item{padding:18px 22px;border-bottom:1px solid var(--border)}
+  .item:last-child{border-bottom:none}
+  .item-header{display:flex;gap:14px;align-items:flex-start;margin-bottom:10px}
+  .item-num{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(108,99,183,.1);color:var(--primary-deep);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+  .section.cluster .item-num{background:rgba(91,141,184,.12);color:var(--accent-blue)}
+  .section.results .item-num{background:rgba(127,168,141,.15);color:var(--accent-sage)}
+  .section.local .item-num{background:rgba(201,163,112,.18);color:#7A5F2A}
+  .item-text{flex:1;font-size:15px;line-height:1.55}
+  .item-text .hint{display:block;font-size:12.5px;color:var(--mute);font-style:italic;margin-top:4px}
+
+  .item-controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;margin-left:42px}
+  .btn-opt{padding:7px 16px;font-family:var(--font-sans);font-size:12.5px;font-weight:500;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);cursor:pointer;color:var(--ink-soft);transition:all .15s}
+  .btn-opt:hover{border-color:var(--primary)}
+  .btn-opt.sel-yes{background:var(--success-bg);color:var(--success-text);border-color:#B9D692}
+  .btn-opt.sel-partial{background:var(--warning-bg);color:var(--warning-text);border-color:#E8C98A}
+  .btn-opt.sel-no{background:var(--danger-bg);color:var(--danger-text);border-color:#E2B5B5}
+  .btn-opt.sel-unclear{background:var(--neutral-bg);color:var(--neutral-text);border-color:#CFD3D9}
+
+  .note-row{margin:10px 0 0 42px;display:none}
+  .item.has-response .note-row{display:block}
+  .note-input{width:100%;padding:10px 12px;font-family:var(--font-sans);font-size:13.5px;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--surface);color:var(--ink);resize:vertical;min-height:48px;line-height:1.5}
+  .note-input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 2px rgba(108,99,183,.12)}
+
+  .summary{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 26px;margin-top:28px;border-left:3px solid var(--accent-sage)}
+  .summary h3{font-family:var(--font-display);font-size:24px;margin:0 0 14px;color:var(--primary-deep);font-weight:500}
+  .summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:16px}
+  .summary-card{background:var(--bg);border-radius:var(--radius-md);padding:12px 14px;text-align:center}
+  .summary-card .num{font-family:var(--font-display);font-size:28px;font-weight:500;line-height:1;color:var(--primary-deep)}
+  .summary-card .lbl{font-size:11.5px;color:var(--ink-soft);margin-top:4px;letter-spacing:.04em}
+  .summary-card.yes .num{color:var(--success-text)}
+  .summary-card.partial .num{color:var(--warning-text)}
+  .summary-card.no .num{color:var(--danger-text)}
+  .summary-card.unclear .num{color:var(--neutral-text)}
+
+  .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+  .btn-action{padding:9px 18px;font-family:var(--font-sans);font-size:13px;font-weight:500;background:var(--primary);color:#FFF;border:none;border-radius:var(--radius-md);cursor:pointer;transition:all .15s}
+  .btn-action:hover{background:var(--primary-deep)}
+  .btn-action.secondary{background:transparent;color:var(--primary-deep);border:1px solid var(--primary)}
+  .btn-action.secondary:hover{background:rgba(108,99,183,.08)}
+
+  .disclaimer{margin-top:28px;padding:16px 20px;background:rgba(201,163,112,.1);border-left:3px solid var(--accent-sand);border-radius:var(--radius-md);font-size:12.5px;line-height:1.6;color:var(--ink-soft)}
+  .disclaimer strong{color:var(--ink)}
+
+  @media(max-width:600px){
+    h1{font-size:30px}
+    .container{padding:24px 16px 60px}
+    .item-controls{margin-left:0}
+    .note-row{margin-left:0}
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="eyebrow">Maestría en Investigación en Cuidados Paliativos · UAN · Estación A · Bloque 2</div>
+    <h1>Plantilla CASP adaptada</h1>
+    <p class="subtitle">Lectura crítica de ECA clúster con diseño stepped-wedge</p>
+    <div class="meta">
+      <span><strong>Docente:</strong> Jorge Bogoya López</span>
+      <span><strong>Sesión:</strong> 24 abril 2026</span>
+      <span><strong>15 ítems · 4 secciones</strong></span>
+    </div>
+  </div>
+
+  <div class="study-card">
+    <h3>Grudzen et al. · JAMA 2025 · PRIM-ER</h3>
+    <p class="ref">Ensayo clínico aleatorizado por clúster con diseño stepped-wedge · 29 servicios de urgencias EE.UU. · 98.922 visitas · pacientes ≥66 años con Gagne score &gt;6 · PMID 39813042 · DOI 10.1001/jama.2024.23696</p>
+    <p>Intervención: educación multidisciplinaria, habilidades de comunicación, simulación, auditoría y retroalimentación. Desenlace primario (admisión hospitalaria): 64,4% pre vs 61,3% post · OR ajustado 1,03 (IC95% 0,93–1,14) · no significativo.</p>
+  </div>
+
+  <div class="progress-bar">
+    <div class="progress-row">
+      <span class="progress-label" id="progress-label">0 / 15 ítems respondidos</span>
+      <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <span id="progress-pct" class="progress-label">0%</span>
+    </div>
+  </div>
+
+  <div class="section" id="sec-a">
+    <div class="section-head">
+      <div class="tag">Sección A</div>
+      <h2>Validez de los resultados</h2>
+      <div class="desc">Sesgos de selección, detección y desempeño · principios CASP RCT adaptados</div>
+    </div>
+    <div id="items-a"></div>
+  </div>
+
+  <div class="section cluster" id="sec-cluster">
+    <div class="section-head">
+      <div class="tag">Sección A · Ítems clúster</div>
+      <h2>Validez específica del diseño</h2>
+      <div class="desc">Ítems añadidos de CONSORT 2012 extensión clúster + Hemming 2015 (stepped-wedge)</div>
+    </div>
+    <div id="items-cluster"></div>
+  </div>
+
+  <div class="section results" id="sec-b">
+    <div class="section-head">
+      <div class="tag">Sección B</div>
+      <h2>Resultados</h2>
+      <div class="desc">Magnitud y precisión del efecto observado</div>
+    </div>
+    <div id="items-b"></div>
+  </div>
+
+  <div class="section local" id="sec-c">
+    <div class="section-head">
+      <div class="tag">Sección C</div>
+      <h2>Aplicabilidad local</h2>
+      <div class="desc">¿Los hallazgos se trasladan al SGSSS y a pacientes como doña Carmen?</div>
+    </div>
+    <div id="items-c"></div>
+  </div>
+
+  <div class="summary">
+    <h3>Síntesis del ensayo</h3>
+    <div class="summary-grid">
+      <div class="summary-card yes"><div class="num" id="count-yes">0</div><div class="lbl">Sí</div></div>
+      <div class="summary-card partial"><div class="num" id="count-partial">0</div><div class="lbl">Parcialmente</div></div>
+      <div class="summary-card no"><div class="num" id="count-no">0</div><div class="lbl">No</div></div>
+      <div class="summary-card unclear"><div class="num" id="count-unclear">0</div><div class="lbl">No claro</div></div>
+    </div>
+    <div id="verdict-text" style="font-size:14px;line-height:1.65;color:var(--ink-soft);margin-top:6px;padding:12px 14px;background:var(--bg);border-radius:var(--radius-md);display:none"></div>
+    <div class="actions">
+      <button class="btn-action" onclick="exportReport()">Exportar informe (.txt)</button>
+      <button class="btn-action secondary" onclick="resetAll()">Reiniciar evaluación</button>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Nota pedagógica.</strong> Esta plantilla combina los 11 ítems clásicos de CASP para ECA con ítems específicos de CONSORT 2012 extensión clúster (Campbell et al. BMJ 2012;345:e5661) y recomendaciones de Hemming et al. BMJ 2015;350:h391 para stepped-wedge. Para evaluación formal de riesgo de sesgo considere también Cochrane RoB 2 extensión cluster (Eldridge 2021).
+  </div>
+
+</div>
+
+<script>
+const ITEMS = {
+  a: [
+    {id:'a1', text:'¿El ensayo abordó una pregunta claramente enfocada?', hint:'Población, intervención, comparador, desenlace (PICO).'},
+    {id:'a2', text:'¿La asignación de los clústeres (no individuos) a los brazos fue aleatoria?', hint:'¿Cómo se generó la secuencia de aleatorización?'},
+    {id:'a3', text:'¿Se contabilizaron adecuadamente todos los clústeres y participantes al final del estudio?', hint:'¿Hubo pérdida diferencial de clústeres entre brazos?'},
+    {id:'a4', text:'¿Se mantuvieron ciegos los participantes, el personal y los evaluadores?', hint:'Difícil en stepped-wedge — evaluar especialmente sesgo de detección.'},
+    {id:'a5', text:'¿Los clústeres en cada brazo fueron similares al inicio?', hint:'¿Se ajustó por covariables de clúster en el análisis?'}
+  ],
+  cluster: [
+    {id:'cl1', text:'¿Se justificó la unidad de aleatorización?', hint:'Servicio de urgencias vs paciente individual.'},
+    {id:'cl2', text:'¿Se calculó el tamaño muestral considerando el coeficiente de correlación intraclase (ICC)?', hint:'El ICC infla el tamaño muestral efectivo.'},
+    {id:'cl3', text:'¿El análisis estadístico ajustó por agrupamiento?', hint:'Modelos mixtos (GLMM), ecuaciones de estimación generalizada (GEE).'},
+    {id:'cl4', text:'En stepped-wedge: ¿se controló el efecto temporal secular?', hint:'Tendencias en el tiempo independientes de la intervención.'},
+    {id:'cl5', text:'¿Hubo contaminación entre clústeres o cambios concurrentes en la práctica?', hint:'¿Otros programas de CP implementados durante el estudio?'}
+  ],
+  b: [
+    {id:'b1', text:'¿Cuán grande fue el efecto de la intervención?', hint:'OR ajustado con IC95% · desenlaces primario y secundarios.'},
+    {id:'b2', text:'¿Cuán precisa fue la estimación del efecto?', hint:'Amplitud del IC95% · ¿cruza el 1?'}
+  ],
+  c: [
+    {id:'c1', text:'¿Los resultados pueden aplicarse a la población local?', hint:'Urgencias del SGSSS vs urgencias universitarias de EE.UU.'},
+    {id:'c2', text:'¿Se consideraron todos los desenlaces clínicamente importantes?', hint:'Concordancia con preferencias, lugar de muerte, satisfacción familiar.'},
+    {id:'c3', text:'¿Los beneficios valen los daños y costos?', hint:'Factibilidad en IPS de mediana complejidad de municipio PDET.'}
+  ]
+};
+
+const state = {};
+let totalItems = 0;
+
+const OPTIONS = [
+  {v:'yes', l:'Sí'},
+  {v:'partial', l:'Parcialmente'},
+  {v:'no', l:'No'},
+  {v:'unclear', l:'No claro'}
+];
+
+function renderSection(key, containerId){
+  const c = document.getElementById(containerId);
+  c.innerHTML = '';
+  ITEMS[key].forEach((item, idx) => {
+    totalItems++;
+    const wrap = document.createElement('div');
+    wrap.className = 'item';
+    wrap.id = 'item-' + item.id;
+
+    const head = document.createElement('div');
+    head.className = 'item-header';
+    head.innerHTML = `<div class="item-num">${idx+1}</div><div class="item-text">${item.text}${item.hint ? `<span class="hint">${item.hint}</span>` : ''}</div>`;
+
+    const ctrls = document.createElement('div');
+    ctrls.className = 'item-controls';
+    OPTIONS.forEach(opt => {
+      const b = document.createElement('button');
+      b.className = 'btn-opt';
+      b.textContent = opt.l;
+      b.dataset.id = item.id;
+      b.dataset.val = opt.v;
+      b.onclick = () => selectOption(item.id, opt.v);
+      ctrls.appendChild(b);
+    });
+
+    const note = document.createElement('div');
+    note.className = 'note-row';
+    note.innerHTML = `<textarea class="note-input" placeholder="Nota del evaluador (opcional) · cite página o tabla del artículo si aplica" data-id="${item.id}"></textarea>`;
+    note.querySelector('textarea').addEventListener('input', e => {
+      if(!state[item.id]) state[item.id] = {};
+      state[item.id].note = e.target.value;
+    });
+
+    wrap.appendChild(head);
+    wrap.appendChild(ctrls);
+    wrap.appendChild(note);
+    c.appendChild(wrap);
+  });
+}
+
+function selectOption(id, val){
+  if(!state[id]) state[id] = {};
+  state[id].value = val;
+  const item = document.getElementById('item-' + id);
+  item.classList.add('has-response');
+  document.querySelectorAll(`.btn-opt[data-id="${id}"]`).forEach(b => {
+    b.classList.remove('sel-yes','sel-partial','sel-no','sel-unclear');
+    if(b.dataset.val === val) b.classList.add('sel-' + val);
+  });
+  updateSummary();
+}
+
+function updateSummary(){
+  const counts = {yes:0, partial:0, no:0, unclear:0};
+  Object.values(state).forEach(s => { if(s.value) counts[s.value]++; });
+  document.getElementById('count-yes').textContent = counts.yes;
+  document.getElementById('count-partial').textContent = counts.partial;
+  document.getElementById('count-no').textContent = counts.no;
+  document.getElementById('count-unclear').textContent = counts.unclear;
+
+  const answered = counts.yes + counts.partial + counts.no + counts.unclear;
+  const pct = totalItems ? Math.round((answered/totalItems)*100) : 0;
+  document.getElementById('progress-label').textContent = `${answered} / ${totalItems} ítems respondidos`;
+  document.getElementById('progress-pct').textContent = pct + '%';
+  document.getElementById('progress-fill').style.width = pct + '%';
+
+  const verdictEl = document.getElementById('verdict-text');
+  if(answered === totalItems){
+    verdictEl.style.display = 'block';
+    const score = counts.yes + (counts.partial * 0.5);
+    const pctYes = Math.round((score/totalItems)*100);
+    let txt;
+    if(pctYes >= 75) txt = `<strong>Evaluación global: alta calidad metodológica (${pctYes}%).</strong> El ensayo cumple la mayoría de criterios de validez. Los resultados pueden orientar práctica y política con las salvedades de aplicabilidad local documentadas.`;
+    else if(pctYes >= 50) txt = `<strong>Evaluación global: calidad moderada (${pctYes}%).</strong> El ensayo tiene fortalezas pero también limitaciones que requieren interpretación cautelosa. Útil como evidencia contextual, no como base única para decisiones.`;
+    else txt = `<strong>Evaluación global: calidad limitada (${pctYes}%).</strong> Las limitaciones metodológicas son sustantivas. Los resultados deben interpretarse como exploratorios o generadores de hipótesis.`;
+    verdictEl.innerHTML = txt;
+  } else {
+    verdictEl.style.display = 'none';
+  }
+}
+
+function exportReport(){
+  let out = 'PLANTILLA CASP ADAPTADA · ECA CLÚSTER STEPPED-WEDGE\n';
+  out += 'Grudzen et al. · JAMA 2025 · PRIM-ER · PMID 39813042\n';
+  out += 'Evaluado el: ' + new Date().toLocaleDateString('es-CO') + '\n';
+  out += 'Maestría en Investigación en Cuidados Paliativos · UAN\n';
+  out += '='.repeat(70) + '\n\n';
+
+  const sections = [
+    {key:'a', title:'SECCIÓN A · VALIDEZ DE LOS RESULTADOS'},
+    {key:'cluster', title:'SECCIÓN A · ÍTEMS CLÚSTER ESPECÍFICOS'},
+    {key:'b', title:'SECCIÓN B · RESULTADOS'},
+    {key:'c', title:'SECCIÓN C · APLICABILIDAD LOCAL'}
+  ];
+
+  sections.forEach(sec => {
+    out += sec.title + '\n' + '-'.repeat(70) + '\n';
+    ITEMS[sec.key].forEach((item, idx) => {
+      const s = state[item.id] || {};
+      const val = s.value ? ({yes:'SÍ', partial:'PARCIALMENTE', no:'NO', unclear:'NO CLARO'})[s.value] : '(sin respuesta)';
+      out += `\n${idx+1}. ${item.text}\n   Respuesta: ${val}\n`;
+      if(s.note && s.note.trim()) out += `   Nota: ${s.note.trim()}\n`;
+    });
+    out += '\n';
+  });
+
+  const counts = {yes:0, partial:0, no:0, unclear:0};
+  Object.values(state).forEach(s => { if(s.value) counts[s.value]++; });
+  out += '='.repeat(70) + '\n';
+  out += `SÍNTESIS: Sí=${counts.yes} · Parcialmente=${counts.partial} · No=${counts.no} · No claro=${counts.unclear}\n`;
+
+  const blob = new Blob([out], {type:'text/plain;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'CASP_Grudzen2025_' + new Date().toISOString().slice(0,10) + '.txt';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function resetAll(){
+  if(!confirm('¿Reiniciar toda la evaluación? Se perderán las respuestas y notas.')) return;
+  Object.keys(state).forEach(k => delete state[k]);
+  document.querySelectorAll('.btn-opt').forEach(b => b.classList.remove('sel-yes','sel-partial','sel-no','sel-unclear'));
+  document.querySelectorAll('.note-input').forEach(t => t.value = '');
+  document.querySelectorAll('.item').forEach(i => i.classList.remove('has-response'));
+  updateSummary();
+}
+
+totalItems = 0;
+renderSection('a', 'items-a');
+renderSection('cluster', 'items-cluster');
+renderSection('b', 'items-b');
+renderSection('c', 'items-c');
+updateSummary();
+</script>
+</body>
+</html>
