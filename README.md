@@ -10,9 +10,16 @@
 
 ## 🔗 Accesos rápidos
 
+### Material base de la Unidad 3
+
 - 📖 **Lecturas antes de clase** → [https://jboglop.github.io/Investigacion_CP/Lecturas_antesdeclase.html](https://jboglop.github.io/Investigacion_CP/Lecturas_antesdeclase.html)
-- 🎯 **Actividad interactiva de la sesión** → [https://jboglop.github.io/Investigacion_CP/Actividad.html](https://jboglop.github.io/Investigacion_CP/Actividad.html)
-- 📊 **Prevalencias · No oncológicas vs oncológicas** → [https://jboglop.github.io/Investigacion_CP/Prevalencias_NoOnco_vs_Onco.html](https://jboglop.github.io/Investigacion_CP/Prevalencias_NoOnco_vs_Onco.html)
+
+
+### Recursos nuevos · Sesión 24 de abril de 2026 (Temas 3.3 y 3.4)
+
+- 🔍 **CASP · Appraisal de un ECA (Grudzen 2025)** → [https://jboglop.github.io/Investigacion_CP/CASP_ECA.html](https://jboglop.github.io/Investigacion_CP/CASP_ECA.html)
+- 🧮 **Calculadoras de tamizaje paliativo** → [https://jboglop.github.io/Investigacion_CP/calculadoras_tamizaje_paliativo.html](https://jboglop.github.io/Investigacion_CP/calculadoras_tamizaje_paliativo.html)
+- 📡 **Estación C · Monitoreo electrónico Basch 2022** → [https://jboglop.github.io/Investigacion_CP/estacion_C_Basch.html](https://jboglop.github.io/Investigacion_CP/estacion_C_Basch.html)
 
 ---
 
@@ -70,6 +77,53 @@ Cada síntesis incluye contexto clínico, diseño metodológico, resultados prin
 
 ---
 
+### 🔍 CASP · Appraisal de un ensayo clínico aleatorizado
+
+**[CASP_ECA.html](https://jboglop.github.io/Investigacion_CP/CASP_ECA.html)**
+
+Recurso guiado para trabajar el instrumento CASP (Critical Appraisal Skills Programme) sobre el ensayo PRIM-ER de Grudzen 2025. Funciona como herramienta de lectura crítica paso a paso: las once preguntas del checklist CASP, aplicadas a un ECA con resultado negativo que permite discutir con claridad la diferencia entre *ausencia de efecto* y *ausencia de evidencia de efecto*. Se usa en el Bloque 2 de la sesión (estaciones rotativas), estación A.
+
+### 🧮 Calculadoras de tamizaje paliativo
+
+**[calculadoras_tamizaje_paliativo.html](https://jboglop.github.io/Investigacion_CP/calculadoras_tamizaje_paliativo.html)**
+
+Calculadoras interactivas para los tres instrumentos de tamizaje paliativo revisados en la Kirkland 2022: **Surprise Question**, **P-CaRES** (Palliative Care and Rapid Emergency Screening) y **SPEED** (Screen for Palliative and End-of-life care needs in the ED). Permiten introducir variables clínicas del caso de doña Carmen —o de casos reales que los estudiantes aporten— y observar cómo varían los resultados según el instrumento. Útil para discutir por qué tamizar bien es un paso necesario pero no suficiente sin dispositivo de derivación activa. Se usa en el Bloque 2, estación B.
+
+### 📡 Estación C · Monitoreo electrónico de síntomas (Basch 2022)
+
+**[estacion_C_Basch.html](https://jboglop.github.io/Investigacion_CP/estacion_C_Basch.html)**
+
+Estación dedicada al análisis del ensayo PRO-TECT de Basch 2022 sobre ePRO en cáncer metastásico. Integra la curva de calidad de vida (EORTC QLQ-C30), la arquitectura de alertas automatizadas, los resultados secundarios y el puente hacia el desenlace de supervivencia del antecesor Basch 2017 (JAMA). Plantea la discusión central del Tema 3.4: cuando el efecto absoluto es pequeño pero clínicamente relevante y éticamente significativo, ¿cómo se construye el caso de financiamiento ante el SGSSS? Se usa en el Bloque 2, estación C.
+
+### 🎯 Actividad interactiva de la sesión
+
+**[Actividad.html](https://jboglop.github.io/Investigacion_CP/Actividad.html)**
+
+Recurso interactivo principal que se proyecta durante la sesión sincrónica. Incluye el close reading inaugural con tres fragmentos literarios, el caso clínico de doña Carmen con seis momentos y preguntas socráticas navegables, la sección de parallel chart para capturar la voz del paciente, las visualizaciones de instrumentos psicométricos, la curva de Basch con efecto sobre calidad de vida y supervivencia, los cinco vacíos de investigación colombiana y el acceso al entregable final en formato matriz PICO.
+
+### 📊 Prevalencias de síntomas · comparativa oncológica vs no oncológica
+
+**[Prevalencias_NoOnco_vs_Onco.html](https://jboglop.github.io/Investigacion_CP/Prevalencias_NoOnco_vs_Onco.html)**
+
+Recurso complementario para las subunidades 3.1 y 3.2. Compara la prevalencia de síntomas entre las seis patologías no oncológicas y las seis oncológicas trabajadas en la unidad, tomando como base la actualización de la evidencia post-Solano et al. (2006). Permite visualizar por qué el dolor ya no es el síntoma dominante en cáncer, por qué la disnea es el gran protagonista en EPOC e ICC, y cómo la demoralización y la soledad han emergido como dominios clínicamente relevantes en la última década.
+
+---
+
+## 🗺️ Mapa de recursos por momento pedagógico · 24 de abril
+
+| Bloque | Minutos | Actividad | Recursos asociados |
+|---|---|---|---|
+| **Bloque 1** | 00–45 | Close reading + introducción del caso doña Carmen | Actividad.html |
+| **Bloque 2 · Estación A** | 45–70 | Appraisal CASP del ECA Grudzen 2025 | **CASP_ECA.html** + Lecturas_antesdeclase.html |
+| **Bloque 2 · Estación B** | 70–95 | Comparar instrumentos de tamizaje | **calculadoras_tamizaje_paliativo.html** |
+| **Bloque 2 · Estación C** | 95–120 | Análisis de Basch 2022 y efecto ePRO | **estacion_C_Basch.html** |
+| **Bloque 3** | 120–165 | Debate Karl Popper adaptado | Actividad.html + Lecturas_antesdeclase.html |
+| **Bloque 4** | 165–240 | Parallel chart + matriz PICO | Actividad.html |
+
+Transversal a los bloques: **Prevalencias_NoOnco_vs_Onco.html** como referencia visual de consulta durante la argumentación.
+
+---
+
 ## ❓ Preguntas integradoras · llegar a la sesión con la conversación ya iniciada
 
 Las nueve preguntas siguientes cierran cada una de las síntesis críticas del documento de lecturas previas. No son preguntas de comprobación de lectura; son **puertas de entrada al razonamiento investigativo**. Cada una nace de un hallazgo específico del artículo y empuja hacia una pregunta aplicada en el contexto colombiano. Ninguna tiene respuesta única.
@@ -109,20 +163,6 @@ Las tres preguntas siguientes no nacen de un artículo específico sino del diá
 11. **La voz del paciente como hilo.** Los tres artículos abordan, desde ángulos distintos, la pregunta de cómo integrar la perspectiva del paciente en el sistema de cuidado: Grudzen a través del entrenamiento del clínico, Basch a través del reporte electrónico directo, Kirkland a través del tamizaje estructurado. ¿Cuál de las tres estrategias consideras más factible para el contexto colombiano actual, y cuál de las tres consideras más necesaria a mediano plazo aunque sea menos factible hoy?
 
 12. **De la lectura a la pregunta propia.** A partir de la lectura conjunta de los tres artículos, formula en una sola oración la pregunta de investigación colombiana que te gustaría trabajar en tu proyecto de tesis de Maestría. No tiene que ser la definitiva; tiene que ser suficientemente específica como para poder defenderla en la sesión.
-
----
-
-### 🎯 Actividad interactiva de la sesión
-
-**[Actividad.html](https://jboglop.github.io/Investigacion_CP/Actividad.html)**
-
-Recurso interactivo principal que se proyecta durante la sesión sincrónica. Incluye el close reading inaugural con tres fragmentos literarios, el caso clínico de doña Carmen con seis momentos y preguntas socráticas navegables, la sección de parallel chart para capturar la voz del paciente, las visualizaciones de instrumentos psicométricos, la curva de Basch con efecto sobre calidad de vida y supervivencia, los cinco vacíos de investigación colombiana y el acceso al entregable final en formato matriz PICO.
-
-### 📊 Prevalencias de síntomas · comparativa oncológica vs no oncológica
-
-**[Prevalencias_NoOnco_vs_Onco.html](https://jboglop.github.io/Investigacion_CP/Prevalencias_NoOnco_vs_Onco.html)**
-
-Recurso complementario para las subunidades 3.1 y 3.2. Compara la prevalencia de síntomas entre las seis patologías no oncológicas y las seis oncológicas trabajadas en la unidad, tomando como base la actualización de la evidencia post-Solano et al. (2006). Permite visualizar por qué el dolor ya no es el síntoma dominante en cáncer, por qué la disnea es el gran protagonista en EPOC e ICC, y cómo la demoralización y la soledad han emergido como dominios clínicamente relevantes en la última década.
 
 ---
 
@@ -190,6 +230,12 @@ La evaluación se realiza con rúbrica de cuatro dimensiones —rigor conceptual
 - Basch E, Deal AM, Dueck AC, et al. Overall Survival Results of a Trial Assessing Patient-Reported Outcomes for Symptom Monitoring During Routine Cancer Treatment. *JAMA.* 2017;318(2):197-198.
 - Dueck AC, Mendoza TR, Mitchell SA, et al. Validity and Reliability of the US National Cancer Institute's Patient-Reported Outcomes Version of the Common Terminology Criteria for Adverse Events (PRO-CTCAE). *JAMA Oncol.* 2015;1(8):1051-1059.
 
+### Instrumentos de lectura crítica y tamizaje (referencias transversales)
+
+- Critical Appraisal Skills Programme (CASP). CASP Randomised Controlled Trial Checklist. Oxford: CASP UK; 2024.
+- Moss AH, Lunney JR, Culp S, et al. Prognostic significance of the "surprise" question in cancer patients. *J Palliat Med.* 2010;13(7):837-840.
+- Bowman J, George N, Barrett N, Anderson K, Dove-Maguire K, Baird J. Acceptability and reliability of a novel palliative care screening tool among emergency department providers. *Acad Emerg Med.* 2016;23(6):694-702.
+
 ### Marco metodológico y normativo
 
 - Higginson IJ, Evans CJ, Grande G, et al. Evaluating complex interventions in End of Life Care: the MORECare Statement on good practice generated by a synthesis of transparent expertise, systematic reviews and consensus. *BMC Med.* 2013;11:111.
@@ -222,4 +268,4 @@ Colombia no cuenta hoy con ningún ensayo clínico aleatorizado publicado sobre 
 
 ---
 
-*Última actualización del contenido programático: enero de 2026.*
+*Última actualización: 24 de abril de 2026 · Incorporación de recursos para sesión presencial Temas 3.3 y 3.4.*
